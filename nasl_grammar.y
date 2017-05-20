@@ -282,6 +282,7 @@ argument:				string ':' expression
 						| identifier ':' ref
 						| expression
 						| ref
+						| body
 						;
 
 /****************************
@@ -328,7 +329,7 @@ yyerror(char const *s)
 	
 	//printf("\n%d\n", yylineno);
 	fflush(stdout);
-	printf("\n%*s\n%*s\n", column+7, "^", column+7, s);
+	printf("\n%*s\n%*s\n", column+8, "^", column+8, s);
 }
 
 lex()
