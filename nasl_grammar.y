@@ -137,16 +137,26 @@ for_loop:				FOR '(' expression ';' expression ';' expression ')' block
 						| FOR '(' expression ';' expression ';' expression ')' command
 						;
 
-foreach_loop:
+foreach_loop:			FOREACH identifier '(' expression ')' block
+						| FOREACH identifier '(' expression ')' command
+						| FOREACH '(' identifier IN_ITER expression ')' block
+						| FOREACH '(' identifier IN_ITER expression ')' command
 						;
 						
-repeat_loop:
+repeat_loop:			REPEAT block UNTIL expression ';'
+						| REPEAT command UNTIL expression ';'
 						;
 						
-while_loop:				
+while_loop:				WHILE '(' expression ')' block
+						| WHILE '(' expression ')' command
 						;
 						
-if_cond: 
+if_cond: 				IF '(' expression ')' block
+						| IF '(' expression ')' command
+						| IF '(' expression ')' block ELSE command
+						| IF '(' expression ')' block ELSE block
+						| IF '(' expression ')' command ELSE block
+						| IF '(' expression ')' command ELSE command
 						;
 
 block: 					
