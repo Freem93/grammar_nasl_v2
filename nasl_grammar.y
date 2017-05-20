@@ -340,6 +340,7 @@ expression: 		| '(' expression ')'
 					| body
 					| body_sq
 					| identifier body
+					| identifier body_enum_sq
 					| call_function
 					;
 %%
