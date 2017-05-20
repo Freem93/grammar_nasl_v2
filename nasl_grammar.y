@@ -48,12 +48,16 @@ extern int yylineno;
 /**************************
 		START
 **************************/
-nasl_script:			 line nasl_script
-						|
+nasl_script:			 
+						| lines
 						;
 /**************************
 		Lines
 ***************************/
+lines: 					line
+						| lines line
+						;
+
 line: 					COMMENT
 						| export
 						| function
@@ -236,7 +240,7 @@ if_cond: 				IF '(' expression ')' block
 
 block: 					
 						| '{' '}'
-						| '{' line '}'
+						| '{' lines '}'
 						| '{' argument_list '}'
 		 				| '[' ']'
 						| '[' argument_list ']'
