@@ -73,8 +73,6 @@ function: 				FUNCTION identifier '(' parameters ')' block
 /*****************************
 		Describe of function
 ******************************/
-identifier: 			IDENT
-						;
 	
 parameters: 			parameter ',' parameters
 						| parameter
@@ -131,10 +129,10 @@ return:					RETURN expression
 empty:					';'
 						;
 
-global: 				GLOBAL var_decls 
+global: 				GLOBAL vars 
 						;
 
-local: 					LOCAL var_decls 
+local: 					LOCAL vars 
 						;						
 
 rep: 					call_function REP expression
@@ -173,6 +171,7 @@ assign_shift_op:	identifier SR_ASS value
 /******************************
 ******************************/
 value:				expression
+					| call_function
 					;
 					
 identifier: 		IDENT
@@ -272,7 +271,6 @@ argument:				string ':' expression
 /****************************
 *****************************/
 expression: 		'(' expression ')'
-					| inc_dec_exp
 					| expression AND expression
 					| '!' expression
 					| expression OR expression
@@ -289,7 +287,6 @@ expression: 		'(' expression ')'
 					| expression SR expression
 					| expression SL expression
 					| expression SRR expression
-					| inc_dec_exp
 					| expression SUBSTR_EQ expression
 					| expression SUBSTR_NEQ expression
 					| expression REGEX_NEQ expression
@@ -300,7 +297,6 @@ expression: 		'(' expression ')'
 					| expression CMP_LE expression
 					| expression CMP_EQ expression
 					| expression CMP_NEQ expression
-					| call_function
 					| integer
 					| string
 					| ip
