@@ -109,6 +109,7 @@ void count();
 [ \t\v\n\f] { count(); }
 
 "FALSE" {count(); return(FALSE); }
+"FALSE" {count(); return(FALSE); }
 "NULL" { count(); return(UNDEF); }
 "TRUE" { count(); return(TRUE); }
 

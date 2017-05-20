@@ -80,6 +80,7 @@ parameters: 			parameter ',' parameters
 
 parameter: 				identifier
 						| '&' identifier
+						| assign
 						;
 
 /********************************
@@ -134,7 +135,33 @@ assign_shift_op:	identifier ">>=" value
 					| identifier "<<=" value
 					;
 	
-		 
+/******************************
+******************************/
+value:				identifier
+					| expression
+					| integer
+					| string
+					;
+					
+identifier: 		IDENT
+					| IN_ITER
+					;
+
+integer: 			INT_DEC
+					| INT_HEX
+					| INT_OCT
+					| TRUE
+					| FALSE
+					;
+
+string: 			STRING
+					;
+
+ip: 				integer '.' integer '.' integer '.' integer
+					;
+
+null: 				NULL
+					;					
 /******************************
 		Compound commands
 ******************************/		 
