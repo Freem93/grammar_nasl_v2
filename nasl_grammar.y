@@ -176,7 +176,6 @@ assign_shift_op:	identifier SR_ASS value
 /******************************
 ******************************/
 value:				expression
-					| call_function
 					;
 					
 identifier: 		IDENT
@@ -306,7 +305,6 @@ expression: 		| '(' expression ')'
 					| string
 					| ip
 					| null
-					| assign
 					| call_function
 					;
 %%
