@@ -72,8 +72,6 @@ function: 				FUNCTION identifier '(' parameters ')' block
 		Describe of function
 ******************************/
 identifier: 			IDENT
-						| REP
-						| IN_ITER
 						;
 	
 parameters: 			parameter ',' parameters
