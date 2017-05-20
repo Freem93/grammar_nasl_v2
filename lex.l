@@ -35,7 +35,7 @@ void count();
 "in" { count(); return(IN_ITER); }
 "while" { count(); return(WHILE); }
 "repeat" { count(); return(REPEAT); }
-"x" { count(); return(REP); 
+"x" { count(); return(REP); }
 "until" { count(); return(UNTIL); }
 
 [a-zA-Z_][_a-zA-Z0-9] { count(); return(IDENT); }

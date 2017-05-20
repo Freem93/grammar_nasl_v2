@@ -111,33 +111,33 @@ simple: 				assign
 Describe of  simple commands
 ******************************/
 
-break:					BREAK ';'
+break:					BREAK 
 						;
 						
-continue:				CONTINUE ';'
+continue:				CONTINUE 
 						;
 						
-import:					IMPORT '(' string ')' ';'
+import:					IMPORT '(' string ')' 
 						;
 						
-include:				INCLUDE '(' string ')' ';'
+include:				INCLUDE '(' string ')' 
 						;
 						
-return:					RETURN expression ';'
-						| RETURN '@' ';'
-						| RETURN ';'
+return:					RETURN expression 
+						| RETURN '@' 
+						| RETURN 
 						;
 						
 empty:					';'
 						;
 
-global: 				GLOBAL var_decls ';'
+global: 				GLOBAL var_decls 
 						;
 
-local: 					LOCAL var_decls ';'
+local: 					LOCAL var_decls 
 						;						
 
-rep: 					call_function REP expression ';'
+rep: 					call_function REP expression
 						;
 						
 call_function:		 	identifier '(' parameters ')'
@@ -172,8 +172,7 @@ assign_shift_op:	identifier SR_ASS value
 	
 /******************************
 ******************************/
-value:				identifier
-					| expression
+value:				expression
 					;
 					
 identifier: 		IDENT
@@ -273,7 +272,6 @@ argument:				string ':' expression
 /****************************
 *****************************/
 expression: 		'(' expression ')'
-					| assign
 					| inc_dec_exp
 					| expression AND expression
 					| '!' expression
@@ -303,7 +301,6 @@ expression: 		'(' expression ')'
 					| expression CMP_EQ expression
 					| expression CMP_NEQ expression
 					| call_function
-					| block
 					| integer
 					| string
 					| ip
