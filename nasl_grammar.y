@@ -306,8 +306,6 @@ expression: 		| '(' expression ')'
 					| string
 					| ip
 					| null
-					| assign
-					| call_function
 					;
 %%
 #include <stdio.h>
