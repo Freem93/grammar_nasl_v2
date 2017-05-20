@@ -11,7 +11,6 @@ State 74 contains 2 shift/reduce conflicts.
 State 79 contains 1 shift/reduce conflict.
 State 84 contains 1 shift/reduce conflict.
 State 87 contains 1 shift/reduce conflict.
-State 100 contains 5 shift/reduce conflicts.
 State 102 contains 5 shift/reduce conflicts.
 State 103 contains 5 shift/reduce conflicts.
 State 106 contains 5 shift/reduce conflicts.
@@ -92,11 +91,11 @@ State 259 contains 24 shift/reduce conflicts.
 State 260 contains 24 shift/reduce conflicts.
 State 261 contains 1 shift/reduce conflict.
 State 262 contains 1 shift/reduce conflict.
-State 269 contains 2 shift/reduce conflicts.
-State 272 contains 3 shift/reduce conflicts.
-State 277 contains 1 shift/reduce conflict.
+State 270 contains 2 shift/reduce conflicts.
+State 273 contains 3 shift/reduce conflicts.
 State 278 contains 1 shift/reduce conflict.
-State 305 contains 1 shift/reduce conflict.
+State 279 contains 1 shift/reduce conflict.
+State 306 contains 1 shift/reduce conflict.
 
 Grammar
 rule 1    nasl_script ->		/* empty */
@@ -140,7 +139,7 @@ rule 38   return -> RETURN body ';'
 rule 39   empty -> ';'
 rule 40   global -> GLOBAL vars ';'
 rule 41   local -> LOCAL vars ';'
-rule 42   rep -> call_function REP expression
+rule 42   rep -> call_function REP identifier ';'
 rule 43   call_function -> identifier '(' parameters ')'
 rule 44   call_function -> identifier '(' ')'
 rule 45   call_function -> identifier body_enum_sq '(' ')'
@@ -291,7 +290,7 @@ $ (-1)
 '.' (46) 81 117
 '/' (47) 145
 ':' (58) 127 128 129 130 131 132
-';' (59) 21 32 33 34 35 36 37 38 39 40 41 89 90 95 96
+';' (59) 21 32 33 34 35 36 37 38 39 40 41 42 89 90 95 96
 '<' (60) 157
 '=' (61) 51 52 53 54 120 121
 '>' (62) 158
@@ -405,9 +404,9 @@ assign_shift_op (98)
 value (99)
     on left: 74, on right: 51 52 66 67 68 69 70 71 72 73 120
 identifier (100)
-    on left: 75 76, on right: 11 12 15 43 44 45 46 47 48 49 50 52 53
-    54 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 91 92 93 94
-    114 117 120 121 122 131 132 163 165 172 173
+    on left: 75 76, on right: 11 12 15 42 43 44 45 46 47 48 49 50 52
+    53 54 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 91 92 93
+    94 114 117 120 121 122 131 132 163 165 172 173
 integer (101)
     on left: 77 78 79, on right: 81 113 128 130 166
 string (102)
@@ -457,8 +456,8 @@ argument (122)
 expression (123)
     on left: 135 136 137 138 139 140 141 142 143 144 145 146 147 148
     149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164
-    165 166 167 168 169 170 171 172 173 174, on right: 36 42 74 91
-    92 93 94 95 96 99 127 128 131 133 136 137 138 139 140 141 142 143
+    165 166 167 168 169 170 171 172 173 174, on right: 36 74 91 92
+    93 94 95 96 99 127 128 131 133 136 137 138 139 140 141 142 143
     144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159
     160 161 162 164
 
@@ -491,7 +490,7 @@ state 0
 
     $default	reduce using rule 1 (nasl_script)
 
-    nasl_script	go to state 322
+    nasl_script	go to state 323
     lines	go to state 24
     line	go to state 25
     export	go to state 26
@@ -1085,7 +1084,7 @@ state 38
 state 39
 
     simple  ->  call_function . ';'   (rule 21)
-    rep  ->  call_function . REP expression   (rule 42)
+    rep  ->  call_function . REP identifier ';'   (rule 42)
 
     REP 	shift, and go to state 100
     ';' 	shift, and go to state 101
@@ -2122,38 +2121,12 @@ state 99
 
 state 100
 
-    rep  ->  call_function REP . expression   (rule 42)
+    rep  ->  call_function REP . identifier ';'   (rule 42)
 
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
-    INT 	shift, and go to state 61
-    STRING	shift, and go to state 62
-    FALSE	shift, and go to state 63
-    _NULL_	shift, and go to state 64
-    TRUE	shift, and go to state 65
-    '(' 	shift, and go to state 66
-    '{' 	shift, and go to state 68
-    '[' 	shift, and go to state 69
-    '!' 	shift, and go to state 70
-    '-' 	shift, and go to state 71
-    '~' 	shift, and go to state 72
 
-    IN_ITER	[reduce using rule 135 (expression)]
-    IDENT	[reduce using rule 135 (expression)]
-    '(' 	[reduce using rule 135 (expression)]
-    '{' 	[reduce using rule 135 (expression)]
-    '-' 	[reduce using rule 135 (expression)]
-    $default	reduce using rule 135 (expression)
-
-    call_function	go to state 73
-    identifier	go to state 74
-    integer	go to state 75
-    string	go to state 76
-    ip  	go to state 77
-    null	go to state 78
-    body	go to state 95
-    body_sq	go to state 80
-    expression	go to state 189
+    identifier	go to state 189
 
 
 
@@ -4612,58 +4585,9 @@ state 188
 
 state 189
 
-    rep  ->  call_function REP expression .   (rule 42)
-    expression  ->  expression . AND expression   (rule 137)
-    expression  ->  expression . OR expression   (rule 139)
-    expression  ->  expression . '+' expression   (rule 140)
-    expression  ->  expression . '-' expression   (rule 141)
-    expression  ->  expression . '*' expression   (rule 143)
-    expression  ->  expression . POWER expression   (rule 144)
-    expression  ->  expression . '/' expression   (rule 145)
-    expression  ->  expression . '%' expression   (rule 146)
-    expression  ->  expression . '&' expression   (rule 147)
-    expression  ->  expression . '^' expression   (rule 148)
-    expression  ->  expression . '|' expression   (rule 149)
-    expression  ->  expression . SR expression   (rule 150)
-    expression  ->  expression . SL expression   (rule 151)
-    expression  ->  expression . SRR expression   (rule 152)
-    expression  ->  expression . SUBSTR_EQ expression   (rule 153)
-    expression  ->  expression . SUBSTR_NEQ expression   (rule 154)
-    expression  ->  expression . REGEX_NEQ expression   (rule 155)
-    expression  ->  expression . REGEX_EQ expression   (rule 156)
-    expression  ->  expression . '<' expression   (rule 157)
-    expression  ->  expression . '>' expression   (rule 158)
-    expression  ->  expression . CMP_GE expression   (rule 159)
-    expression  ->  expression . CMP_LE expression   (rule 160)
-    expression  ->  expression . CMP_EQ expression   (rule 161)
-    expression  ->  expression . CMP_NEQ expression   (rule 162)
+    rep  ->  call_function REP identifier . ';'   (rule 42)
 
-    OR  	shift, and go to state 154
-    AND 	shift, and go to state 155
-    SUBSTR_EQ	shift, and go to state 156
-    SUBSTR_NEQ	shift, and go to state 157
-    REGEX_EQ	shift, and go to state 158
-    REGEX_NEQ	shift, and go to state 159
-    POWER	shift, and go to state 160
-    CMP_EQ	shift, and go to state 161
-    CMP_GE	shift, and go to state 162
-    CMP_LE	shift, and go to state 163
-    CMP_NEQ	shift, and go to state 164
-    SL  	shift, and go to state 165
-    SR  	shift, and go to state 166
-    SRR 	shift, and go to state 167
-    '&' 	shift, and go to state 168
-    '+' 	shift, and go to state 170
-    '-' 	shift, and go to state 171
-    '*' 	shift, and go to state 172
-    '/' 	shift, and go to state 173
-    '%' 	shift, and go to state 174
-    '^' 	shift, and go to state 175
-    '|' 	shift, and go to state 176
-    '<' 	shift, and go to state 177
-    '>' 	shift, and go to state 178
-
-    $default	reduce using rule 42 (rep)
+    ';' 	shift, and go to state 267
 
 
 
@@ -4746,7 +4670,7 @@ state 199
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
 
-    identifier	go to state 267
+    identifier	go to state 268
 
 
 
@@ -4754,7 +4678,7 @@ state 200
 
     call_function  ->  identifier '(' parameters . ')'   (rule 43)
 
-    ')' 	shift, and go to state 268
+    ')' 	shift, and go to state 269
 
 
 
@@ -4763,7 +4687,7 @@ state 201
     parameters  ->  parameter . ',' parameters   (rule 13)
     parameters  ->  parameter .   (rule 14)
 
-    ',' 	shift, and go to state 269
+    ',' 	shift, and go to state 270
 
     $default	reduce using rule 14 (parameters)
 
@@ -4952,7 +4876,7 @@ state 212
     _NULL_	shift, and go to state 64
     TRUE	shift, and go to state 65
     '(' 	shift, and go to state 124
-    ')' 	shift, and go to state 270
+    ')' 	shift, and go to state 271
     '&' 	shift, and go to state 199
     '@' 	shift, and go to state 134
     '=' 	shift, and go to state 22
@@ -4967,7 +4891,7 @@ state 212
     '-' 	[reduce using rule 135 (expression)]
     $default	reduce using rule 135 (expression)
 
-    parameters	go to state 271
+    parameters	go to state 272
     parameter	go to state 201
     call_function	go to state 73
     assign	go to state 202
@@ -5000,7 +4924,7 @@ state 214
     call_function  ->  identifier body_enum_sq body_enum_p . '(' parameters ')'   (rule 48)
     body_enum_p  ->  body_enum_p . body_p   (rule 118)
 
-    '(' 	shift, and go to state 272
+    '(' 	shift, and go to state 273
     '.' 	shift, and go to state 114
 
     body_p	go to state 216
@@ -5020,7 +4944,7 @@ state 215
     _NULL_	shift, and go to state 64
     TRUE	shift, and go to state 65
     '(' 	shift, and go to state 124
-    ')' 	shift, and go to state 273
+    ')' 	shift, and go to state 274
     '&' 	shift, and go to state 199
     '@' 	shift, and go to state 134
     '=' 	shift, and go to state 22
@@ -5035,7 +4959,7 @@ state 215
     '-' 	[reduce using rule 135 (expression)]
     $default	reduce using rule 135 (expression)
 
-    parameters	go to state 274
+    parameters	go to state 275
     parameter	go to state 201
     call_function	go to state 73
     assign	go to state 202
@@ -5068,7 +4992,7 @@ state 217
 
     '{' 	shift, and go to state 23
 
-    block	go to state 275
+    block	go to state 276
 
 
 
@@ -5076,7 +5000,7 @@ state 218
 
     function  ->  FUNCTION identifier '(' parameters . ')' block   (rule 11)
 
-    ')' 	shift, and go to state 276
+    ')' 	shift, and go to state 277
 
 
 
@@ -5159,7 +5083,7 @@ state 223
     '=' 	shift, and go to state 22
     '{' 	shift, and go to state 23
 
-    command	go to state 277
+    command	go to state 278
     simple	go to state 29
     break	go to state 30
     continue	go to state 31
@@ -5182,7 +5106,7 @@ state 223
     repeat_loop	go to state 48
     while_loop	go to state 49
     if_cond	go to state 50
-    block	go to state 278
+    block	go to state 279
 
 
 
@@ -5190,7 +5114,7 @@ state 224
 
     include  ->  INCLUDE '(' string ')' . ';'   (rule 35)
 
-    ';' 	shift, and go to state 279
+    ';' 	shift, and go to state 280
 
 
 
@@ -5198,7 +5122,7 @@ state 225
 
     import  ->  IMPORT '(' string ')' . ';'   (rule 34)
 
-    ';' 	shift, and go to state 280
+    ';' 	shift, and go to state 281
 
 
 
@@ -5247,10 +5171,10 @@ state 228
     string	go to state 76
     ip  	go to state 77
     null	go to state 78
-    ref 	go to state 281
+    ref 	go to state 282
     body	go to state 95
     body_sq	go to state 80
-    expression	go to state 282
+    expression	go to state 283
 
 
 
@@ -5283,10 +5207,10 @@ state 229
     string	go to state 76
     ip  	go to state 77
     null	go to state 78
-    ref 	go to state 283
+    ref 	go to state 284
     body	go to state 95
     body_sq	go to state 80
-    expression	go to state 284
+    expression	go to state 285
 
 
 
@@ -5319,10 +5243,10 @@ state 230
     string	go to state 76
     ip  	go to state 77
     null	go to state 78
-    ref 	go to state 285
+    ref 	go to state 286
     body	go to state 95
     body_sq	go to state 80
-    expression	go to state 286
+    expression	go to state 287
 
 
 
@@ -5357,7 +5281,7 @@ state 231
     ref 	go to state 138
     body	go to state 95
     body_sq	go to state 80
-    argument	go to state 287
+    argument	go to state 288
     expression	go to state 141
 
 
@@ -5398,7 +5322,7 @@ state 236
 
     ip  ->  integer '.' integer . '.' integer '.' integer   (rule 81)
 
-    '.' 	shift, and go to state 288
+    '.' 	shift, and go to state 289
 
 
 
@@ -7381,7 +7305,7 @@ state 261
     string	go to state 76
     ip  	go to state 77
     null	go to state 78
-    if_expr	go to state 289
+    if_expr	go to state 290
     body	go to state 95
     body_sq	go to state 80
     expression	go to state 129
@@ -7418,7 +7342,7 @@ state 262
     null	go to state 78
     body	go to state 95
     body_sq	go to state 80
-    expression	go to state 290
+    expression	go to state 291
 
 
 
@@ -7465,7 +7389,7 @@ state 263
     SL  	shift, and go to state 165
     SR  	shift, and go to state 166
     SRR 	shift, and go to state 167
-    ')' 	shift, and go to state 291
+    ')' 	shift, and go to state 292
     '&' 	shift, and go to state 168
     '+' 	shift, and go to state 170
     '-' 	shift, and go to state 171
@@ -7505,7 +7429,7 @@ state 264
     '=' 	shift, and go to state 22
     '{' 	shift, and go to state 23
 
-    command	go to state 292
+    command	go to state 293
     simple	go to state 29
     break	go to state 30
     continue	go to state 31
@@ -7528,7 +7452,7 @@ state 264
     repeat_loop	go to state 48
     while_loop	go to state 49
     if_cond	go to state 50
-    block	go to state 293
+    block	go to state 294
 
 
 
@@ -7575,7 +7499,7 @@ state 265
     SR  	shift, and go to state 166
     SRR 	shift, and go to state 167
     '&' 	shift, and go to state 168
-    ';' 	shift, and go to state 294
+    ';' 	shift, and go to state 295
     '+' 	shift, and go to state 170
     '-' 	shift, and go to state 171
     '*' 	shift, and go to state 172
@@ -7631,7 +7555,7 @@ state 266
     SR  	shift, and go to state 166
     SRR 	shift, and go to state 167
     '&' 	shift, and go to state 168
-    ';' 	shift, and go to state 295
+    ';' 	shift, and go to state 296
     '+' 	shift, and go to state 170
     '-' 	shift, and go to state 171
     '*' 	shift, and go to state 172
@@ -7646,13 +7570,21 @@ state 266
 
 state 267
 
+    rep  ->  call_function REP identifier ';' .   (rule 42)
+
+    $default	reduce using rule 42 (rep)
+
+
+
+state 268
+
     parameter  ->  '&' identifier .   (rule 15)
 
     $default	reduce using rule 15 (parameter)
 
 
 
-state 268
+state 269
 
     call_function  ->  identifier '(' parameters ')' .   (rule 43)
 
@@ -7660,7 +7592,7 @@ state 268
 
 
 
-state 269
+state 270
 
     parameters  ->  parameter ',' . parameters   (rule 13)
 
@@ -7685,7 +7617,7 @@ state 269
     '-' 	[reduce using rule 135 (expression)]
     $default	reduce using rule 135 (expression)
 
-    parameters	go to state 296
+    parameters	go to state 297
     parameter	go to state 201
     call_function	go to state 73
     assign	go to state 202
@@ -7704,7 +7636,7 @@ state 269
 
 
 
-state 270
+state 271
 
     call_function  ->  identifier body_enum_sq '(' ')' .   (rule 45)
 
@@ -7712,15 +7644,15 @@ state 270
 
 
 
-state 271
+state 272
 
     call_function  ->  identifier body_enum_sq '(' parameters . ')'   (rule 46)
 
-    ')' 	shift, and go to state 297
+    ')' 	shift, and go to state 298
 
 
 
-state 272
+state 273
 
     call_function  ->  identifier body_enum_sq body_enum_p '(' . ')'   (rule 47)
     call_function  ->  identifier body_enum_sq body_enum_p '(' . parameters ')'   (rule 48)
@@ -7733,7 +7665,7 @@ state 272
     _NULL_	shift, and go to state 64
     TRUE	shift, and go to state 65
     '(' 	shift, and go to state 124
-    ')' 	shift, and go to state 298
+    ')' 	shift, and go to state 299
     '&' 	shift, and go to state 199
     '@' 	shift, and go to state 134
     '=' 	shift, and go to state 22
@@ -7748,7 +7680,7 @@ state 272
     '-' 	[reduce using rule 135 (expression)]
     $default	reduce using rule 135 (expression)
 
-    parameters	go to state 299
+    parameters	go to state 300
     parameter	go to state 201
     call_function	go to state 73
     assign	go to state 202
@@ -7767,7 +7699,7 @@ state 272
 
 
 
-state 273
+state 274
 
     call_function  ->  identifier body_enum_p '(' ')' .   (rule 49)
 
@@ -7775,15 +7707,15 @@ state 273
 
 
 
-state 274
+state 275
 
     call_function  ->  identifier body_enum_p '(' parameters . ')'   (rule 50)
 
-    ')' 	shift, and go to state 300
+    ')' 	shift, and go to state 301
 
 
 
-state 275
+state 276
 
     function  ->  FUNCTION identifier '(' ')' block .   (rule 12)
 
@@ -7791,43 +7723,43 @@ state 275
 
 
 
-state 276
+state 277
 
     function  ->  FUNCTION identifier '(' parameters ')' . block   (rule 11)
 
     '{' 	shift, and go to state 23
 
-    block	go to state 301
+    block	go to state 302
 
 
 
-state 277
+state 278
 
     if_cond  ->  IF '(' if_expr ')' command .   (rule 103)
     if_cond  ->  IF '(' if_expr ')' command . ELSE block   (rule 106)
     if_cond  ->  IF '(' if_expr ')' command . ELSE command   (rule 107)
 
-    ELSE	shift, and go to state 302
+    ELSE	shift, and go to state 303
 
     ELSE	[reduce using rule 103 (if_cond)]
     $default	reduce using rule 103 (if_cond)
 
 
 
-state 278
+state 279
 
     if_cond  ->  IF '(' if_expr ')' block .   (rule 102)
     if_cond  ->  IF '(' if_expr ')' block . ELSE command   (rule 104)
     if_cond  ->  IF '(' if_expr ')' block . ELSE block   (rule 105)
 
-    ELSE	shift, and go to state 303
+    ELSE	shift, and go to state 304
 
     ELSE	[reduce using rule 102 (if_cond)]
     $default	reduce using rule 102 (if_cond)
 
 
 
-state 279
+state 280
 
     include  ->  INCLUDE '(' string ')' ';' .   (rule 35)
 
@@ -7835,7 +7767,7 @@ state 279
 
 
 
-state 280
+state 281
 
     import  ->  IMPORT '(' string ')' ';' .   (rule 34)
 
@@ -7843,7 +7775,7 @@ state 280
 
 
 
-state 281
+state 282
 
     argument  ->  identifier ':' ref .   (rule 132)
 
@@ -7851,7 +7783,7 @@ state 281
 
 
 
-state 282
+state 283
 
     argument  ->  identifier ':' expression .   (rule 131)
     expression  ->  expression . AND expression   (rule 137)
@@ -7908,7 +7840,7 @@ state 282
 
 
 
-state 283
+state 284
 
     argument  ->  integer ':' ref .   (rule 130)
 
@@ -7916,7 +7848,7 @@ state 283
 
 
 
-state 284
+state 285
 
     argument  ->  integer ':' expression .   (rule 128)
     expression  ->  expression . AND expression   (rule 137)
@@ -7973,7 +7905,7 @@ state 284
 
 
 
-state 285
+state 286
 
     argument  ->  string ':' ref .   (rule 129)
 
@@ -7981,7 +7913,7 @@ state 285
 
 
 
-state 286
+state 287
 
     argument  ->  string ':' expression .   (rule 127)
     expression  ->  expression . AND expression   (rule 137)
@@ -8038,7 +7970,7 @@ state 286
 
 
 
-state 287
+state 288
 
     argument_list  ->  argument_list ',' argument .   (rule 125)
 
@@ -8046,7 +7978,7 @@ state 287
 
 
 
-state 288
+state 289
 
     ip  ->  integer '.' integer '.' . integer '.' integer   (rule 81)
 
@@ -8054,20 +7986,20 @@ state 288
     FALSE	shift, and go to state 63
     TRUE	shift, and go to state 65
 
-    integer	go to state 304
-
-
-
-state 289
-
-    for_loop  ->  FOR '(' if_expr ';' if_expr . ';' if_expr ')' block   (rule 89)
-    for_loop  ->  FOR '(' if_expr ';' if_expr . ';' if_expr ')' command   (rule 90)
-
-    ';' 	shift, and go to state 305
+    integer	go to state 305
 
 
 
 state 290
+
+    for_loop  ->  FOR '(' if_expr ';' if_expr . ';' if_expr ')' block   (rule 89)
+    for_loop  ->  FOR '(' if_expr ';' if_expr . ';' if_expr ')' command   (rule 90)
+
+    ';' 	shift, and go to state 306
+
+
+
+state 291
 
     foreach_loop  ->  FOREACH '(' identifier IN_ITER expression . ')' block   (rule 93)
     foreach_loop  ->  FOREACH '(' identifier IN_ITER expression . ')' command   (rule 94)
@@ -8110,7 +8042,7 @@ state 290
     SL  	shift, and go to state 165
     SR  	shift, and go to state 166
     SRR 	shift, and go to state 167
-    ')' 	shift, and go to state 306
+    ')' 	shift, and go to state 307
     '&' 	shift, and go to state 168
     '+' 	shift, and go to state 170
     '-' 	shift, and go to state 171
@@ -8124,7 +8056,7 @@ state 290
 
 
 
-state 291
+state 292
 
     foreach_loop  ->  FOREACH identifier '(' expression ')' . block   (rule 91)
     foreach_loop  ->  FOREACH identifier '(' expression ')' . command   (rule 92)
@@ -8150,7 +8082,7 @@ state 291
     '=' 	shift, and go to state 22
     '{' 	shift, and go to state 23
 
-    command	go to state 307
+    command	go to state 308
     simple	go to state 29
     break	go to state 30
     continue	go to state 31
@@ -8173,11 +8105,11 @@ state 291
     repeat_loop	go to state 48
     while_loop	go to state 49
     if_cond	go to state 50
-    block	go to state 308
+    block	go to state 309
 
 
 
-state 292
+state 293
 
     while_loop  ->  WHILE '(' if_expr ')' command .   (rule 98)
 
@@ -8185,7 +8117,7 @@ state 292
 
 
 
-state 293
+state 294
 
     while_loop  ->  WHILE '(' if_expr ')' block .   (rule 97)
 
@@ -8193,7 +8125,7 @@ state 293
 
 
 
-state 294
+state 295
 
     repeat_loop  ->  REPEAT command UNTIL expression ';' .   (rule 96)
 
@@ -8201,7 +8133,7 @@ state 294
 
 
 
-state 295
+state 296
 
     repeat_loop  ->  REPEAT block UNTIL expression ';' .   (rule 95)
 
@@ -8209,7 +8141,7 @@ state 295
 
 
 
-state 296
+state 297
 
     parameters  ->  parameter ',' parameters .   (rule 13)
 
@@ -8217,7 +8149,7 @@ state 296
 
 
 
-state 297
+state 298
 
     call_function  ->  identifier body_enum_sq '(' parameters ')' .   (rule 46)
 
@@ -8225,7 +8157,7 @@ state 297
 
 
 
-state 298
+state 299
 
     call_function  ->  identifier body_enum_sq body_enum_p '(' ')' .   (rule 47)
 
@@ -8233,15 +8165,15 @@ state 298
 
 
 
-state 299
+state 300
 
     call_function  ->  identifier body_enum_sq body_enum_p '(' parameters . ')'   (rule 48)
 
-    ')' 	shift, and go to state 309
+    ')' 	shift, and go to state 310
 
 
 
-state 300
+state 301
 
     call_function  ->  identifier body_enum_p '(' parameters ')' .   (rule 50)
 
@@ -8249,7 +8181,7 @@ state 300
 
 
 
-state 301
+state 302
 
     function  ->  FUNCTION identifier '(' parameters ')' block .   (rule 11)
 
@@ -8257,7 +8189,7 @@ state 301
 
 
 
-state 302
+state 303
 
     if_cond  ->  IF '(' if_expr ')' command ELSE . block   (rule 106)
     if_cond  ->  IF '(' if_expr ')' command ELSE . command   (rule 107)
@@ -8283,7 +8215,7 @@ state 302
     '=' 	shift, and go to state 22
     '{' 	shift, and go to state 23
 
-    command	go to state 310
+    command	go to state 311
     simple	go to state 29
     break	go to state 30
     continue	go to state 31
@@ -8306,11 +8238,11 @@ state 302
     repeat_loop	go to state 48
     while_loop	go to state 49
     if_cond	go to state 50
-    block	go to state 311
+    block	go to state 312
 
 
 
-state 303
+state 304
 
     if_cond  ->  IF '(' if_expr ')' block ELSE . command   (rule 104)
     if_cond  ->  IF '(' if_expr ')' block ELSE . block   (rule 105)
@@ -8336,7 +8268,7 @@ state 303
     '=' 	shift, and go to state 22
     '{' 	shift, and go to state 23
 
-    command	go to state 312
+    command	go to state 313
     simple	go to state 29
     break	go to state 30
     continue	go to state 31
@@ -8359,19 +8291,19 @@ state 303
     repeat_loop	go to state 48
     while_loop	go to state 49
     if_cond	go to state 50
-    block	go to state 313
-
-
-
-state 304
-
-    ip  ->  integer '.' integer '.' integer . '.' integer   (rule 81)
-
-    '.' 	shift, and go to state 314
+    block	go to state 314
 
 
 
 state 305
+
+    ip  ->  integer '.' integer '.' integer . '.' integer   (rule 81)
+
+    '.' 	shift, and go to state 315
+
+
+
+state 306
 
     for_loop  ->  FOR '(' if_expr ';' if_expr ';' . if_expr ')' block   (rule 89)
     for_loop  ->  FOR '(' if_expr ';' if_expr ';' . if_expr ')' command   (rule 90)
@@ -8406,14 +8338,14 @@ state 305
     string	go to state 76
     ip  	go to state 77
     null	go to state 78
-    if_expr	go to state 315
+    if_expr	go to state 316
     body	go to state 95
     body_sq	go to state 80
     expression	go to state 129
 
 
 
-state 306
+state 307
 
     foreach_loop  ->  FOREACH '(' identifier IN_ITER expression ')' . block   (rule 93)
     foreach_loop  ->  FOREACH '(' identifier IN_ITER expression ')' . command   (rule 94)
@@ -8439,7 +8371,7 @@ state 306
     '=' 	shift, and go to state 22
     '{' 	shift, and go to state 23
 
-    command	go to state 316
+    command	go to state 317
     simple	go to state 29
     break	go to state 30
     continue	go to state 31
@@ -8462,11 +8394,11 @@ state 306
     repeat_loop	go to state 48
     while_loop	go to state 49
     if_cond	go to state 50
-    block	go to state 317
+    block	go to state 318
 
 
 
-state 307
+state 308
 
     foreach_loop  ->  FOREACH identifier '(' expression ')' command .   (rule 92)
 
@@ -8474,7 +8406,7 @@ state 307
 
 
 
-state 308
+state 309
 
     foreach_loop  ->  FOREACH identifier '(' expression ')' block .   (rule 91)
 
@@ -8482,7 +8414,7 @@ state 308
 
 
 
-state 309
+state 310
 
     call_function  ->  identifier body_enum_sq body_enum_p '(' parameters ')' .   (rule 48)
 
@@ -8490,7 +8422,7 @@ state 309
 
 
 
-state 310
+state 311
 
     if_cond  ->  IF '(' if_expr ')' command ELSE command .   (rule 107)
 
@@ -8498,7 +8430,7 @@ state 310
 
 
 
-state 311
+state 312
 
     if_cond  ->  IF '(' if_expr ')' command ELSE block .   (rule 106)
 
@@ -8506,7 +8438,7 @@ state 311
 
 
 
-state 312
+state 313
 
     if_cond  ->  IF '(' if_expr ')' block ELSE command .   (rule 104)
 
@@ -8514,7 +8446,7 @@ state 312
 
 
 
-state 313
+state 314
 
     if_cond  ->  IF '(' if_expr ')' block ELSE block .   (rule 105)
 
@@ -8522,7 +8454,7 @@ state 313
 
 
 
-state 314
+state 315
 
     ip  ->  integer '.' integer '.' integer '.' . integer   (rule 81)
 
@@ -8530,20 +8462,20 @@ state 314
     FALSE	shift, and go to state 63
     TRUE	shift, and go to state 65
 
-    integer	go to state 318
-
-
-
-state 315
-
-    for_loop  ->  FOR '(' if_expr ';' if_expr ';' if_expr . ')' block   (rule 89)
-    for_loop  ->  FOR '(' if_expr ';' if_expr ';' if_expr . ')' command   (rule 90)
-
-    ')' 	shift, and go to state 319
+    integer	go to state 319
 
 
 
 state 316
+
+    for_loop  ->  FOR '(' if_expr ';' if_expr ';' if_expr . ')' block   (rule 89)
+    for_loop  ->  FOR '(' if_expr ';' if_expr ';' if_expr . ')' command   (rule 90)
+
+    ')' 	shift, and go to state 320
+
+
+
+state 317
 
     foreach_loop  ->  FOREACH '(' identifier IN_ITER expression ')' command .   (rule 94)
 
@@ -8551,7 +8483,7 @@ state 316
 
 
 
-state 317
+state 318
 
     foreach_loop  ->  FOREACH '(' identifier IN_ITER expression ')' block .   (rule 93)
 
@@ -8559,7 +8491,7 @@ state 317
 
 
 
-state 318
+state 319
 
     ip  ->  integer '.' integer '.' integer '.' integer .   (rule 81)
 
@@ -8567,7 +8499,7 @@ state 318
 
 
 
-state 319
+state 320
 
     for_loop  ->  FOR '(' if_expr ';' if_expr ';' if_expr ')' . block   (rule 89)
     for_loop  ->  FOR '(' if_expr ';' if_expr ';' if_expr ')' . command   (rule 90)
@@ -8593,7 +8525,7 @@ state 319
     '=' 	shift, and go to state 22
     '{' 	shift, and go to state 23
 
-    command	go to state 320
+    command	go to state 321
     simple	go to state 29
     break	go to state 30
     continue	go to state 31
@@ -8616,11 +8548,11 @@ state 319
     repeat_loop	go to state 48
     while_loop	go to state 49
     if_cond	go to state 50
-    block	go to state 321
+    block	go to state 322
 
 
 
-state 320
+state 321
 
     for_loop  ->  FOR '(' if_expr ';' if_expr ';' if_expr ')' command .   (rule 90)
 
@@ -8628,17 +8560,11 @@ state 320
 
 
 
-state 321
+state 322
 
     for_loop  ->  FOR '(' if_expr ';' if_expr ';' if_expr ')' block .   (rule 89)
 
     $default	reduce using rule 89 (for_loop)
-
-
-
-state 322
-
-    $   	go to state 323
 
 
 
@@ -8649,5 +8575,11 @@ state 323
 
 
 state 324
+
+    $   	go to state 325
+
+
+
+state 325
 
     $default	accept

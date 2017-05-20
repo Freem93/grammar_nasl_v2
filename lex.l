@@ -49,7 +49,7 @@ void count();
 ([0-9]+|0[xX][a-fA-F0-9]+|[0][0-7]+) { count(); return(INT); }
 (\"|\')([^\\"\'\r\n]|(\\.))*(\'|\") { count(); return(STRING); }
 [ \f\n\t\v] { count(); }
-
+"x" { count(); return(REP); }
 "><" { count(); return(SUBSTR_EQ); }
 ">!<" { count(); return(SUBSTR_NEQ); }
 
@@ -111,7 +111,7 @@ void count();
 "@" { count(); return('@'); }
 
 [ \t\v\n\f] { count(); }
-"x" { count(); return(REP); }
+
 
 
 %%

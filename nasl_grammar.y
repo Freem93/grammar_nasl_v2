@@ -140,7 +140,7 @@ global: 				GLOBAL vars ';'
 local: 					LOCAL vars ';'
 						;						
 
-rep: 					call_function REP expression ';'
+rep: 					call_function REP identifier ';'
 						;
 						
 call_function:		 	identifier '(' parameters ')'
