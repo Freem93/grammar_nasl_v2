@@ -106,6 +106,24 @@ simple: 				assign
 /******************************
 Describe of  simple commands
 ******************************/
+
+break:					BREAK ';'
+						;
+						
+continue:				CONTINUE ';'
+						;
+						
+import:					IMPORT '(' string ')' ';'
+						;
+						
+include:				INCLUDE '(' string ')' ';'
+						;
+						
+return:					RETURN expression ';'
+						| RETURN '@' ';'
+						| RETURN ';'
+						;
+
 /******************************
 			Operations
 ******************************/
