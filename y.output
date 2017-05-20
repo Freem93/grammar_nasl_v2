@@ -16,7 +16,6 @@ State 90 contains 3 shift/reduce conflicts.
 State 91 contains 3 shift/reduce conflicts.
 State 92 contains 3 shift/reduce conflicts.
 State 93 contains 3 shift/reduce conflicts.
-State 94 contains 2 shift/reduce conflicts.
 State 95 contains 3 shift/reduce conflicts.
 State 97 contains 1 shift/reduce conflict.
 State 106 contains 24 shift/reduce conflicts.
@@ -130,7 +129,7 @@ rule 37   empty -> ';'
 rule 38   global -> GLOBAL vars ';'
 rule 39   local -> LOCAL vars ';'
 rule 40   rep -> call_function REP expression ';'
-rule 41   call_function -> identifier '(' argument_list ')' ';'
+rule 41   call_function -> identifier '(' parameters ')' ';'
 rule 42   call_function -> identifier '(' ')' ';'
 rule 43   assign -> identifier '=' value
 rule 44   assign -> identifier '=' ref
@@ -186,7 +185,7 @@ rule 93   block -> '{' line '}'
 rule 94   block -> '{' argument_list '}'
 rule 95   block -> '[' ']'
 rule 96   block -> '[' argument_list ']'
-rule 97   var -> identifier '=' expression
+rule 97   var -> identifier '=' value
 rule 98   var -> identifier '=' ref
 rule 99   var -> identifier
 rule 100  vars -> var ',' vars
@@ -324,7 +323,7 @@ export (77)
 function (78)
     on left: 8 9, on right: 5 7
 parameters (79)
-    on left: 10 11, on right: 8 10
+    on left: 10 11, on right: 8 10 41
 parameter (80)
     on left: 12 13 14 15 16, on right: 10 11
 command (81)
@@ -360,7 +359,7 @@ assign_math_op (95)
 assign_shift_op (96)
     on left: 56 57 58, on right: 46
 value (97)
-    on left: 59 60, on right: 43 51 52 53 54 55 56 57 58
+    on left: 59 60, on right: 43 51 52 53 54 55 56 57 58 97
 identifier (98)
     on left: 61 62, on right: 8 9 12 13 41 42 43 44 47 48 49 50 51
     52 53 54 55 56 57 58 77 78 79 80 97 98 99 108 109
@@ -394,16 +393,16 @@ var (111)
 vars (112)
     on left: 100 101, on right: 38 39 100
 argument_list (113)
-    on left: 102 103, on right: 41 94 96 102
+    on left: 102 103, on right: 94 96 102
 argument (114)
     on left: 104 105 106 107 108 109 110 111, on right: 102 103
 expression (115)
     on left: 112 113 114 115 116 117 118 119 120 121 122 123 124 125
     126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141
     142 143, on right: 35 40 59 75 76 77 78 79 80 81 82 83 84 85 86
-    87 88 89 90 97 104 105 108 110 113 114 115 116 117 118 119 120
-    121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136
-    137 138 139
+    87 88 89 90 104 105 108 110 113 114 115 116 117 118 119 120 121
+    122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137
+    138 139
 
 
 state 0
@@ -927,7 +926,7 @@ state 39
 
 state 40
 
-    call_function  ->  identifier . '(' argument_list ')' ';'   (rule 41)
+    call_function  ->  identifier . '(' parameters ')' ';'   (rule 41)
     call_function  ->  identifier . '(' ')' ';'   (rule 42)
     assign  ->  identifier . '=' value   (rule 43)
     assign  ->  identifier . '=' ref   (rule 44)
@@ -1016,7 +1015,7 @@ state 47
 
 state 48
 
-    var  ->  identifier . '=' expression   (rule 97)
+    var  ->  identifier . '=' value   (rule 97)
     var  ->  identifier . '=' ref   (rule 98)
     var  ->  identifier .   (rule 99)
 
@@ -1850,7 +1849,7 @@ state 93
 
 state 94
 
-    call_function  ->  identifier '(' . argument_list ')' ';'   (rule 41)
+    call_function  ->  identifier '(' . parameters ')' ';'   (rule 41)
     call_function  ->  identifier '(' . ')' ';'   (rule 42)
 
     IN_ITER	shift, and go to state 14
@@ -1858,27 +1857,18 @@ state 94
     INT 	shift, and go to state 56
     STRING	shift, and go to state 57
     FALSE	shift, and go to state 58
-    _NULL_	shift, and go to state 59
     TRUE	shift, and go to state 60
-    '(' 	shift, and go to state 61
     ')' 	shift, and go to state 165
-    '@' 	shift, and go to state 138
-    '!' 	shift, and go to state 63
-    '-' 	shift, and go to state 64
+    '&' 	shift, and go to state 166
 
-    ')' 	[reduce using rule 112 (expression)]
-    '-' 	[reduce using rule 112 (expression)]
-    $default	reduce using rule 112 (expression)
-
-    identifier	go to state 149
-    integer	go to state 142
-    string	go to state 143
-    ip  	go to state 67
-    null	go to state 68
-    ref 	go to state 144
-    argument_list	go to state 166
-    argument	go to state 146
-    expression	go to state 147
+    parameters	go to state 167
+    parameter	go to state 168
+    assign	go to state 169
+    assign_math_op	go to state 38
+    assign_shift_op	go to state 39
+    identifier	go to state 170
+    integer	go to state 171
+    string	go to state 172
 
 
 
@@ -1905,13 +1895,13 @@ state 95
     $default	reduce using rule 112 (expression)
 
     call_function	go to state 154
-    value	go to state 167
+    value	go to state 173
     identifier	go to state 156
     integer	go to state 65
     string	go to state 66
     ip  	go to state 67
     null	go to state 68
-    ref 	go to state 168
+    ref 	go to state 174
     expression	go to state 157
 
 
@@ -1927,25 +1917,27 @@ state 96
     STRING	shift, and go to state 57
     FALSE	shift, and go to state 58
     TRUE	shift, and go to state 60
-    ')' 	shift, and go to state 169
-    '&' 	shift, and go to state 170
+    ')' 	shift, and go to state 175
+    '&' 	shift, and go to state 166
 
-    parameters	go to state 171
-    parameter	go to state 172
-    assign	go to state 173
+    parameters	go to state 176
+    parameter	go to state 168
+    assign	go to state 169
     assign_math_op	go to state 38
     assign_shift_op	go to state 39
-    identifier	go to state 174
-    integer	go to state 175
-    string	go to state 176
+    identifier	go to state 170
+    integer	go to state 171
+    string	go to state 172
 
 
 
 state 97
 
-    var  ->  identifier '=' . expression   (rule 97)
+    var  ->  identifier '=' . value   (rule 97)
     var  ->  identifier '=' . ref   (rule 98)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 56
     STRING	shift, and go to state 57
     FALSE	shift, and go to state 58
@@ -1959,12 +1951,15 @@ state 97
     '-' 	[reduce using rule 112 (expression)]
     $default	reduce using rule 112 (expression)
 
+    call_function	go to state 154
+    value	go to state 177
+    identifier	go to state 156
     integer	go to state 65
     string	go to state 66
     ip  	go to state 67
     null	go to state 68
-    ref 	go to state 177
-    expression	go to state 178
+    ref 	go to state 178
+    expression	go to state 157
 
 
 
@@ -3070,7 +3065,7 @@ state 140
 
 state 141
 
-    call_function  ->  identifier . '(' argument_list ')' ';'   (rule 41)
+    call_function  ->  identifier . '(' parameters ')' ';'   (rule 41)
     call_function  ->  identifier . '(' ')' ';'   (rule 42)
     assign  ->  identifier . '=' value   (rule 43)
     assign  ->  identifier . '=' ref   (rule 44)
@@ -3361,7 +3356,7 @@ state 155
 
 state 156
 
-    call_function  ->  identifier . '(' argument_list ')' ';'   (rule 41)
+    call_function  ->  identifier . '(' parameters ')' ';'   (rule 41)
     call_function  ->  identifier . '(' ')' ';'   (rule 42)
 
     '(' 	shift, and go to state 94
@@ -3491,74 +3486,35 @@ state 165
 
 state 166
 
-    call_function  ->  identifier '(' argument_list . ')' ';'   (rule 41)
-    argument_list  ->  argument_list . ',' argument   (rule 102)
-
-    ')' 	shift, and go to state 225
-    ',' 	shift, and go to state 218
-
-
-
-state 167
-
-    assign  ->  identifier '=' value .   (rule 43)
-
-    $default	reduce using rule 43 (assign)
-
-
-
-state 168
-
-    assign  ->  identifier '=' ref .   (rule 44)
-
-    $default	reduce using rule 44 (assign)
-
-
-
-state 169
-
-    function  ->  FUNCTION identifier '(' ')' . block   (rule 9)
-
-    '{' 	shift, and go to state 76
-    '[' 	shift, and go to state 77
-
-    $default	reduce using rule 91 (block)
-
-    block	go to state 226
-
-
-
-state 170
-
     parameter  ->  '&' . identifier   (rule 13)
 
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
 
-    identifier	go to state 227
+    identifier	go to state 225
 
 
 
-state 171
+state 167
 
-    function  ->  FUNCTION identifier '(' parameters . ')' block   (rule 8)
+    call_function  ->  identifier '(' parameters . ')' ';'   (rule 41)
 
-    ')' 	shift, and go to state 228
+    ')' 	shift, and go to state 226
 
 
 
-state 172
+state 168
 
     parameters  ->  parameter . ',' parameters   (rule 10)
     parameters  ->  parameter .   (rule 11)
 
-    ',' 	shift, and go to state 229
+    ',' 	shift, and go to state 227
 
     $default	reduce using rule 11 (parameters)
 
 
 
-state 173
+state 169
 
     parameter  ->  assign .   (rule 14)
 
@@ -3566,7 +3522,7 @@ state 173
 
 
 
-state 174
+state 170
 
     parameter  ->  identifier .   (rule 12)
     assign  ->  identifier . '=' value   (rule 43)
@@ -3594,7 +3550,7 @@ state 174
 
 
 
-state 175
+state 171
 
     parameter  ->  integer .   (rule 16)
 
@@ -3602,7 +3558,7 @@ state 175
 
 
 
-state 176
+state 172
 
     parameter  ->  string .   (rule 15)
 
@@ -3610,68 +3566,56 @@ state 176
 
 
 
+state 173
+
+    assign  ->  identifier '=' value .   (rule 43)
+
+    $default	reduce using rule 43 (assign)
+
+
+
+state 174
+
+    assign  ->  identifier '=' ref .   (rule 44)
+
+    $default	reduce using rule 44 (assign)
+
+
+
+state 175
+
+    function  ->  FUNCTION identifier '(' ')' . block   (rule 9)
+
+    '{' 	shift, and go to state 76
+    '[' 	shift, and go to state 77
+
+    $default	reduce using rule 91 (block)
+
+    block	go to state 228
+
+
+
+state 176
+
+    function  ->  FUNCTION identifier '(' parameters . ')' block   (rule 8)
+
+    ')' 	shift, and go to state 229
+
+
+
 state 177
 
-    var  ->  identifier '=' ref .   (rule 98)
+    var  ->  identifier '=' value .   (rule 97)
 
-    $default	reduce using rule 98 (var)
+    $default	reduce using rule 97 (var)
 
 
 
 state 178
 
-    var  ->  identifier '=' expression .   (rule 97)
-    expression  ->  expression . AND expression   (rule 114)
-    expression  ->  expression . OR expression   (rule 116)
-    expression  ->  expression . '+' expression   (rule 117)
-    expression  ->  expression . '-' expression   (rule 118)
-    expression  ->  expression . '*' expression   (rule 120)
-    expression  ->  expression . POWER expression   (rule 121)
-    expression  ->  expression . '/' expression   (rule 122)
-    expression  ->  expression . '%' expression   (rule 123)
-    expression  ->  expression . '&' expression   (rule 124)
-    expression  ->  expression . '^' expression   (rule 125)
-    expression  ->  expression . '|' expression   (rule 126)
-    expression  ->  expression . SR expression   (rule 127)
-    expression  ->  expression . SL expression   (rule 128)
-    expression  ->  expression . SRR expression   (rule 129)
-    expression  ->  expression . SUBSTR_EQ expression   (rule 130)
-    expression  ->  expression . SUBSTR_NEQ expression   (rule 131)
-    expression  ->  expression . REGEX_NEQ expression   (rule 132)
-    expression  ->  expression . REGEX_EQ expression   (rule 133)
-    expression  ->  expression . '<' expression   (rule 134)
-    expression  ->  expression . '>' expression   (rule 135)
-    expression  ->  expression . CMP_GE expression   (rule 136)
-    expression  ->  expression . CMP_LE expression   (rule 137)
-    expression  ->  expression . CMP_EQ expression   (rule 138)
-    expression  ->  expression . CMP_NEQ expression   (rule 139)
+    var  ->  identifier '=' ref .   (rule 98)
 
-    OR  	shift, and go to state 109
-    AND 	shift, and go to state 110
-    SUBSTR_EQ	shift, and go to state 111
-    SUBSTR_NEQ	shift, and go to state 112
-    REGEX_EQ	shift, and go to state 113
-    REGEX_NEQ	shift, and go to state 114
-    POWER	shift, and go to state 115
-    CMP_EQ	shift, and go to state 116
-    CMP_GE	shift, and go to state 117
-    CMP_LE	shift, and go to state 118
-    CMP_NEQ	shift, and go to state 119
-    SL  	shift, and go to state 120
-    SR  	shift, and go to state 121
-    SRR 	shift, and go to state 122
-    '&' 	shift, and go to state 123
-    '+' 	shift, and go to state 125
-    '-' 	shift, and go to state 126
-    '*' 	shift, and go to state 127
-    '/' 	shift, and go to state 128
-    '%' 	shift, and go to state 129
-    '^' 	shift, and go to state 130
-    '|' 	shift, and go to state 131
-    '<' 	shift, and go to state 132
-    '>' 	shift, and go to state 133
-
-    $default	reduce using rule 97 (var)
+    $default	reduce using rule 98 (var)
 
 
 
@@ -6185,42 +6129,21 @@ state 224
 
 state 225
 
-    call_function  ->  identifier '(' argument_list ')' . ';'   (rule 41)
-
-    ';' 	shift, and go to state 249
-
-
-
-state 226
-
-    function  ->  FUNCTION identifier '(' ')' block .   (rule 9)
-
-    $default	reduce using rule 9 (function)
-
-
-
-state 227
-
     parameter  ->  '&' identifier .   (rule 13)
 
     $default	reduce using rule 13 (parameter)
 
 
 
-state 228
+state 226
 
-    function  ->  FUNCTION identifier '(' parameters ')' . block   (rule 8)
+    call_function  ->  identifier '(' parameters ')' . ';'   (rule 41)
 
-    '{' 	shift, and go to state 76
-    '[' 	shift, and go to state 77
-
-    $default	reduce using rule 91 (block)
-
-    block	go to state 250
+    ';' 	shift, and go to state 249
 
 
 
-state 229
+state 227
 
     parameters  ->  parameter ',' . parameters   (rule 10)
 
@@ -6230,16 +6153,37 @@ state 229
     STRING	shift, and go to state 57
     FALSE	shift, and go to state 58
     TRUE	shift, and go to state 60
-    '&' 	shift, and go to state 170
+    '&' 	shift, and go to state 166
 
-    parameters	go to state 251
-    parameter	go to state 172
-    assign	go to state 173
+    parameters	go to state 250
+    parameter	go to state 168
+    assign	go to state 169
     assign_math_op	go to state 38
     assign_shift_op	go to state 39
-    identifier	go to state 174
-    integer	go to state 175
-    string	go to state 176
+    identifier	go to state 170
+    integer	go to state 171
+    string	go to state 172
+
+
+
+state 228
+
+    function  ->  FUNCTION identifier '(' ')' block .   (rule 9)
+
+    $default	reduce using rule 9 (function)
+
+
+
+state 229
+
+    function  ->  FUNCTION identifier '(' parameters ')' . block   (rule 8)
+
+    '{' 	shift, and go to state 76
+    '[' 	shift, and go to state 77
+
+    $default	reduce using rule 91 (block)
+
+    block	go to state 251
 
 
 
@@ -6719,7 +6663,7 @@ state 248
 
 state 249
 
-    call_function  ->  identifier '(' argument_list ')' ';' .   (rule 41)
+    call_function  ->  identifier '(' parameters ')' ';' .   (rule 41)
 
     $default	reduce using rule 41 (call_function)
 
@@ -6727,17 +6671,17 @@ state 249
 
 state 250
 
-    function  ->  FUNCTION identifier '(' parameters ')' block .   (rule 8)
+    parameters  ->  parameter ',' parameters .   (rule 10)
 
-    $default	reduce using rule 8 (function)
+    $default	reduce using rule 10 (parameters)
 
 
 
 state 251
 
-    parameters  ->  parameter ',' parameters .   (rule 10)
+    function  ->  FUNCTION identifier '(' parameters ')' block .   (rule 8)
 
-    $default	reduce using rule 10 (parameters)
+    $default	reduce using rule 8 (function)
 
 
 

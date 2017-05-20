@@ -93,7 +93,7 @@ command: 				simple
 /*****************************
 	   Simple commands
 ******************************/		 
-simple: 				assign
+simple: 				assign 
 						| call_function
 						| break
 						| continue
@@ -139,7 +139,7 @@ local: 					LOCAL vars ';'
 rep: 					call_function REP expression ';'
 						;
 						
-call_function:		 	identifier '(' argument_list ')' ';'
+call_function:		 	identifier '(' parameters ')' ';'
 						| identifier '(' ')' ';'
 						;
 /******************************
@@ -246,7 +246,7 @@ block:
 		Arguments and variables
 *****************************/
 
-var: 					identifier '=' expression
+var: 					identifier '=' value
 						| identifier '=' ref
 						| identifier
 						;
@@ -256,7 +256,7 @@ vars: 					var ',' vars
 						;
 						
 argument_list:			argument_list ',' argument
-						| argument
+						| argument 
 						;
 						
 argument:				string ':' expression
@@ -312,7 +312,7 @@ yyerror(char const *s)
 	
 	//printf("\n%d\n", yylineno);
 	fflush(stdout);
-	printf("\n%*s\n%*s\n", column, "^", column, s);
+	printf("\n%*s\n%*s\n", column+7, "^", column+7, s);
 }
 
 lex()
@@ -321,5 +321,6 @@ lex()
 }
 int main()
 {
+	
 	return(yyparse());
 }
