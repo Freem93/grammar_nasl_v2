@@ -98,7 +98,7 @@ command: 				simple
 	   Simple commands
 ******************************/		 
 simple: 				assign 
-						| call_function
+						| call_function ';'
 						| break
 						| continue
 						| return
@@ -143,8 +143,8 @@ local: 					LOCAL vars ';'
 rep: 					call_function REP expression ';'
 						;
 						
-call_function:		 	identifier '(' parameters ')' ';'
-						| identifier '(' ')' ';'
+call_function:		 	identifier '(' parameters ')'
+						| identifier '(' ')'
 						;
 /******************************
 			Operations
@@ -307,6 +307,7 @@ expression: 		| '(' expression ')'
 					| expression CMP_LE expression
 					| expression CMP_EQ expression
 					| expression CMP_NEQ expression
+					| identifier
 					| integer
 					| string
 					| ip

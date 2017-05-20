@@ -1,55 +1,53 @@
 State 9 contains 1 shift/reduce conflict.
 State 53 contains 1 shift/reduce conflict.
 State 62 contains 1 shift/reduce conflict.
-State 64 contains 1 shift/reduce conflict.
-State 65 contains 1 shift/reduce conflict.
-State 73 contains 1 shift/reduce conflict.
-State 76 contains 1 shift/reduce conflict.
-State 77 contains 2 shift/reduce conflicts.
+State 64 contains 3 shift/reduce conflicts.
+State 65 contains 3 shift/reduce conflicts.
+State 74 contains 1 shift/reduce conflict.
+State 77 contains 1 shift/reduce conflict.
 State 78 contains 2 shift/reduce conflicts.
-State 84 contains 1 shift/reduce conflict.
-State 85 contains 3 shift/reduce conflicts.
-State 86 contains 3 shift/reduce conflicts.
-State 89 contains 3 shift/reduce conflicts.
-State 90 contains 3 shift/reduce conflicts.
+State 79 contains 2 shift/reduce conflicts.
+State 85 contains 1 shift/reduce conflict.
+State 87 contains 3 shift/reduce conflicts.
+State 88 contains 3 shift/reduce conflicts.
 State 91 contains 3 shift/reduce conflicts.
 State 92 contains 3 shift/reduce conflicts.
 State 93 contains 3 shift/reduce conflicts.
 State 94 contains 3 shift/reduce conflicts.
+State 95 contains 3 shift/reduce conflicts.
 State 96 contains 3 shift/reduce conflicts.
-State 98 contains 1 shift/reduce conflict.
-State 111 contains 24 shift/reduce conflicts.
-State 112 contains 24 shift/reduce conflicts.
-State 114 contains 1 shift/reduce conflict.
-State 115 contains 1 shift/reduce conflict.
-State 116 contains 1 shift/reduce conflict.
-State 117 contains 1 shift/reduce conflict.
-State 118 contains 1 shift/reduce conflict.
-State 119 contains 1 shift/reduce conflict.
-State 120 contains 1 shift/reduce conflict.
-State 121 contains 1 shift/reduce conflict.
-State 122 contains 1 shift/reduce conflict.
-State 123 contains 1 shift/reduce conflict.
-State 124 contains 1 shift/reduce conflict.
-State 125 contains 1 shift/reduce conflict.
-State 126 contains 1 shift/reduce conflict.
-State 127 contains 1 shift/reduce conflict.
-State 128 contains 1 shift/reduce conflict.
-State 130 contains 1 shift/reduce conflict.
-State 131 contains 1 shift/reduce conflict.
-State 132 contains 1 shift/reduce conflict.
-State 133 contains 1 shift/reduce conflict.
-State 134 contains 1 shift/reduce conflict.
-State 135 contains 1 shift/reduce conflict.
-State 136 contains 1 shift/reduce conflict.
-State 137 contains 1 shift/reduce conflict.
-State 138 contains 1 shift/reduce conflict.
-State 141 contains 1 shift/reduce conflict.
-State 156 contains 1 shift/reduce conflict.
-State 157 contains 1 shift/reduce conflict.
-State 185 contains 17 shift/reduce conflicts.
-State 190 contains 24 shift/reduce conflicts.
-State 191 contains 24 shift/reduce conflicts.
+State 98 contains 3 shift/reduce conflicts.
+State 100 contains 1 shift/reduce conflict.
+State 113 contains 24 shift/reduce conflicts.
+State 114 contains 24 shift/reduce conflicts.
+State 116 contains 3 shift/reduce conflicts.
+State 117 contains 3 shift/reduce conflicts.
+State 118 contains 3 shift/reduce conflicts.
+State 119 contains 3 shift/reduce conflicts.
+State 120 contains 3 shift/reduce conflicts.
+State 121 contains 3 shift/reduce conflicts.
+State 122 contains 3 shift/reduce conflicts.
+State 123 contains 3 shift/reduce conflicts.
+State 124 contains 3 shift/reduce conflicts.
+State 125 contains 3 shift/reduce conflicts.
+State 126 contains 3 shift/reduce conflicts.
+State 127 contains 3 shift/reduce conflicts.
+State 128 contains 3 shift/reduce conflicts.
+State 129 contains 3 shift/reduce conflicts.
+State 130 contains 3 shift/reduce conflicts.
+State 132 contains 3 shift/reduce conflicts.
+State 133 contains 3 shift/reduce conflicts.
+State 134 contains 3 shift/reduce conflicts.
+State 135 contains 3 shift/reduce conflicts.
+State 136 contains 3 shift/reduce conflicts.
+State 137 contains 3 shift/reduce conflicts.
+State 138 contains 3 shift/reduce conflicts.
+State 139 contains 3 shift/reduce conflicts.
+State 140 contains 3 shift/reduce conflicts.
+State 143 contains 1 shift/reduce conflict.
+State 158 contains 1 shift/reduce conflict.
+State 159 contains 1 shift/reduce conflict.
+State 187 contains 17 shift/reduce conflicts.
 State 192 contains 24 shift/reduce conflicts.
 State 193 contains 24 shift/reduce conflicts.
 State 194 contains 24 shift/reduce conflicts.
@@ -72,16 +70,18 @@ State 210 contains 24 shift/reduce conflicts.
 State 211 contains 24 shift/reduce conflicts.
 State 212 contains 24 shift/reduce conflicts.
 State 213 contains 24 shift/reduce conflicts.
-State 214 contains 1 shift/reduce conflict.
-State 215 contains 1 shift/reduce conflict.
-State 217 contains 17 shift/reduce conflicts.
-State 220 contains 1 shift/reduce conflict.
-State 221 contains 1 shift/reduce conflict.
+State 214 contains 24 shift/reduce conflicts.
+State 215 contains 24 shift/reduce conflicts.
+State 216 contains 1 shift/reduce conflict.
+State 217 contains 1 shift/reduce conflict.
+State 219 contains 17 shift/reduce conflicts.
 State 222 contains 1 shift/reduce conflict.
 State 223 contains 1 shift/reduce conflict.
-State 235 contains 1 shift/reduce conflict.
+State 224 contains 1 shift/reduce conflict.
+State 225 contains 1 shift/reduce conflict.
 State 236 contains 1 shift/reduce conflict.
-State 242 contains 17 shift/reduce conflicts.
+State 237 contains 1 shift/reduce conflict.
+State 243 contains 17 shift/reduce conflicts.
 State 257 contains 17 shift/reduce conflicts.
 State 258 contains 17 shift/reduce conflicts.
 State 260 contains 1 shift/reduce conflict.
@@ -110,7 +110,7 @@ rule 18   parameter -> integer
 rule 19   command -> simple
 rule 20   command -> compound
 rule 21   simple -> assign
-rule 22   simple -> call_function
+rule 22   simple -> call_function ';'
 rule 23   simple -> break
 rule 24   simple -> continue
 rule 25   simple -> return
@@ -131,8 +131,8 @@ rule 39   empty -> ';'
 rule 40   global -> GLOBAL vars ';'
 rule 41   local -> LOCAL vars ';'
 rule 42   rep -> call_function REP expression ';'
-rule 43   call_function -> identifier '(' parameters ')' ';'
-rule 44   call_function -> identifier '(' ')' ';'
+rule 43   call_function -> identifier '(' parameters ')'
+rule 44   call_function -> identifier '(' ')'
 rule 45   assign -> identifier '=' value
 rule 46   assign -> identifier '=' ref
 rule 47   assign -> assign_math_op
@@ -233,10 +233,11 @@ rule 141  expression -> expression CMP_GE expression
 rule 142  expression -> expression CMP_LE expression
 rule 143  expression -> expression CMP_EQ expression
 rule 144  expression -> expression CMP_NEQ expression
-rule 145  expression -> integer
-rule 146  expression -> string
-rule 147  expression -> ip
-rule 148  expression -> null
+rule 145  expression -> identifier
+rule 146  expression -> integer
+rule 147  expression -> string
+rule 148  expression -> ip
+rule 149  expression -> null
 
 Terminals, with rules where they appear
 
@@ -255,7 +256,7 @@ $ (-1)
 '.' (46) 69
 '/' (47) 127
 ':' (58) 109 110 111 112 113 114
-';' (59) 33 34 35 36 37 38 39 40 41 42 43 44 77 78 83 84
+';' (59) 22 33 34 35 36 37 38 39 40 41 42 77 78 83 84
 '<' (60) 139
 '=' (61) 45 46 102 103
 '>' (62) 140
@@ -369,15 +370,15 @@ value (98)
     on left: 61 62, on right: 45 53 54 55 56 57 58 59 60 102
 identifier (99)
     on left: 63 64, on right: 10 11 14 15 43 44 45 46 49 50 51 52 53
-    54 55 56 57 58 59 60 79 80 81 82 102 103 104 113 114
+    54 55 56 57 58 59 60 79 80 81 82 102 103 104 113 114 145
 integer (100)
-    on left: 65 66 67, on right: 18 69 110 112 145
+    on left: 65 66 67, on right: 18 69 110 112 146
 string (101)
-    on left: 68, on right: 17 35 36 109 111 146
+    on left: 68, on right: 17 35 36 109 111 147
 ip (102)
-    on left: 69, on right: 147
+    on left: 69, on right: 148
 null (103)
-    on left: 70, on right: 148
+    on left: 70, on right: 149
 ref (104)
     on left: 71, on right: 46 103 111 112 114 116
 compound (105)
@@ -408,9 +409,9 @@ argument (116)
 expression (117)
     on left: 117 118 119 120 121 122 123 124 125 126 127 128 129 130
     131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146
-    147 148, on right: 37 42 61 77 78 79 80 81 82 83 84 85 86 87 109
-    110 113 115 118 119 120 121 122 123 124 125 126 127 128 129 130
-    131 132 133 134 135 136 137 138 139 140 141 142 143 144
+    147 148 149, on right: 37 42 61 77 78 79 80 81 82 83 84 85 86 87
+    109 110 113 115 118 119 120 121 122 123 124 125 126 127 128 129
+    130 131 132 133 134 135 136 137 138 139 140 141 142 143 144
 
 
 state 0
@@ -559,6 +560,8 @@ state 9
     return  ->  RETURN . expression ';'   (rule 37)
     return  ->  RETURN . '@' ';'   (rule 38)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -572,11 +575,12 @@ state 9
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 70
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 71
 
 
 
@@ -584,7 +588,7 @@ state 10
 
     break  ->  BREAK . ';'   (rule 33)
 
-    ';' 	shift, and go to state 71
+    ';' 	shift, and go to state 72
 
 
 
@@ -592,7 +596,7 @@ state 11
 
     continue  ->  CONTINUE . ';'   (rule 34)
 
-    ';' 	shift, and go to state 72
+    ';' 	shift, and go to state 73
 
 
 
@@ -601,7 +605,7 @@ state 12
     for_loop  ->  FOR . '(' expression ';' expression ';' expression ')' block   (rule 77)
     for_loop  ->  FOR . '(' expression ';' expression ';' expression ')' command   (rule 78)
 
-    '(' 	shift, and go to state 73
+    '(' 	shift, and go to state 74
 
 
 
@@ -614,9 +618,9 @@ state 13
 
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
-    '(' 	shift, and go to state 74
+    '(' 	shift, and go to state 75
 
-    identifier	go to state 75
+    identifier	go to state 76
 
 
 
@@ -633,7 +637,7 @@ state 15
     while_loop  ->  WHILE . '(' expression ')' block   (rule 85)
     while_loop  ->  WHILE . '(' expression ')' command   (rule 86)
 
-    '(' 	shift, and go to state 76
+    '(' 	shift, and go to state 77
 
 
 
@@ -659,12 +663,12 @@ state 16
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     $default	reduce using rule 96 (block)
 
-    command	go to state 79
+    command	go to state 80
     simple	go to state 26
     break	go to state 27
     continue	go to state 28
@@ -687,7 +691,7 @@ state 16
     repeat_loop	go to state 45
     while_loop	go to state 46
     if_cond	go to state 47
-    block	go to state 80
+    block	go to state 81
 
 
 
@@ -706,7 +710,7 @@ state 18
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
 
-    identifier	go to state 81
+    identifier	go to state 82
 
 
 
@@ -717,7 +721,7 @@ state 19
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
 
-    identifier	go to state 82
+    identifier	go to state 83
 
 
 
@@ -757,7 +761,7 @@ state 21
 
     $default	reduce using rule 2 (nasl_script)
 
-    line	go to state 83
+    line	go to state 84
     export	go to state 23
     function	go to state 24
     command	go to state 25
@@ -900,12 +904,11 @@ state 35
 
 state 36
 
-    simple  ->  call_function .   (rule 22)
+    simple  ->  call_function . ';'   (rule 22)
     rep  ->  call_function . REP expression ';'   (rule 42)
 
-    REP 	shift, and go to state 84
-
-    $default	reduce using rule 22 (simple)
+    REP 	shift, and go to state 85
+    ';' 	shift, and go to state 86
 
 
 
@@ -943,8 +946,8 @@ state 40
 
 state 41
 
-    call_function  ->  identifier . '(' parameters ')' ';'   (rule 43)
-    call_function  ->  identifier . '(' ')' ';'   (rule 44)
+    call_function  ->  identifier . '(' parameters ')'   (rule 43)
+    call_function  ->  identifier . '(' ')'   (rule 44)
     assign  ->  identifier . '=' value   (rule 45)
     assign  ->  identifier . '=' ref   (rule 46)
     inc_dec_exp  ->  identifier . INC   (rule 51)
@@ -958,18 +961,18 @@ state 41
     assign_shift_op  ->  identifier . SRR_ASS value   (rule 59)
     assign_shift_op  ->  identifier . SL_ASS value   (rule 60)
 
-    ADD_ASS	shift, and go to state 85
-    SUB_ASS	shift, and go to state 86
-    DEC 	shift, and go to state 87
-    INC 	shift, and go to state 88
-    DIV_ASS	shift, and go to state 89
-    MUL_ASS	shift, and go to state 90
-    MOD_ASS	shift, and go to state 91
-    SRR_ASS	shift, and go to state 92
-    SR_ASS	shift, and go to state 93
-    SL_ASS	shift, and go to state 94
-    '(' 	shift, and go to state 95
-    '=' 	shift, and go to state 96
+    ADD_ASS	shift, and go to state 87
+    SUB_ASS	shift, and go to state 88
+    DEC 	shift, and go to state 89
+    INC 	shift, and go to state 90
+    DIV_ASS	shift, and go to state 91
+    MUL_ASS	shift, and go to state 92
+    MOD_ASS	shift, and go to state 93
+    SRR_ASS	shift, and go to state 94
+    SR_ASS	shift, and go to state 95
+    SL_ASS	shift, and go to state 96
+    '(' 	shift, and go to state 97
+    '=' 	shift, and go to state 98
 
 
 
@@ -1026,7 +1029,7 @@ state 48
     function  ->  FUNCTION identifier . '(' parameters ')' block   (rule 10)
     function  ->  FUNCTION identifier . '(' ')' block   (rule 11)
 
-    '(' 	shift, and go to state 97
+    '(' 	shift, and go to state 99
 
 
 
@@ -1036,7 +1039,7 @@ state 49
     var  ->  identifier . '=' ref   (rule 103)
     var  ->  identifier .   (rule 104)
 
-    '=' 	shift, and go to state 98
+    '=' 	shift, and go to state 100
 
     $default	reduce using rule 104 (var)
 
@@ -1047,7 +1050,7 @@ state 50
     vars  ->  var . ',' vars   (rule 105)
     vars  ->  var .   (rule 106)
 
-    ',' 	shift, and go to state 99
+    ',' 	shift, and go to state 101
 
     $default	reduce using rule 106 (vars)
 
@@ -1057,7 +1060,7 @@ state 51
 
     local  ->  LOCAL vars . ';'   (rule 41)
 
-    ';' 	shift, and go to state 100
+    ';' 	shift, and go to state 102
 
 
 
@@ -1065,7 +1068,7 @@ state 52
 
     global  ->  GLOBAL vars . ';'   (rule 40)
 
-    ';' 	shift, and go to state 101
+    ';' 	shift, and go to state 103
 
 
 
@@ -1092,17 +1095,17 @@ state 53
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 102
-    assign	go to state 103
+    call_function	go to state 104
+    assign	go to state 105
     assign_math_op	go to state 39
     assign_shift_op	go to state 40
-    identifier	go to state 104
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    if_expr	go to state 105
-    expression	go to state 106
+    identifier	go to state 106
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    if_expr	go to state 107
+    expression	go to state 108
 
 
 
@@ -1112,7 +1115,7 @@ state 54
 
     STRING	shift, and go to state 58
 
-    string	go to state 107
+    string	go to state 109
 
 
 
@@ -1130,7 +1133,7 @@ state 56
 
     STRING	shift, and go to state 58
 
-    string	go to state 108
+    string	go to state 110
 
 
 
@@ -1178,6 +1181,8 @@ state 62
 
     expression  ->  '(' . expression ')'   (rule 118)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -1190,11 +1195,12 @@ state 62
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 109
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 111
 
 
 
@@ -1202,7 +1208,7 @@ state 63
 
     return  ->  RETURN '@' . ';'   (rule 38)
 
-    ';' 	shift, and go to state 110
+    ';' 	shift, and go to state 112
 
 
 
@@ -1210,6 +1216,8 @@ state 64
 
     expression  ->  '!' . expression   (rule 120)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -1219,14 +1227,17 @@ state 64
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 111
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 113
 
 
 
@@ -1234,6 +1245,8 @@ state 65
 
     expression  ->  '-' . expression   (rule 124)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -1243,23 +1256,23 @@ state 65
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 112
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 114
 
 
 
 state 66
 
-    ip  ->  integer . '.' integer '.' integer '.' integer   (rule 69)
-    expression  ->  integer .   (rule 145)
-
-    '.' 	shift, and go to state 113
+    expression  ->  identifier .   (rule 145)
 
     $default	reduce using rule 145 (expression)
 
@@ -1267,7 +1280,10 @@ state 66
 
 state 67
 
-    expression  ->  string .   (rule 146)
+    ip  ->  integer . '.' integer '.' integer '.' integer   (rule 69)
+    expression  ->  integer .   (rule 146)
+
+    '.' 	shift, and go to state 115
 
     $default	reduce using rule 146 (expression)
 
@@ -1275,7 +1291,7 @@ state 67
 
 state 68
 
-    expression  ->  ip .   (rule 147)
+    expression  ->  string .   (rule 147)
 
     $default	reduce using rule 147 (expression)
 
@@ -1283,13 +1299,21 @@ state 68
 
 state 69
 
-    expression  ->  null .   (rule 148)
+    expression  ->  ip .   (rule 148)
 
     $default	reduce using rule 148 (expression)
 
 
 
 state 70
+
+    expression  ->  null .   (rule 149)
+
+    $default	reduce using rule 149 (expression)
+
+
+
+state 71
 
     return  ->  RETURN expression . ';'   (rule 37)
     expression  ->  expression . AND expression   (rule 119)
@@ -1317,35 +1341,35 @@ state 70
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    ';' 	shift, and go to state 129
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    ';' 	shift, and go to state 131
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 71
+state 72
 
     break  ->  BREAK ';' .   (rule 33)
 
@@ -1353,7 +1377,7 @@ state 71
 
 
 
-state 72
+state 73
 
     continue  ->  CONTINUE ';' .   (rule 34)
 
@@ -1361,11 +1385,13 @@ state 72
 
 
 
-state 73
+state 74
 
     for_loop  ->  FOR '(' . expression ';' expression ';' expression ')' block   (rule 77)
     for_loop  ->  FOR '(' . expression ';' expression ';' expression ')' command   (rule 78)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -1378,15 +1404,16 @@ state 73
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 139
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 141
 
 
 
-state 74
+state 75
 
     foreach_loop  ->  FOREACH '(' . identifier IN_ITER expression ')' block   (rule 81)
     foreach_loop  ->  FOREACH '(' . identifier IN_ITER expression ')' command   (rule 82)
@@ -1394,24 +1421,26 @@ state 74
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
 
-    identifier	go to state 140
-
-
-
-state 75
-
-    foreach_loop  ->  FOREACH identifier . '(' expression ')' block   (rule 79)
-    foreach_loop  ->  FOREACH identifier . '(' expression ')' command   (rule 80)
-
-    '(' 	shift, and go to state 141
+    identifier	go to state 142
 
 
 
 state 76
 
+    foreach_loop  ->  FOREACH identifier . '(' expression ')' block   (rule 79)
+    foreach_loop  ->  FOREACH identifier . '(' expression ')' command   (rule 80)
+
+    '(' 	shift, and go to state 143
+
+
+
+state 77
+
     while_loop  ->  WHILE '(' . expression ')' block   (rule 85)
     while_loop  ->  WHILE '(' . expression ')' command   (rule 86)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -1424,15 +1453,16 @@ state 76
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 142
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 144
 
 
 
-state 77
+state 78
 
     block  ->  '{' . '}'   (rule 97)
     block  ->  '{' . lines '}'   (rule 98)
@@ -1464,8 +1494,8 @@ state 77
     INC 	shift, and go to state 19
     '(' 	shift, and go to state 62
     ';' 	shift, and go to state 20
-    '@' 	shift, and go to state 143
-    '}' 	shift, and go to state 144
+    '@' 	shift, and go to state 145
+    '}' 	shift, and go to state 146
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
@@ -1473,7 +1503,7 @@ state 77
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    lines	go to state 145
+    lines	go to state 147
     line	go to state 22
     export	go to state 23
     function	go to state 24
@@ -1493,25 +1523,25 @@ state 77
     inc_dec_exp	go to state 38
     assign_math_op	go to state 39
     assign_shift_op	go to state 40
-    identifier	go to state 146
-    integer	go to state 147
-    string	go to state 148
-    ip  	go to state 68
-    null	go to state 69
-    ref 	go to state 149
+    identifier	go to state 148
+    integer	go to state 149
+    string	go to state 150
+    ip  	go to state 69
+    null	go to state 70
+    ref 	go to state 151
     compound	go to state 42
     for_loop	go to state 43
     foreach_loop	go to state 44
     repeat_loop	go to state 45
     while_loop	go to state 46
     if_cond	go to state 47
-    argument_list	go to state 150
-    argument	go to state 151
-    expression	go to state 152
+    argument_list	go to state 152
+    argument	go to state 153
+    expression	go to state 154
 
 
 
-state 78
+state 79
 
     block  ->  '[' . ']'   (rule 100)
     block  ->  '[' . argument_list ']'   (rule 101)
@@ -1524,8 +1554,8 @@ state 78
     _NULL_	shift, and go to state 60
     TRUE	shift, and go to state 61
     '(' 	shift, and go to state 62
-    '@' 	shift, and go to state 143
-    ']' 	shift, and go to state 153
+    '@' 	shift, and go to state 145
+    ']' 	shift, and go to state 155
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
@@ -1533,35 +1563,35 @@ state 78
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    identifier	go to state 154
-    integer	go to state 147
-    string	go to state 148
-    ip  	go to state 68
-    null	go to state 69
-    ref 	go to state 149
-    argument_list	go to state 155
-    argument	go to state 151
-    expression	go to state 152
-
-
-
-state 79
-
-    repeat_loop  ->  REPEAT command . UNTIL expression ';'   (rule 84)
-
-    UNTIL	shift, and go to state 156
+    identifier	go to state 156
+    integer	go to state 149
+    string	go to state 150
+    ip  	go to state 69
+    null	go to state 70
+    ref 	go to state 151
+    argument_list	go to state 157
+    argument	go to state 153
+    expression	go to state 154
 
 
 
 state 80
 
-    repeat_loop  ->  REPEAT block . UNTIL expression ';'   (rule 83)
+    repeat_loop  ->  REPEAT command . UNTIL expression ';'   (rule 84)
 
-    UNTIL	shift, and go to state 157
+    UNTIL	shift, and go to state 158
 
 
 
 state 81
+
+    repeat_loop  ->  REPEAT block . UNTIL expression ';'   (rule 83)
+
+    UNTIL	shift, and go to state 159
+
+
+
+state 82
 
     inc_dec_exp  ->  DEC identifier .   (rule 50)
 
@@ -1569,7 +1599,7 @@ state 81
 
 
 
-state 82
+state 83
 
     inc_dec_exp  ->  INC identifier .   (rule 49)
 
@@ -1577,7 +1607,7 @@ state 82
 
 
 
-state 83
+state 84
 
     lines  ->  lines line .   (rule 4)
 
@@ -1585,10 +1615,12 @@ state 83
 
 
 
-state 84
+state 85
 
     rep  ->  call_function REP . expression ';'   (rule 42)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -1601,15 +1633,24 @@ state 84
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 158
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 160
 
 
 
-state 85
+state 86
+
+    simple  ->  call_function ';' .   (rule 22)
+
+    $default	reduce using rule 22 (simple)
+
+
+
+state 87
 
     assign_math_op  ->  identifier ADD_ASS . value   (rule 53)
 
@@ -1629,18 +1670,18 @@ state 85
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 160
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 162
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 164
 
 
 
-state 86
+state 88
 
     assign_math_op  ->  identifier SUB_ASS . value   (rule 54)
 
@@ -1660,18 +1701,18 @@ state 86
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 163
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 165
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 164
 
 
 
-state 87
+state 89
 
     inc_dec_exp  ->  identifier DEC .   (rule 52)
 
@@ -1679,7 +1720,7 @@ state 87
 
 
 
-state 88
+state 90
 
     inc_dec_exp  ->  identifier INC .   (rule 51)
 
@@ -1687,7 +1728,7 @@ state 88
 
 
 
-state 89
+state 91
 
     assign_math_op  ->  identifier DIV_ASS . value   (rule 56)
 
@@ -1707,18 +1748,18 @@ state 89
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 164
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 166
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 164
 
 
 
-state 90
+state 92
 
     assign_math_op  ->  identifier MUL_ASS . value   (rule 55)
 
@@ -1738,18 +1779,18 @@ state 90
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 165
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 167
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 164
 
 
 
-state 91
+state 93
 
     assign_math_op  ->  identifier MOD_ASS . value   (rule 57)
 
@@ -1769,18 +1810,18 @@ state 91
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 166
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 168
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 164
 
 
 
-state 92
+state 94
 
     assign_shift_op  ->  identifier SRR_ASS . value   (rule 59)
 
@@ -1800,18 +1841,18 @@ state 92
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 167
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 169
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 164
 
 
 
-state 93
+state 95
 
     assign_shift_op  ->  identifier SR_ASS . value   (rule 58)
 
@@ -1831,18 +1872,18 @@ state 93
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 168
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 170
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 164
 
 
 
-state 94
+state 96
 
     assign_shift_op  ->  identifier SL_ASS . value   (rule 60)
 
@@ -1862,21 +1903,21 @@ state 94
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 169
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 171
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 164
 
 
 
-state 95
+state 97
 
-    call_function  ->  identifier '(' . parameters ')' ';'   (rule 43)
-    call_function  ->  identifier '(' . ')' ';'   (rule 44)
+    call_function  ->  identifier '(' . parameters ')'   (rule 43)
+    call_function  ->  identifier '(' . ')'   (rule 44)
 
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
@@ -1884,21 +1925,21 @@ state 95
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
     TRUE	shift, and go to state 61
-    ')' 	shift, and go to state 170
-    '&' 	shift, and go to state 171
+    ')' 	shift, and go to state 172
+    '&' 	shift, and go to state 173
 
-    parameters	go to state 172
-    parameter	go to state 173
-    assign	go to state 174
+    parameters	go to state 174
+    parameter	go to state 175
+    assign	go to state 176
     assign_math_op	go to state 39
     assign_shift_op	go to state 40
-    identifier	go to state 175
-    integer	go to state 176
-    string	go to state 177
+    identifier	go to state 177
+    integer	go to state 178
+    string	go to state 179
 
 
 
-state 96
+state 98
 
     assign  ->  identifier '=' . value   (rule 45)
     assign  ->  identifier '=' . ref   (rule 46)
@@ -1911,7 +1952,7 @@ state 96
     _NULL_	shift, and go to state 60
     TRUE	shift, and go to state 61
     '(' 	shift, and go to state 62
-    '@' 	shift, and go to state 143
+    '@' 	shift, and go to state 145
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
@@ -1920,19 +1961,19 @@ state 96
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 178
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    ref 	go to state 179
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 180
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    ref 	go to state 181
+    expression	go to state 164
 
 
 
-state 97
+state 99
 
     function  ->  FUNCTION identifier '(' . parameters ')' block   (rule 10)
     function  ->  FUNCTION identifier '(' . ')' block   (rule 11)
@@ -1943,21 +1984,21 @@ state 97
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
     TRUE	shift, and go to state 61
-    ')' 	shift, and go to state 180
-    '&' 	shift, and go to state 171
+    ')' 	shift, and go to state 182
+    '&' 	shift, and go to state 173
 
-    parameters	go to state 181
-    parameter	go to state 173
-    assign	go to state 174
+    parameters	go to state 183
+    parameter	go to state 175
+    assign	go to state 176
     assign_math_op	go to state 39
     assign_shift_op	go to state 40
-    identifier	go to state 175
-    integer	go to state 176
-    string	go to state 177
+    identifier	go to state 177
+    integer	go to state 178
+    string	go to state 179
 
 
 
-state 98
+state 100
 
     var  ->  identifier '=' . value   (rule 102)
     var  ->  identifier '=' . ref   (rule 103)
@@ -1970,26 +2011,26 @@ state 98
     _NULL_	shift, and go to state 60
     TRUE	shift, and go to state 61
     '(' 	shift, and go to state 62
-    '@' 	shift, and go to state 143
+    '@' 	shift, and go to state 145
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    call_function	go to state 159
-    value	go to state 182
-    identifier	go to state 161
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    ref 	go to state 183
-    expression	go to state 162
+    call_function	go to state 161
+    value	go to state 184
+    identifier	go to state 163
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    ref 	go to state 185
+    expression	go to state 164
 
 
 
-state 99
+state 101
 
     vars  ->  var ',' . vars   (rule 105)
 
@@ -1998,11 +2039,11 @@ state 99
 
     identifier	go to state 49
     var 	go to state 50
-    vars	go to state 184
+    vars	go to state 186
 
 
 
-state 100
+state 102
 
     local  ->  LOCAL vars ';' .   (rule 41)
 
@@ -2010,7 +2051,7 @@ state 100
 
 
 
-state 101
+state 103
 
     global  ->  GLOBAL vars ';' .   (rule 40)
 
@@ -2018,7 +2059,7 @@ state 101
 
 
 
-state 102
+state 104
 
     if_expr  ->  call_function .   (rule 89)
 
@@ -2026,7 +2067,7 @@ state 102
 
 
 
-state 103
+state 105
 
     if_expr  ->  assign .   (rule 88)
 
@@ -2034,10 +2075,10 @@ state 103
 
 
 
-state 104
+state 106
 
-    call_function  ->  identifier . '(' parameters ')' ';'   (rule 43)
-    call_function  ->  identifier . '(' ')' ';'   (rule 44)
+    call_function  ->  identifier . '(' parameters ')'   (rule 43)
+    call_function  ->  identifier . '(' ')'   (rule 44)
     assign  ->  identifier . '=' value   (rule 45)
     assign  ->  identifier . '=' ref   (rule 46)
     assign_math_op  ->  identifier . ADD_ASS value   (rule 53)
@@ -2048,21 +2089,24 @@ state 104
     assign_shift_op  ->  identifier . SR_ASS value   (rule 58)
     assign_shift_op  ->  identifier . SRR_ASS value   (rule 59)
     assign_shift_op  ->  identifier . SL_ASS value   (rule 60)
+    expression  ->  identifier .   (rule 145)
 
-    ADD_ASS	shift, and go to state 85
-    SUB_ASS	shift, and go to state 86
-    DIV_ASS	shift, and go to state 89
-    MUL_ASS	shift, and go to state 90
-    MOD_ASS	shift, and go to state 91
-    SRR_ASS	shift, and go to state 92
-    SR_ASS	shift, and go to state 93
-    SL_ASS	shift, and go to state 94
-    '(' 	shift, and go to state 95
-    '=' 	shift, and go to state 96
+    ADD_ASS	shift, and go to state 87
+    SUB_ASS	shift, and go to state 88
+    DIV_ASS	shift, and go to state 91
+    MUL_ASS	shift, and go to state 92
+    MOD_ASS	shift, and go to state 93
+    SRR_ASS	shift, and go to state 94
+    SR_ASS	shift, and go to state 95
+    SL_ASS	shift, and go to state 96
+    '(' 	shift, and go to state 97
+    '=' 	shift, and go to state 98
+
+    $default	reduce using rule 145 (expression)
 
 
 
-state 105
+state 107
 
     if_cond  ->  IF '(' if_expr . ')' block   (rule 90)
     if_cond  ->  IF '(' if_expr . ')' command   (rule 91)
@@ -2071,11 +2115,11 @@ state 105
     if_cond  ->  IF '(' if_expr . ')' command ELSE block   (rule 94)
     if_cond  ->  IF '(' if_expr . ')' command ELSE command   (rule 95)
 
-    ')' 	shift, and go to state 185
+    ')' 	shift, and go to state 187
 
 
 
-state 106
+state 108
 
     if_expr  ->  expression .   (rule 87)
     expression  ->  expression . AND expression   (rule 119)
@@ -2103,52 +2147,52 @@ state 106
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     $default	reduce using rule 87 (if_expr)
 
 
 
-state 107
+state 109
 
     include  ->  INCLUDE '(' string . ')' ';'   (rule 36)
 
-    ')' 	shift, and go to state 186
+    ')' 	shift, and go to state 188
 
 
 
-state 108
+state 110
 
     import  ->  IMPORT '(' string . ')' ';'   (rule 35)
 
-    ')' 	shift, and go to state 187
+    ')' 	shift, and go to state 189
 
 
 
-state 109
+state 111
 
     expression  ->  '(' expression . ')'   (rule 118)
     expression  ->  expression . AND expression   (rule 119)
@@ -2176,35 +2220,35 @@ state 109
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    ')' 	shift, and go to state 188
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    ')' 	shift, and go to state 190
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 110
+state 112
 
     return  ->  RETURN '@' ';' .   (rule 38)
 
@@ -2212,7 +2256,7 @@ state 110
 
 
 
-state 111
+state 113
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  '!' expression .   (rule 120)
@@ -2240,30 +2284,30 @@ state 111
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 120 (expression)]
     AND 	[reduce using rule 120 (expression)]
@@ -2293,7 +2337,7 @@ state 111
 
 
 
-state 112
+state 114
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -2321,30 +2365,30 @@ state 112
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 124 (expression)]
     AND 	[reduce using rule 124 (expression)]
@@ -2374,7 +2418,7 @@ state 112
 
 
 
-state 113
+state 115
 
     ip  ->  integer '.' . integer '.' integer '.' integer   (rule 69)
 
@@ -2382,62 +2426,16 @@ state 113
     FALSE	shift, and go to state 59
     TRUE	shift, and go to state 61
 
-    integer	go to state 189
-
-
-
-state 114
-
-    expression  ->  expression OR . expression   (rule 121)
-
-    INT 	shift, and go to state 57
-    STRING	shift, and go to state 58
-    FALSE	shift, and go to state 59
-    _NULL_	shift, and go to state 60
-    TRUE	shift, and go to state 61
-    '(' 	shift, and go to state 62
-    '!' 	shift, and go to state 64
-    '-' 	shift, and go to state 65
-
-    '-' 	[reduce using rule 117 (expression)]
-    $default	reduce using rule 117 (expression)
-
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 190
-
-
-
-state 115
-
-    expression  ->  expression AND . expression   (rule 119)
-
-    INT 	shift, and go to state 57
-    STRING	shift, and go to state 58
-    FALSE	shift, and go to state 59
-    _NULL_	shift, and go to state 60
-    TRUE	shift, and go to state 61
-    '(' 	shift, and go to state 62
-    '!' 	shift, and go to state 64
-    '-' 	shift, and go to state 65
-
-    '-' 	[reduce using rule 117 (expression)]
-    $default	reduce using rule 117 (expression)
-
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 191
+    integer	go to state 191
 
 
 
 state 116
 
-    expression  ->  expression SUBSTR_EQ . expression   (rule 135)
+    expression  ->  expression OR . expression   (rule 121)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2447,21 +2445,26 @@ state 116
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 192
 
 
 
 state 117
 
-    expression  ->  expression SUBSTR_NEQ . expression   (rule 136)
+    expression  ->  expression AND . expression   (rule 119)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2471,21 +2474,26 @@ state 117
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 193
 
 
 
 state 118
 
-    expression  ->  expression REGEX_EQ . expression   (rule 138)
+    expression  ->  expression SUBSTR_EQ . expression   (rule 135)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2495,21 +2503,26 @@ state 118
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 194
 
 
 
 state 119
 
-    expression  ->  expression REGEX_NEQ . expression   (rule 137)
+    expression  ->  expression SUBSTR_NEQ . expression   (rule 136)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2519,21 +2532,26 @@ state 119
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 195
 
 
 
 state 120
 
-    expression  ->  expression POWER . expression   (rule 126)
+    expression  ->  expression REGEX_EQ . expression   (rule 138)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2543,21 +2561,26 @@ state 120
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 196
 
 
 
 state 121
 
-    expression  ->  expression CMP_EQ . expression   (rule 143)
+    expression  ->  expression REGEX_NEQ . expression   (rule 137)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2567,21 +2590,26 @@ state 121
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 197
 
 
 
 state 122
 
-    expression  ->  expression CMP_GE . expression   (rule 141)
+    expression  ->  expression POWER . expression   (rule 126)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2591,21 +2619,26 @@ state 122
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 198
 
 
 
 state 123
 
-    expression  ->  expression CMP_LE . expression   (rule 142)
+    expression  ->  expression CMP_EQ . expression   (rule 143)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2615,21 +2648,26 @@ state 123
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 199
 
 
 
 state 124
 
-    expression  ->  expression CMP_NEQ . expression   (rule 144)
+    expression  ->  expression CMP_GE . expression   (rule 141)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2639,21 +2677,26 @@ state 124
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 200
 
 
 
 state 125
 
-    expression  ->  expression SL . expression   (rule 133)
+    expression  ->  expression CMP_LE . expression   (rule 142)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2663,21 +2706,26 @@ state 125
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 201
 
 
 
 state 126
 
-    expression  ->  expression SR . expression   (rule 132)
+    expression  ->  expression CMP_NEQ . expression   (rule 144)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2687,21 +2735,26 @@ state 126
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 202
 
 
 
 state 127
 
-    expression  ->  expression SRR . expression   (rule 134)
+    expression  ->  expression SL . expression   (rule 133)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2711,21 +2764,26 @@ state 127
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 203
 
 
 
 state 128
 
-    expression  ->  expression '&' . expression   (rule 129)
+    expression  ->  expression SR . expression   (rule 132)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2735,18 +2793,79 @@ state 128
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 204
 
 
 
 state 129
+
+    expression  ->  expression SRR . expression   (rule 134)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
+    INT 	shift, and go to state 57
+    STRING	shift, and go to state 58
+    FALSE	shift, and go to state 59
+    _NULL_	shift, and go to state 60
+    TRUE	shift, and go to state 61
+    '(' 	shift, and go to state 62
+    '!' 	shift, and go to state 64
+    '-' 	shift, and go to state 65
+
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
+    '-' 	[reduce using rule 117 (expression)]
+    $default	reduce using rule 117 (expression)
+
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 205
+
+
+
+state 130
+
+    expression  ->  expression '&' . expression   (rule 129)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
+    INT 	shift, and go to state 57
+    STRING	shift, and go to state 58
+    FALSE	shift, and go to state 59
+    _NULL_	shift, and go to state 60
+    TRUE	shift, and go to state 61
+    '(' 	shift, and go to state 62
+    '!' 	shift, and go to state 64
+    '-' 	shift, and go to state 65
+
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
+    '-' 	[reduce using rule 117 (expression)]
+    $default	reduce using rule 117 (expression)
+
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 206
+
+
+
+state 131
 
     return  ->  RETURN expression ';' .   (rule 37)
 
@@ -2754,10 +2873,12 @@ state 129
 
 
 
-state 130
+state 132
 
     expression  ->  expression '+' . expression   (rule 122)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2767,69 +2888,26 @@ state 130
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 205
-
-
-
-state 131
-
-    expression  ->  expression '-' . expression   (rule 123)
-
-    INT 	shift, and go to state 57
-    STRING	shift, and go to state 58
-    FALSE	shift, and go to state 59
-    _NULL_	shift, and go to state 60
-    TRUE	shift, and go to state 61
-    '(' 	shift, and go to state 62
-    '!' 	shift, and go to state 64
-    '-' 	shift, and go to state 65
-
-    '-' 	[reduce using rule 117 (expression)]
-    $default	reduce using rule 117 (expression)
-
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 206
-
-
-
-state 132
-
-    expression  ->  expression '*' . expression   (rule 125)
-
-    INT 	shift, and go to state 57
-    STRING	shift, and go to state 58
-    FALSE	shift, and go to state 59
-    _NULL_	shift, and go to state 60
-    TRUE	shift, and go to state 61
-    '(' 	shift, and go to state 62
-    '!' 	shift, and go to state 64
-    '-' 	shift, and go to state 65
-
-    '-' 	[reduce using rule 117 (expression)]
-    $default	reduce using rule 117 (expression)
-
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 207
 
 
 
 state 133
 
-    expression  ->  expression '/' . expression   (rule 127)
+    expression  ->  expression '-' . expression   (rule 123)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2839,21 +2917,26 @@ state 133
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 208
 
 
 
 state 134
 
-    expression  ->  expression '%' . expression   (rule 128)
+    expression  ->  expression '*' . expression   (rule 125)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2863,21 +2946,26 @@ state 134
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 209
 
 
 
 state 135
 
-    expression  ->  expression '^' . expression   (rule 130)
+    expression  ->  expression '/' . expression   (rule 127)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2887,21 +2975,26 @@ state 135
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 210
 
 
 
 state 136
 
-    expression  ->  expression '|' . expression   (rule 131)
+    expression  ->  expression '%' . expression   (rule 128)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2911,21 +3004,26 @@ state 136
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 211
 
 
 
 state 137
 
-    expression  ->  expression '<' . expression   (rule 139)
+    expression  ->  expression '^' . expression   (rule 130)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2935,21 +3033,26 @@ state 137
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 212
 
 
 
 state 138
 
-    expression  ->  expression '>' . expression   (rule 140)
+    expression  ->  expression '|' . expression   (rule 131)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -2959,18 +3062,79 @@ state 138
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 213
 
 
 
 state 139
+
+    expression  ->  expression '<' . expression   (rule 139)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
+    INT 	shift, and go to state 57
+    STRING	shift, and go to state 58
+    FALSE	shift, and go to state 59
+    _NULL_	shift, and go to state 60
+    TRUE	shift, and go to state 61
+    '(' 	shift, and go to state 62
+    '!' 	shift, and go to state 64
+    '-' 	shift, and go to state 65
+
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
+    '-' 	[reduce using rule 117 (expression)]
+    $default	reduce using rule 117 (expression)
+
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 214
+
+
+
+state 140
+
+    expression  ->  expression '>' . expression   (rule 140)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
+    INT 	shift, and go to state 57
+    STRING	shift, and go to state 58
+    FALSE	shift, and go to state 59
+    _NULL_	shift, and go to state 60
+    TRUE	shift, and go to state 61
+    '(' 	shift, and go to state 62
+    '!' 	shift, and go to state 64
+    '-' 	shift, and go to state 65
+
+    IN_ITER	[reduce using rule 117 (expression)]
+    IDENT	[reduce using rule 117 (expression)]
+    '-' 	[reduce using rule 117 (expression)]
+    $default	reduce using rule 117 (expression)
+
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 215
+
+
+
+state 141
 
     for_loop  ->  FOR '(' expression . ';' expression ';' expression ')' block   (rule 77)
     for_loop  ->  FOR '(' expression . ';' expression ';' expression ')' command   (rule 78)
@@ -2999,48 +3163,50 @@ state 139
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    ';' 	shift, and go to state 214
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    ';' 	shift, and go to state 216
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 140
+state 142
 
     foreach_loop  ->  FOREACH '(' identifier . IN_ITER expression ')' block   (rule 81)
     foreach_loop  ->  FOREACH '(' identifier . IN_ITER expression ')' command   (rule 82)
 
-    IN_ITER	shift, and go to state 215
+    IN_ITER	shift, and go to state 217
 
 
 
-state 141
+state 143
 
     foreach_loop  ->  FOREACH identifier '(' . expression ')' block   (rule 79)
     foreach_loop  ->  FOREACH identifier '(' . expression ')' command   (rule 80)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -3053,15 +3219,16 @@ state 141
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 216
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 218
 
 
 
-state 142
+state 144
 
     while_loop  ->  WHILE '(' expression . ')' block   (rule 85)
     while_loop  ->  WHILE '(' expression . ')' command   (rule 86)
@@ -3090,43 +3257,43 @@ state 142
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    ')' 	shift, and go to state 217
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    ')' 	shift, and go to state 219
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 143
+state 145
 
     ref  ->  '@' . IDENT   (rule 71)
 
-    IDENT	shift, and go to state 218
+    IDENT	shift, and go to state 220
 
 
 
-state 144
+state 146
 
     block  ->  '{' '}' .   (rule 97)
 
@@ -3134,7 +3301,7 @@ state 144
 
 
 
-state 145
+state 147
 
     lines  ->  lines . line   (rule 4)
     block  ->  '{' lines . '}'   (rule 98)
@@ -3159,9 +3326,9 @@ state 145
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '}' 	shift, and go to state 219
+    '}' 	shift, and go to state 221
 
-    line	go to state 83
+    line	go to state 84
     export	go to state 23
     function	go to state 24
     command	go to state 25
@@ -3190,10 +3357,10 @@ state 145
 
 
 
-state 146
+state 148
 
-    call_function  ->  identifier . '(' parameters ')' ';'   (rule 43)
-    call_function  ->  identifier . '(' ')' ';'   (rule 44)
+    call_function  ->  identifier . '(' parameters ')'   (rule 43)
+    call_function  ->  identifier . '(' ')'   (rule 44)
     assign  ->  identifier . '=' value   (rule 45)
     assign  ->  identifier . '=' ref   (rule 46)
     inc_dec_exp  ->  identifier . INC   (rule 51)
@@ -3208,50 +3375,53 @@ state 146
     assign_shift_op  ->  identifier . SL_ASS value   (rule 60)
     argument  ->  identifier . ':' expression   (rule 113)
     argument  ->  identifier . ':' ref   (rule 114)
+    expression  ->  identifier .   (rule 145)
 
-    ADD_ASS	shift, and go to state 85
-    SUB_ASS	shift, and go to state 86
-    DEC 	shift, and go to state 87
-    INC 	shift, and go to state 88
-    DIV_ASS	shift, and go to state 89
-    MUL_ASS	shift, and go to state 90
-    MOD_ASS	shift, and go to state 91
-    SRR_ASS	shift, and go to state 92
-    SR_ASS	shift, and go to state 93
-    SL_ASS	shift, and go to state 94
-    '(' 	shift, and go to state 95
-    '=' 	shift, and go to state 96
-    ':' 	shift, and go to state 220
-
-
-
-state 147
-
-    ip  ->  integer . '.' integer '.' integer '.' integer   (rule 69)
-    argument  ->  integer . ':' expression   (rule 110)
-    argument  ->  integer . ':' ref   (rule 112)
-    expression  ->  integer .   (rule 145)
-
-    '.' 	shift, and go to state 113
-    ':' 	shift, and go to state 221
+    ADD_ASS	shift, and go to state 87
+    SUB_ASS	shift, and go to state 88
+    DEC 	shift, and go to state 89
+    INC 	shift, and go to state 90
+    DIV_ASS	shift, and go to state 91
+    MUL_ASS	shift, and go to state 92
+    MOD_ASS	shift, and go to state 93
+    SRR_ASS	shift, and go to state 94
+    SR_ASS	shift, and go to state 95
+    SL_ASS	shift, and go to state 96
+    '(' 	shift, and go to state 97
+    '=' 	shift, and go to state 98
+    ':' 	shift, and go to state 222
 
     $default	reduce using rule 145 (expression)
 
 
 
-state 148
+state 149
 
-    argument  ->  string . ':' expression   (rule 109)
-    argument  ->  string . ':' ref   (rule 111)
-    expression  ->  string .   (rule 146)
+    ip  ->  integer . '.' integer '.' integer '.' integer   (rule 69)
+    argument  ->  integer . ':' expression   (rule 110)
+    argument  ->  integer . ':' ref   (rule 112)
+    expression  ->  integer .   (rule 146)
 
-    ':' 	shift, and go to state 222
+    '.' 	shift, and go to state 115
+    ':' 	shift, and go to state 223
 
     $default	reduce using rule 146 (expression)
 
 
 
-state 149
+state 150
+
+    argument  ->  string . ':' expression   (rule 109)
+    argument  ->  string . ':' ref   (rule 111)
+    expression  ->  string .   (rule 147)
+
+    ':' 	shift, and go to state 224
+
+    $default	reduce using rule 147 (expression)
+
+
+
+state 151
 
     argument  ->  ref .   (rule 116)
 
@@ -3259,17 +3429,17 @@ state 149
 
 
 
-state 150
+state 152
 
     block  ->  '{' argument_list . '}'   (rule 99)
     argument_list  ->  argument_list . ',' argument   (rule 107)
 
-    ',' 	shift, and go to state 223
-    '}' 	shift, and go to state 224
+    ',' 	shift, and go to state 225
+    '}' 	shift, and go to state 226
 
 
 
-state 151
+state 153
 
     argument_list  ->  argument .   (rule 108)
 
@@ -3277,7 +3447,7 @@ state 151
 
 
 
-state 152
+state 154
 
     argument  ->  expression .   (rule 115)
     expression  ->  expression . AND expression   (rule 119)
@@ -3305,36 +3475,36 @@ state 152
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     $default	reduce using rule 115 (argument)
 
 
 
-state 153
+state 155
 
     block  ->  '[' ']' .   (rule 100)
 
@@ -3342,53 +3512,34 @@ state 153
 
 
 
-state 154
+state 156
 
     argument  ->  identifier . ':' expression   (rule 113)
     argument  ->  identifier . ':' ref   (rule 114)
+    expression  ->  identifier .   (rule 145)
 
-    ':' 	shift, and go to state 220
+    ':' 	shift, and go to state 222
 
-
-
-state 155
-
-    block  ->  '[' argument_list . ']'   (rule 101)
-    argument_list  ->  argument_list . ',' argument   (rule 107)
-
-    ',' 	shift, and go to state 223
-    ']' 	shift, and go to state 225
-
-
-
-state 156
-
-    repeat_loop  ->  REPEAT command UNTIL . expression ';'   (rule 84)
-
-    INT 	shift, and go to state 57
-    STRING	shift, and go to state 58
-    FALSE	shift, and go to state 59
-    _NULL_	shift, and go to state 60
-    TRUE	shift, and go to state 61
-    '(' 	shift, and go to state 62
-    '!' 	shift, and go to state 64
-    '-' 	shift, and go to state 65
-
-    '-' 	[reduce using rule 117 (expression)]
-    $default	reduce using rule 117 (expression)
-
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 226
+    $default	reduce using rule 145 (expression)
 
 
 
 state 157
 
-    repeat_loop  ->  REPEAT block UNTIL . expression ';'   (rule 83)
+    block  ->  '[' argument_list . ']'   (rule 101)
+    argument_list  ->  argument_list . ',' argument   (rule 107)
 
+    ',' 	shift, and go to state 225
+    ']' 	shift, and go to state 227
+
+
+
+state 158
+
+    repeat_loop  ->  REPEAT command UNTIL . expression ';'   (rule 84)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -3401,15 +3552,43 @@ state 157
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 227
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 228
 
 
 
-state 158
+state 159
+
+    repeat_loop  ->  REPEAT block UNTIL . expression ';'   (rule 83)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
+    INT 	shift, and go to state 57
+    STRING	shift, and go to state 58
+    FALSE	shift, and go to state 59
+    _NULL_	shift, and go to state 60
+    TRUE	shift, and go to state 61
+    '(' 	shift, and go to state 62
+    '!' 	shift, and go to state 64
+    '-' 	shift, and go to state 65
+
+    '-' 	[reduce using rule 117 (expression)]
+    $default	reduce using rule 117 (expression)
+
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 229
+
+
+
+state 160
 
     rep  ->  call_function REP expression . ';'   (rule 42)
     expression  ->  expression . AND expression   (rule 119)
@@ -3437,35 +3616,35 @@ state 158
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    ';' 	shift, and go to state 228
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    ';' 	shift, and go to state 230
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 159
+state 161
 
     value  ->  call_function .   (rule 62)
 
@@ -3473,7 +3652,7 @@ state 159
 
 
 
-state 160
+state 162
 
     assign_math_op  ->  identifier ADD_ASS value .   (rule 53)
 
@@ -3481,16 +3660,19 @@ state 160
 
 
 
-state 161
+state 163
 
-    call_function  ->  identifier . '(' parameters ')' ';'   (rule 43)
-    call_function  ->  identifier . '(' ')' ';'   (rule 44)
+    call_function  ->  identifier . '(' parameters ')'   (rule 43)
+    call_function  ->  identifier . '(' ')'   (rule 44)
+    expression  ->  identifier .   (rule 145)
 
-    '(' 	shift, and go to state 95
+    '(' 	shift, and go to state 97
+
+    $default	reduce using rule 145 (expression)
 
 
 
-state 162
+state 164
 
     value  ->  expression .   (rule 61)
     expression  ->  expression . AND expression   (rule 119)
@@ -3518,36 +3700,36 @@ state 162
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     $default	reduce using rule 61 (value)
 
 
 
-state 163
+state 165
 
     assign_math_op  ->  identifier SUB_ASS value .   (rule 54)
 
@@ -3555,7 +3737,7 @@ state 163
 
 
 
-state 164
+state 166
 
     assign_math_op  ->  identifier DIV_ASS value .   (rule 56)
 
@@ -3563,7 +3745,7 @@ state 164
 
 
 
-state 165
+state 167
 
     assign_math_op  ->  identifier MUL_ASS value .   (rule 55)
 
@@ -3571,7 +3753,7 @@ state 165
 
 
 
-state 166
+state 168
 
     assign_math_op  ->  identifier MOD_ASS value .   (rule 57)
 
@@ -3579,7 +3761,7 @@ state 166
 
 
 
-state 167
+state 169
 
     assign_shift_op  ->  identifier SRR_ASS value .   (rule 59)
 
@@ -3587,7 +3769,7 @@ state 167
 
 
 
-state 168
+state 170
 
     assign_shift_op  ->  identifier SR_ASS value .   (rule 58)
 
@@ -3595,7 +3777,7 @@ state 168
 
 
 
-state 169
+state 171
 
     assign_shift_op  ->  identifier SL_ASS value .   (rule 60)
 
@@ -3603,45 +3785,45 @@ state 169
 
 
 
-state 170
+state 172
 
-    call_function  ->  identifier '(' ')' . ';'   (rule 44)
+    call_function  ->  identifier '(' ')' .   (rule 44)
 
-    ';' 	shift, and go to state 229
+    $default	reduce using rule 44 (call_function)
 
 
 
-state 171
+state 173
 
     parameter  ->  '&' . identifier   (rule 15)
 
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
 
-    identifier	go to state 230
+    identifier	go to state 231
 
 
 
-state 172
+state 174
 
-    call_function  ->  identifier '(' parameters . ')' ';'   (rule 43)
+    call_function  ->  identifier '(' parameters . ')'   (rule 43)
 
-    ')' 	shift, and go to state 231
+    ')' 	shift, and go to state 232
 
 
 
-state 173
+state 175
 
     parameters  ->  parameter . ',' parameters   (rule 12)
     parameters  ->  parameter .   (rule 13)
 
-    ',' 	shift, and go to state 232
+    ',' 	shift, and go to state 233
 
     $default	reduce using rule 13 (parameters)
 
 
 
-state 174
+state 176
 
     parameter  ->  assign .   (rule 16)
 
@@ -3649,7 +3831,7 @@ state 174
 
 
 
-state 175
+state 177
 
     parameter  ->  identifier .   (rule 14)
     assign  ->  identifier . '=' value   (rule 45)
@@ -3663,21 +3845,21 @@ state 175
     assign_shift_op  ->  identifier . SRR_ASS value   (rule 59)
     assign_shift_op  ->  identifier . SL_ASS value   (rule 60)
 
-    ADD_ASS	shift, and go to state 85
-    SUB_ASS	shift, and go to state 86
-    DIV_ASS	shift, and go to state 89
-    MUL_ASS	shift, and go to state 90
-    MOD_ASS	shift, and go to state 91
-    SRR_ASS	shift, and go to state 92
-    SR_ASS	shift, and go to state 93
-    SL_ASS	shift, and go to state 94
-    '=' 	shift, and go to state 96
+    ADD_ASS	shift, and go to state 87
+    SUB_ASS	shift, and go to state 88
+    DIV_ASS	shift, and go to state 91
+    MUL_ASS	shift, and go to state 92
+    MOD_ASS	shift, and go to state 93
+    SRR_ASS	shift, and go to state 94
+    SR_ASS	shift, and go to state 95
+    SL_ASS	shift, and go to state 96
+    '=' 	shift, and go to state 98
 
     $default	reduce using rule 14 (parameter)
 
 
 
-state 176
+state 178
 
     parameter  ->  integer .   (rule 18)
 
@@ -3685,7 +3867,7 @@ state 176
 
 
 
-state 177
+state 179
 
     parameter  ->  string .   (rule 17)
 
@@ -3693,7 +3875,7 @@ state 177
 
 
 
-state 178
+state 180
 
     assign  ->  identifier '=' value .   (rule 45)
 
@@ -3701,7 +3883,7 @@ state 178
 
 
 
-state 179
+state 181
 
     assign  ->  identifier '=' ref .   (rule 46)
 
@@ -3709,28 +3891,28 @@ state 179
 
 
 
-state 180
+state 182
 
     function  ->  FUNCTION identifier '(' ')' . block   (rule 11)
 
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     $default	reduce using rule 96 (block)
 
-    block	go to state 233
+    block	go to state 234
 
 
 
-state 181
+state 183
 
     function  ->  FUNCTION identifier '(' parameters . ')' block   (rule 10)
 
-    ')' 	shift, and go to state 234
+    ')' 	shift, and go to state 235
 
 
 
-state 182
+state 184
 
     var  ->  identifier '=' value .   (rule 102)
 
@@ -3738,7 +3920,7 @@ state 182
 
 
 
-state 183
+state 185
 
     var  ->  identifier '=' ref .   (rule 103)
 
@@ -3746,7 +3928,7 @@ state 183
 
 
 
-state 184
+state 186
 
     vars  ->  var ',' vars .   (rule 105)
 
@@ -3754,7 +3936,7 @@ state 184
 
 
 
-state 185
+state 187
 
     if_cond  ->  IF '(' if_expr ')' . block   (rule 90)
     if_cond  ->  IF '(' if_expr ')' . command   (rule 91)
@@ -3780,8 +3962,8 @@ state 185
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     LOCAL	[reduce using rule 96 (block)]
     GLOBAL	[reduce using rule 96 (block)]
@@ -3802,7 +3984,7 @@ state 185
     ';' 	[reduce using rule 96 (block)]
     $default	reduce using rule 96 (block)
 
-    command	go to state 235
+    command	go to state 236
     simple	go to state 26
     break	go to state 27
     continue	go to state 28
@@ -3825,27 +4007,27 @@ state 185
     repeat_loop	go to state 45
     while_loop	go to state 46
     if_cond	go to state 47
-    block	go to state 236
+    block	go to state 237
 
 
 
-state 186
+state 188
 
     include  ->  INCLUDE '(' string ')' . ';'   (rule 36)
-
-    ';' 	shift, and go to state 237
-
-
-
-state 187
-
-    import  ->  IMPORT '(' string ')' . ';'   (rule 35)
 
     ';' 	shift, and go to state 238
 
 
 
-state 188
+state 189
+
+    import  ->  IMPORT '(' string ')' . ';'   (rule 35)
+
+    ';' 	shift, and go to state 239
+
+
+
+state 190
 
     expression  ->  '(' expression ')' .   (rule 118)
 
@@ -3853,15 +4035,15 @@ state 188
 
 
 
-state 189
+state 191
 
     ip  ->  integer '.' integer . '.' integer '.' integer   (rule 69)
 
-    '.' 	shift, and go to state 239
+    '.' 	shift, and go to state 240
 
 
 
-state 190
+state 192
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -3889,30 +4071,30 @@ state 190
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 121 (expression)]
     AND 	[reduce using rule 121 (expression)]
@@ -3942,7 +4124,7 @@ state 190
 
 
 
-state 191
+state 193
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression AND expression .   (rule 119)
@@ -3970,30 +4152,30 @@ state 191
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 119 (expression)]
     AND 	[reduce using rule 119 (expression)]
@@ -4023,7 +4205,7 @@ state 191
 
 
 
-state 192
+state 194
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4051,30 +4233,30 @@ state 192
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 135 (expression)]
     AND 	[reduce using rule 135 (expression)]
@@ -4104,7 +4286,7 @@ state 192
 
 
 
-state 193
+state 195
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4132,30 +4314,30 @@ state 193
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 136 (expression)]
     AND 	[reduce using rule 136 (expression)]
@@ -4185,7 +4367,7 @@ state 193
 
 
 
-state 194
+state 196
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4213,30 +4395,30 @@ state 194
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 138 (expression)]
     AND 	[reduce using rule 138 (expression)]
@@ -4266,7 +4448,7 @@ state 194
 
 
 
-state 195
+state 197
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4294,30 +4476,30 @@ state 195
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 137 (expression)]
     AND 	[reduce using rule 137 (expression)]
@@ -4347,7 +4529,7 @@ state 195
 
 
 
-state 196
+state 198
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4375,30 +4557,30 @@ state 196
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 126 (expression)]
     AND 	[reduce using rule 126 (expression)]
@@ -4428,7 +4610,7 @@ state 196
 
 
 
-state 197
+state 199
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4456,30 +4638,30 @@ state 197
     expression  ->  expression CMP_EQ expression .   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 143 (expression)]
     AND 	[reduce using rule 143 (expression)]
@@ -4509,7 +4691,7 @@ state 197
 
 
 
-state 198
+state 200
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4537,30 +4719,30 @@ state 198
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 141 (expression)]
     AND 	[reduce using rule 141 (expression)]
@@ -4590,7 +4772,7 @@ state 198
 
 
 
-state 199
+state 201
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4618,30 +4800,30 @@ state 199
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 142 (expression)]
     AND 	[reduce using rule 142 (expression)]
@@ -4671,7 +4853,7 @@ state 199
 
 
 
-state 200
+state 202
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4699,30 +4881,30 @@ state 200
     expression  ->  expression . CMP_NEQ expression   (rule 144)
     expression  ->  expression CMP_NEQ expression .   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 144 (expression)]
     AND 	[reduce using rule 144 (expression)]
@@ -4752,7 +4934,7 @@ state 200
 
 
 
-state 201
+state 203
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4780,30 +4962,30 @@ state 201
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 133 (expression)]
     AND 	[reduce using rule 133 (expression)]
@@ -4833,7 +5015,7 @@ state 201
 
 
 
-state 202
+state 204
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4861,30 +5043,30 @@ state 202
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 132 (expression)]
     AND 	[reduce using rule 132 (expression)]
@@ -4914,7 +5096,7 @@ state 202
 
 
 
-state 203
+state 205
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -4942,30 +5124,30 @@ state 203
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 134 (expression)]
     AND 	[reduce using rule 134 (expression)]
@@ -4995,7 +5177,7 @@ state 203
 
 
 
-state 204
+state 206
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5023,30 +5205,30 @@ state 204
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 129 (expression)]
     AND 	[reduce using rule 129 (expression)]
@@ -5076,7 +5258,7 @@ state 204
 
 
 
-state 205
+state 207
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5104,30 +5286,30 @@ state 205
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 122 (expression)]
     AND 	[reduce using rule 122 (expression)]
@@ -5157,7 +5339,7 @@ state 205
 
 
 
-state 206
+state 208
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5185,30 +5367,30 @@ state 206
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 123 (expression)]
     AND 	[reduce using rule 123 (expression)]
@@ -5238,7 +5420,7 @@ state 206
 
 
 
-state 207
+state 209
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5266,30 +5448,30 @@ state 207
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 125 (expression)]
     AND 	[reduce using rule 125 (expression)]
@@ -5319,7 +5501,7 @@ state 207
 
 
 
-state 208
+state 210
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5347,30 +5529,30 @@ state 208
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 127 (expression)]
     AND 	[reduce using rule 127 (expression)]
@@ -5400,7 +5582,7 @@ state 208
 
 
 
-state 209
+state 211
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5428,30 +5610,30 @@ state 209
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 128 (expression)]
     AND 	[reduce using rule 128 (expression)]
@@ -5481,7 +5663,7 @@ state 209
 
 
 
-state 210
+state 212
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5509,30 +5691,30 @@ state 210
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 130 (expression)]
     AND 	[reduce using rule 130 (expression)]
@@ -5562,7 +5744,7 @@ state 210
 
 
 
-state 211
+state 213
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5590,30 +5772,30 @@ state 211
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 131 (expression)]
     AND 	[reduce using rule 131 (expression)]
@@ -5643,7 +5825,7 @@ state 211
 
 
 
-state 212
+state 214
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5671,30 +5853,30 @@ state 212
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 139 (expression)]
     AND 	[reduce using rule 139 (expression)]
@@ -5724,7 +5906,7 @@ state 212
 
 
 
-state 213
+state 215
 
     expression  ->  expression . AND expression   (rule 119)
     expression  ->  expression . OR expression   (rule 121)
@@ -5752,30 +5934,30 @@ state 213
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     OR  	[reduce using rule 140 (expression)]
     AND 	[reduce using rule 140 (expression)]
@@ -5805,11 +5987,13 @@ state 213
 
 
 
-state 214
+state 216
 
     for_loop  ->  FOR '(' expression ';' . expression ';' expression ')' block   (rule 77)
     for_loop  ->  FOR '(' expression ';' . expression ';' expression ')' command   (rule 78)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -5822,40 +6006,44 @@ state 214
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    expression	go to state 240
-
-
-
-state 215
-
-    foreach_loop  ->  FOREACH '(' identifier IN_ITER . expression ')' block   (rule 81)
-    foreach_loop  ->  FOREACH '(' identifier IN_ITER . expression ')' command   (rule 82)
-
-    INT 	shift, and go to state 57
-    STRING	shift, and go to state 58
-    FALSE	shift, and go to state 59
-    _NULL_	shift, and go to state 60
-    TRUE	shift, and go to state 61
-    '(' 	shift, and go to state 62
-    '!' 	shift, and go to state 64
-    '-' 	shift, and go to state 65
-
-    '-' 	[reduce using rule 117 (expression)]
-    $default	reduce using rule 117 (expression)
-
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 241
 
 
 
-state 216
+state 217
+
+    foreach_loop  ->  FOREACH '(' identifier IN_ITER . expression ')' block   (rule 81)
+    foreach_loop  ->  FOREACH '(' identifier IN_ITER . expression ')' command   (rule 82)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
+    INT 	shift, and go to state 57
+    STRING	shift, and go to state 58
+    FALSE	shift, and go to state 59
+    _NULL_	shift, and go to state 60
+    TRUE	shift, and go to state 61
+    '(' 	shift, and go to state 62
+    '!' 	shift, and go to state 64
+    '-' 	shift, and go to state 65
+
+    '-' 	[reduce using rule 117 (expression)]
+    $default	reduce using rule 117 (expression)
+
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    expression	go to state 242
+
+
+
+state 218
 
     foreach_loop  ->  FOREACH identifier '(' expression . ')' block   (rule 79)
     foreach_loop  ->  FOREACH identifier '(' expression . ')' command   (rule 80)
@@ -5884,35 +6072,35 @@ state 216
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    ')' 	shift, and go to state 242
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    ')' 	shift, and go to state 243
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 217
+state 219
 
     while_loop  ->  WHILE '(' expression ')' . block   (rule 85)
     while_loop  ->  WHILE '(' expression ')' . command   (rule 86)
@@ -5934,8 +6122,8 @@ state 217
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     LOCAL	[reduce using rule 96 (block)]
     GLOBAL	[reduce using rule 96 (block)]
@@ -5956,7 +6144,7 @@ state 217
     ';' 	[reduce using rule 96 (block)]
     $default	reduce using rule 96 (block)
 
-    command	go to state 243
+    command	go to state 244
     simple	go to state 26
     break	go to state 27
     continue	go to state 28
@@ -5979,11 +6167,11 @@ state 217
     repeat_loop	go to state 45
     while_loop	go to state 46
     if_cond	go to state 47
-    block	go to state 244
+    block	go to state 245
 
 
 
-state 218
+state 220
 
     ref  ->  '@' IDENT .   (rule 71)
 
@@ -5991,7 +6179,7 @@ state 218
 
 
 
-state 219
+state 221
 
     block  ->  '{' lines '}' .   (rule 98)
 
@@ -5999,88 +6187,97 @@ state 219
 
 
 
-state 220
+state 222
 
     argument  ->  identifier ':' . expression   (rule 113)
     argument  ->  identifier ':' . ref   (rule 114)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
     _NULL_	shift, and go to state 60
     TRUE	shift, and go to state 61
     '(' 	shift, and go to state 62
-    '@' 	shift, and go to state 143
+    '@' 	shift, and go to state 145
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    ref 	go to state 245
-    expression	go to state 246
-
-
-
-state 221
-
-    argument  ->  integer ':' . expression   (rule 110)
-    argument  ->  integer ':' . ref   (rule 112)
-
-    INT 	shift, and go to state 57
-    STRING	shift, and go to state 58
-    FALSE	shift, and go to state 59
-    _NULL_	shift, and go to state 60
-    TRUE	shift, and go to state 61
-    '(' 	shift, and go to state 62
-    '@' 	shift, and go to state 143
-    '!' 	shift, and go to state 64
-    '-' 	shift, and go to state 65
-
-    '-' 	[reduce using rule 117 (expression)]
-    $default	reduce using rule 117 (expression)
-
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    ref 	go to state 247
-    expression	go to state 248
-
-
-
-state 222
-
-    argument  ->  string ':' . expression   (rule 109)
-    argument  ->  string ':' . ref   (rule 111)
-
-    INT 	shift, and go to state 57
-    STRING	shift, and go to state 58
-    FALSE	shift, and go to state 59
-    _NULL_	shift, and go to state 60
-    TRUE	shift, and go to state 61
-    '(' 	shift, and go to state 62
-    '@' 	shift, and go to state 143
-    '!' 	shift, and go to state 64
-    '-' 	shift, and go to state 65
-
-    '-' 	[reduce using rule 117 (expression)]
-    $default	reduce using rule 117 (expression)
-
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
-    ref 	go to state 249
-    expression	go to state 250
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    ref 	go to state 246
+    expression	go to state 247
 
 
 
 state 223
+
+    argument  ->  integer ':' . expression   (rule 110)
+    argument  ->  integer ':' . ref   (rule 112)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
+    INT 	shift, and go to state 57
+    STRING	shift, and go to state 58
+    FALSE	shift, and go to state 59
+    _NULL_	shift, and go to state 60
+    TRUE	shift, and go to state 61
+    '(' 	shift, and go to state 62
+    '@' 	shift, and go to state 145
+    '!' 	shift, and go to state 64
+    '-' 	shift, and go to state 65
+
+    '-' 	[reduce using rule 117 (expression)]
+    $default	reduce using rule 117 (expression)
+
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    ref 	go to state 248
+    expression	go to state 249
+
+
+
+state 224
+
+    argument  ->  string ':' . expression   (rule 109)
+    argument  ->  string ':' . ref   (rule 111)
+
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
+    INT 	shift, and go to state 57
+    STRING	shift, and go to state 58
+    FALSE	shift, and go to state 59
+    _NULL_	shift, and go to state 60
+    TRUE	shift, and go to state 61
+    '(' 	shift, and go to state 62
+    '@' 	shift, and go to state 145
+    '!' 	shift, and go to state 64
+    '-' 	shift, and go to state 65
+
+    '-' 	[reduce using rule 117 (expression)]
+    $default	reduce using rule 117 (expression)
+
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
+    ref 	go to state 250
+    expression	go to state 251
+
+
+
+state 225
 
     argument_list  ->  argument_list ',' . argument   (rule 107)
 
@@ -6092,25 +6289,25 @@ state 223
     _NULL_	shift, and go to state 60
     TRUE	shift, and go to state 61
     '(' 	shift, and go to state 62
-    '@' 	shift, and go to state 143
+    '@' 	shift, and go to state 145
     '!' 	shift, and go to state 64
     '-' 	shift, and go to state 65
 
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    identifier	go to state 154
-    integer	go to state 147
-    string	go to state 148
-    ip  	go to state 68
-    null	go to state 69
-    ref 	go to state 149
-    argument	go to state 251
-    expression	go to state 152
+    identifier	go to state 156
+    integer	go to state 149
+    string	go to state 150
+    ip  	go to state 69
+    null	go to state 70
+    ref 	go to state 151
+    argument	go to state 252
+    expression	go to state 154
 
 
 
-state 224
+state 226
 
     block  ->  '{' argument_list '}' .   (rule 99)
 
@@ -6118,7 +6315,7 @@ state 224
 
 
 
-state 225
+state 227
 
     block  ->  '[' argument_list ']' .   (rule 101)
 
@@ -6126,7 +6323,7 @@ state 225
 
 
 
-state 226
+state 228
 
     repeat_loop  ->  REPEAT command UNTIL expression . ';'   (rule 84)
     expression  ->  expression . AND expression   (rule 119)
@@ -6154,35 +6351,35 @@ state 226
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    ';' 	shift, and go to state 252
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    ';' 	shift, and go to state 253
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 227
+state 229
 
     repeat_loop  ->  REPEAT block UNTIL expression . ';'   (rule 83)
     expression  ->  expression . AND expression   (rule 119)
@@ -6210,35 +6407,35 @@ state 227
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    ';' 	shift, and go to state 253
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    ';' 	shift, and go to state 254
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 228
+state 230
 
     rep  ->  call_function REP expression ';' .   (rule 42)
 
@@ -6246,15 +6443,7 @@ state 228
 
 
 
-state 229
-
-    call_function  ->  identifier '(' ')' ';' .   (rule 44)
-
-    $default	reduce using rule 44 (call_function)
-
-
-
-state 230
+state 231
 
     parameter  ->  '&' identifier .   (rule 15)
 
@@ -6262,15 +6451,15 @@ state 230
 
 
 
-state 231
-
-    call_function  ->  identifier '(' parameters ')' . ';'   (rule 43)
-
-    ';' 	shift, and go to state 254
-
-
-
 state 232
+
+    call_function  ->  identifier '(' parameters ')' .   (rule 43)
+
+    $default	reduce using rule 43 (call_function)
+
+
+
+state 233
 
     parameters  ->  parameter ',' . parameters   (rule 12)
 
@@ -6280,20 +6469,20 @@ state 232
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
     TRUE	shift, and go to state 61
-    '&' 	shift, and go to state 171
+    '&' 	shift, and go to state 173
 
     parameters	go to state 255
-    parameter	go to state 173
-    assign	go to state 174
+    parameter	go to state 175
+    assign	go to state 176
     assign_math_op	go to state 39
     assign_shift_op	go to state 40
-    identifier	go to state 175
-    integer	go to state 176
-    string	go to state 177
+    identifier	go to state 177
+    integer	go to state 178
+    string	go to state 179
 
 
 
-state 233
+state 234
 
     function  ->  FUNCTION identifier '(' ')' block .   (rule 11)
 
@@ -6301,12 +6490,12 @@ state 233
 
 
 
-state 234
+state 235
 
     function  ->  FUNCTION identifier '(' parameters ')' . block   (rule 10)
 
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     $default	reduce using rule 96 (block)
 
@@ -6314,7 +6503,7 @@ state 234
 
 
 
-state 235
+state 236
 
     if_cond  ->  IF '(' if_expr ')' command .   (rule 91)
     if_cond  ->  IF '(' if_expr ')' command . ELSE block   (rule 94)
@@ -6327,7 +6516,7 @@ state 235
 
 
 
-state 236
+state 237
 
     if_cond  ->  IF '(' if_expr ')' block .   (rule 90)
     if_cond  ->  IF '(' if_expr ')' block . ELSE command   (rule 92)
@@ -6340,7 +6529,7 @@ state 236
 
 
 
-state 237
+state 238
 
     include  ->  INCLUDE '(' string ')' ';' .   (rule 36)
 
@@ -6348,7 +6537,7 @@ state 237
 
 
 
-state 238
+state 239
 
     import  ->  IMPORT '(' string ')' ';' .   (rule 35)
 
@@ -6356,7 +6545,7 @@ state 238
 
 
 
-state 239
+state 240
 
     ip  ->  integer '.' integer '.' . integer '.' integer   (rule 69)
 
@@ -6368,7 +6557,7 @@ state 239
 
 
 
-state 240
+state 241
 
     for_loop  ->  FOR '(' expression ';' expression . ';' expression ')' block   (rule 77)
     for_loop  ->  FOR '(' expression ';' expression . ';' expression ')' command   (rule 78)
@@ -6397,35 +6586,35 @@ state 240
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
     ';' 	shift, and go to state 260
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 241
+state 242
 
     foreach_loop  ->  FOREACH '(' identifier IN_ITER expression . ')' block   (rule 81)
     foreach_loop  ->  FOREACH '(' identifier IN_ITER expression . ')' command   (rule 82)
@@ -6454,35 +6643,35 @@ state 241
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
     ')' 	shift, and go to state 261
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
-state 242
+state 243
 
     foreach_loop  ->  FOREACH identifier '(' expression ')' . block   (rule 79)
     foreach_loop  ->  FOREACH identifier '(' expression ')' . command   (rule 80)
@@ -6504,8 +6693,8 @@ state 242
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     LOCAL	[reduce using rule 96 (block)]
     GLOBAL	[reduce using rule 96 (block)]
@@ -6553,7 +6742,7 @@ state 242
 
 
 
-state 243
+state 244
 
     while_loop  ->  WHILE '(' expression ')' command .   (rule 86)
 
@@ -6561,7 +6750,7 @@ state 243
 
 
 
-state 244
+state 245
 
     while_loop  ->  WHILE '(' expression ')' block .   (rule 85)
 
@@ -6569,7 +6758,7 @@ state 244
 
 
 
-state 245
+state 246
 
     argument  ->  identifier ':' ref .   (rule 114)
 
@@ -6577,7 +6766,7 @@ state 245
 
 
 
-state 246
+state 247
 
     argument  ->  identifier ':' expression .   (rule 113)
     expression  ->  expression . AND expression   (rule 119)
@@ -6605,36 +6794,36 @@ state 246
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     $default	reduce using rule 113 (argument)
 
 
 
-state 247
+state 248
 
     argument  ->  integer ':' ref .   (rule 112)
 
@@ -6642,7 +6831,7 @@ state 247
 
 
 
-state 248
+state 249
 
     argument  ->  integer ':' expression .   (rule 110)
     expression  ->  expression . AND expression   (rule 119)
@@ -6670,36 +6859,36 @@ state 248
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     $default	reduce using rule 110 (argument)
 
 
 
-state 249
+state 250
 
     argument  ->  string ':' ref .   (rule 111)
 
@@ -6707,7 +6896,7 @@ state 249
 
 
 
-state 250
+state 251
 
     argument  ->  string ':' expression .   (rule 109)
     expression  ->  expression . AND expression   (rule 119)
@@ -6735,36 +6924,36 @@ state 250
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
     $default	reduce using rule 109 (argument)
 
 
 
-state 251
+state 252
 
     argument_list  ->  argument_list ',' argument .   (rule 107)
 
@@ -6772,7 +6961,7 @@ state 251
 
 
 
-state 252
+state 253
 
     repeat_loop  ->  REPEAT command UNTIL expression ';' .   (rule 84)
 
@@ -6780,19 +6969,11 @@ state 252
 
 
 
-state 253
+state 254
 
     repeat_loop  ->  REPEAT block UNTIL expression ';' .   (rule 83)
 
     $default	reduce using rule 83 (repeat_loop)
-
-
-
-state 254
-
-    call_function  ->  identifier '(' parameters ')' ';' .   (rule 43)
-
-    $default	reduce using rule 43 (call_function)
 
 
 
@@ -6834,8 +7015,8 @@ state 257
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     LOCAL	[reduce using rule 96 (block)]
     GLOBAL	[reduce using rule 96 (block)]
@@ -6905,8 +7086,8 @@ state 258
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     LOCAL	[reduce using rule 96 (block)]
     GLOBAL	[reduce using rule 96 (block)]
@@ -6967,6 +7148,8 @@ state 260
     for_loop  ->  FOR '(' expression ';' expression ';' . expression ')' block   (rule 77)
     for_loop  ->  FOR '(' expression ';' expression ';' . expression ')' command   (rule 78)
 
+    IN_ITER	shift, and go to state 14
+    IDENT	shift, and go to state 17
     INT 	shift, and go to state 57
     STRING	shift, and go to state 58
     FALSE	shift, and go to state 59
@@ -6979,10 +7162,11 @@ state 260
     '-' 	[reduce using rule 117 (expression)]
     $default	reduce using rule 117 (expression)
 
-    integer	go to state 66
-    string	go to state 67
-    ip  	go to state 68
-    null	go to state 69
+    identifier	go to state 66
+    integer	go to state 67
+    string	go to state 68
+    ip  	go to state 69
+    null	go to state 70
     expression	go to state 269
 
 
@@ -7009,8 +7193,8 @@ state 261
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     LOCAL	[reduce using rule 96 (block)]
     GLOBAL	[reduce using rule 96 (block)]
@@ -7147,31 +7331,31 @@ state 269
     expression  ->  expression . CMP_EQ expression   (rule 143)
     expression  ->  expression . CMP_NEQ expression   (rule 144)
 
-    OR  	shift, and go to state 114
-    AND 	shift, and go to state 115
-    SUBSTR_EQ	shift, and go to state 116
-    SUBSTR_NEQ	shift, and go to state 117
-    REGEX_EQ	shift, and go to state 118
-    REGEX_NEQ	shift, and go to state 119
-    POWER	shift, and go to state 120
-    CMP_EQ	shift, and go to state 121
-    CMP_GE	shift, and go to state 122
-    CMP_LE	shift, and go to state 123
-    CMP_NEQ	shift, and go to state 124
-    SL  	shift, and go to state 125
-    SR  	shift, and go to state 126
-    SRR 	shift, and go to state 127
+    OR  	shift, and go to state 116
+    AND 	shift, and go to state 117
+    SUBSTR_EQ	shift, and go to state 118
+    SUBSTR_NEQ	shift, and go to state 119
+    REGEX_EQ	shift, and go to state 120
+    REGEX_NEQ	shift, and go to state 121
+    POWER	shift, and go to state 122
+    CMP_EQ	shift, and go to state 123
+    CMP_GE	shift, and go to state 124
+    CMP_LE	shift, and go to state 125
+    CMP_NEQ	shift, and go to state 126
+    SL  	shift, and go to state 127
+    SR  	shift, and go to state 128
+    SRR 	shift, and go to state 129
     ')' 	shift, and go to state 273
-    '&' 	shift, and go to state 128
-    '+' 	shift, and go to state 130
-    '-' 	shift, and go to state 131
-    '*' 	shift, and go to state 132
-    '/' 	shift, and go to state 133
-    '%' 	shift, and go to state 134
-    '^' 	shift, and go to state 135
-    '|' 	shift, and go to state 136
-    '<' 	shift, and go to state 137
-    '>' 	shift, and go to state 138
+    '&' 	shift, and go to state 130
+    '+' 	shift, and go to state 132
+    '-' 	shift, and go to state 133
+    '*' 	shift, and go to state 134
+    '/' 	shift, and go to state 135
+    '%' 	shift, and go to state 136
+    '^' 	shift, and go to state 137
+    '|' 	shift, and go to state 138
+    '<' 	shift, and go to state 139
+    '>' 	shift, and go to state 140
 
 
 
@@ -7221,8 +7405,8 @@ state 273
     DEC 	shift, and go to state 18
     INC 	shift, and go to state 19
     ';' 	shift, and go to state 20
-    '{' 	shift, and go to state 77
-    '[' 	shift, and go to state 78
+    '{' 	shift, and go to state 78
+    '[' 	shift, and go to state 79
 
     LOCAL	[reduce using rule 96 (block)]
     GLOBAL	[reduce using rule 96 (block)]
