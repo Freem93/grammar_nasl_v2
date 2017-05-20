@@ -109,9 +109,9 @@ simple: 				assign
 Describe of  simple commands
 ******************************/
 /******************************
-			Assign
+			Operations
 ******************************/
-assign: 			identifier "=" value ';'
+assign: 			identifier "=" value
 					| assign_math_op
 					| assign_shift_op
 					| assign_condition_op
@@ -122,18 +122,40 @@ assign: 			identifier "=" value ';'
 /******************************
 		Compound commands
 ******************************/		 
-compound: 				for
-						| foreach
-						| repeat
-						| while
-						| if
+compound: 				for_loop
+						| foreach_loop
+						| repeat_loop
+						| while_loop
+						| if_cond
 						| block
 						;
 		
 /******************************
 Describe of compound commands
 ******************************/
+for_loop:				FOR '(' expression ';' expression ';' expression ')' block
+						| FOR '(' expression ';' expression ';' expression ')' command
+						;
 
+foreach_loop:
+						;
+						
+repeat_loop:
+						;
+						
+while_loop:				
+						;
+						
+if_cond: 
+						;
+
+block: 					
+						| '{' '}'
+						| '{' line '}'
+						| '{' argument_list '}'
+						| '[' ']'
+						| '[' argument_list ']'
+						;
 %%
 #include <stdio.h>
 extern char yytext[];
