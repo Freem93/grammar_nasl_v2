@@ -161,6 +161,7 @@ assign: 			 '=' value
 					| identifier '=' ref
 					| assign_math_op
 					| assign_shift_op
+					| '(' assign ')'
 					;
 					
 inc_dec_exp:	 	INC identifier
@@ -256,8 +257,6 @@ block:
 
 body:		
 						 '{' argument_list '}'
-		 				| '[' ']'
-						| '[' argument_list ']'
 						;
 						
 body_sq:				 '[' ']'
@@ -331,12 +330,15 @@ expression: 		| '(' expression ')'
 					| expression CMP_LE expression
 					| expression CMP_EQ expression
 					| expression CMP_NEQ expression
+					| identifier body_enum_p
+					| '~' expression
 					| identifier
 					| integer
 					| string
 					| ip
 					| null
 					| body
+					| body_sq
 					| identifier body
 					| call_function
 					;

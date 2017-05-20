@@ -149,7 +149,7 @@ TRUE_();
 
  foo[a][1]['b'][c+d].e.f.g(); #test_no_args
  foo[a][1]['b'][c+d].e.f.g(1, '2', three); #test_anonymous_args
- foo[a][1]['b'][c+d].e.f.g(a:1, b:'2', c:three) #test_named_args
+ foo[a][1]['b'][c+d].e.f.g(a:1, b:'2', c:three); #test_named_args
  foo[a][1]['b'][c+d].e.f.g(a:1, '2', c:three, bar()); #test_mixed_args
 
 
