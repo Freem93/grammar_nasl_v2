@@ -230,12 +230,17 @@ while_loop:				WHILE '(' expression ')' block
 						| WHILE '(' expression ')' command
 						;
 						
-if_cond: 				IF '(' expression ')' block
-						| IF '(' expression ')' command
-						| IF '(' expression ')' block ELSE command
-						| IF '(' expression ')' block ELSE block
-						| IF '(' expression ')' command ELSE block
-						| IF '(' expression ')' command ELSE command
+if_expr:				expression
+						| assign
+						| call_function
+						;
+						
+if_cond: 				IF '(' if_expr ')' block
+						| IF '(' if_expr ')' command
+						| IF '(' if_expr ')' block ELSE command
+						| IF '(' if_expr ')' block ELSE block
+						| IF '(' if_expr ')' command ELSE block
+						| IF '(' if_expr ')' command ELSE command
 						;
 
 block: 					
