@@ -160,6 +160,7 @@ assign: 			 '=' value
 					| identifier '=' value
 					| identifier '=' assign
 					| identifier '=' ref
+					| identifier body_enum_sq '=' value
 					| assign_math_op
 					| assign_shift_op
 					| '(' assign ')'
