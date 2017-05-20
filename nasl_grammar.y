@@ -168,6 +168,10 @@ inc_dec_exp:	 	INC identifier
 					| DEC identifier
 					| identifier INC
 					| identifier DEC
+					| INC identifier body_enum_sq
+					| DEC identifier body_enum_sq
+					| identifier body_enum_sq INC
+					| identifier body_enum_sq DEC
 					;
 					
 assign_math_op: 	identifier ADD_ASS value
@@ -261,6 +265,8 @@ body:
 						
 body_sq:				 '[' ']'
 						| '[' argument_list ']'
+						| '[' integer ']'
+						| '[' identifier ']'
 						;
 						
 body_enum_sq:			body_enum_sq body_sq
