@@ -97,8 +97,7 @@ simple: 				assign
 						| return
 						| local
 						| global
-						| incr
-						| decr
+						| inc_dec_exp
 						| rep
 						| import
 						| include
@@ -116,8 +115,25 @@ assign: 			identifier "=" value
 					| assign_shift_op
 					| assign_condition_op
 					;
-
 					
+inc_dec_exp:	 	"++" identifier
+					| "--" identifier
+					| identifier "++"
+					| identifier "--"
+					;
+					
+assign_math_op: 	identifier "+=" value
+					| identifier "-=" value
+					| identifier "*=" value
+					| identifier "/=" value
+					| identifier "%=" value
+					;
+
+assign_shift_op:	identifier ">>=" value
+					| identifier ">>>=" value
+					| identifier "<<=" value
+					;
+	
 		 
 /******************************
 		Compound commands
