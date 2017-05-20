@@ -150,7 +150,8 @@ call_function:		 	identifier '(' parameters ')'
 /******************************
 			Operations
 ******************************/
-assign: 			identifier '=' value
+assign: 			 '=' value
+					| identifier '=' value
 					| identifier '=' body
 					| identifier '=' call_function
 					| identifier '=' assign

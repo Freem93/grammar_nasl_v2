@@ -67,13 +67,13 @@ q = 0 % 0;
 if (q = foo());
 while (q = foo());
 q = [];
-#todo# q = [[[]], [[]], [[]]];
+ q = [[[]], [[]], [[]]];
 q = [1];
-#todo# q = [1, 'b', foo()];
+ q = [1, 'b', foo()];
 foo(arg:[1]);
 q = [] + [];
 q = [] + [];
-#todo# q = {'a':{'b':{}}, 'c':{'d':{}}, 'e':{'f':{}}};
+ q = {'a':{'b':{}}, 'c':{'d':{}}, 'e':{'f':{}}};
 q = {"a":1};
 q = {1:1, 2:'b', 3:foo()};
 foo(arg:{1:1});
@@ -147,10 +147,10 @@ FALSE_();
 NULL_();
 TRUE_();
 
-#todo# foo[a][1]['b'][c+d].e.f.g(); #test_no_args
-#todo# foo[a][1]['b'][c+d].e.f.g(1, '2', three); #test_anonymous_args
-#todo# foo[a][1]['b'][c+d].e.f.g(a:1, b:'2', c:three) #test_named_args
-#todo# foo[a][1]['b'][c+d].e.f.g(a:1, '2', c:three, bar()); #test_mixed_args
+ foo[a][1]['b'][c+d].e.f.g(); #test_no_args
+ foo[a][1]['b'][c+d].e.f.g(1, '2', three); #test_anonymous_args
+ foo[a][1]['b'][c+d].e.f.g(a:1, b:'2', c:three) #test_named_args
+ foo[a][1]['b'][c+d].e.f.g(a:1, '2', c:three, bar()); #test_mixed_args
 
 
 #Constant tests
@@ -178,8 +178,8 @@ q = (((a = b)));
 q = 0 | 1;
 q = 0 & 1;
 
-#todo# q = a.b; #test period
-#todo# q = a._;
+ q = a.b; #test period
+ q = a._;
 #q = a.1 #must be fail
 q = a + b / c + d;
 
@@ -265,21 +265,21 @@ include ("q.inc");
 
 q++;
 q[1]++;
-#todo# q[1][2]++;
-#todo# q[1][3]++;
+ q[1][2]++;
+ q[1][3]++;
 
 ++q;
 ++q[1];
-#todo# ++q[1][2];
-#todo# ++q[1][3];
+ ++q[1][2];
+ ++q[1][3];
 
 q["a"]++;
-#todo# q["a"]["b"]++;
-#todo# q["a"]["b"]["c"]++;
+ q["a"]["b"]++;
+ q["a"]["b"]["c"]++;
 
 ++q["a"];
-#todo# ++q["a"]["b"];
-#todo# ++q["a"]["b"]["c"];
+ ++q["a"]["b"];
+ ++q["a"]["b"]["c"];
 
 
 #test ip
@@ -304,8 +304,8 @@ local_var a, b = 2, c = @c;
 
 #test repetition
 
-#todo# exit() x 10;
-#todo# exit(2, 3) x 10;
+exit() x 10;
+exit(2, 3) x 10;
 
 
 #return tests
