@@ -305,7 +305,10 @@ expression: 		| '(' expression ')'
 					| string
 					| ip
 					| null
+<<<<<<< HEAD
 					| call_function
+=======
+>>>>>>> bfed4f2c63979aa176426f1ec76d25702b7c7d1f
 					;
 %%
 #include <stdio.h>
