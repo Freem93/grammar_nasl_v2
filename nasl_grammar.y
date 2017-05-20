@@ -230,8 +230,8 @@ repeat_loop:			REPEAT block UNTIL expression ';'
 						| REPEAT command UNTIL expression ';'
 						;
 						
-while_loop:				WHILE '(' expression ')' block
-						| WHILE '(' expression ')' command
+while_loop:				WHILE '(' if_expr ')' block
+						| WHILE '(' if_expr ')' command
 						;
 						
 if_expr:				expression

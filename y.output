@@ -179,8 +179,8 @@ rule 85   foreach_loop -> FOREACH '(' identifier IN_ITER expression ')' block
 rule 86   foreach_loop -> FOREACH '(' identifier IN_ITER expression ')' command
 rule 87   repeat_loop -> REPEAT block UNTIL expression ';'
 rule 88   repeat_loop -> REPEAT command UNTIL expression ';'
-rule 89   while_loop -> WHILE '(' expression ')' block
-rule 90   while_loop -> WHILE '(' expression ')' command
+rule 89   while_loop -> WHILE '(' if_expr ')' block
+rule 90   while_loop -> WHILE '(' if_expr ')' command
 rule 91   if_expr -> expression
 rule 92   if_expr -> assign
 rule 93   if_expr -> call_function
@@ -398,7 +398,7 @@ repeat_loop (108)
 while_loop (109)
     on left: 89 90, on right: 79
 if_expr (110)
-    on left: 91 92 93, on right: 94 95 96 97 98 99
+    on left: 91 92 93, on right: 89 90 94 95 96 97 98 99
 if_cond (111)
     on left: 94 95 96 97 98 99, on right: 80
 block (112)
@@ -416,9 +416,9 @@ argument (117)
 expression (118)
     on left: 121 122 123 124 125 126 127 128 129 130 131 132 133 134
     135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150
-    151 152 153, on right: 37 43 66 81 82 83 84 85 86 87 88 89 90 91
-    113 114 117 119 122 123 124 125 126 127 128 129 130 131 132 133
-    134 135 136 137 138 139 140 141 142 143 144 145 146 147 148
+    151 152 153, on right: 37 43 66 81 82 83 84 85 86 87 88 91 113
+    114 117 119 122 123 124 125 126 127 128 129 130 131 132 133 134
+    135 136 137 138 139 140 141 142 143 144 145 146 147 148
 
 
 state 0
@@ -646,8 +646,8 @@ state 14
 
 state 15
 
-    while_loop  ->  WHILE . '(' expression ')' block   (rule 89)
-    while_loop  ->  WHILE . '(' expression ')' command   (rule 90)
+    while_loop  ->  WHILE . '(' if_expr ')' block   (rule 89)
+    while_loop  ->  WHILE . '(' if_expr ')' command   (rule 90)
 
     '(' 	shift, and go to state 81
 
@@ -1556,8 +1556,8 @@ state 80
 
 state 81
 
-    while_loop  ->  WHILE '(' . expression ')' block   (rule 89)
-    while_loop  ->  WHILE '(' . expression ')' command   (rule 90)
+    while_loop  ->  WHILE '(' . if_expr ')' block   (rule 89)
+    while_loop  ->  WHILE '(' . if_expr ')' command   (rule 90)
 
     IN_ITER	shift, and go to state 14
     IDENT	shift, and go to state 17
@@ -1567,18 +1567,24 @@ state 81
     _NULL_	shift, and go to state 61
     TRUE	shift, and go to state 62
     '(' 	shift, and go to state 63
+    '=' 	shift, and go to state 21
     '!' 	shift, and go to state 67
     '-' 	shift, and go to state 68
 
     '-' 	[reduce using rule 121 (expression)]
     $default	reduce using rule 121 (expression)
 
-    identifier	go to state 69
+    call_function	go to state 109
+    assign	go to state 110
+    assign_math_op	go to state 40
+    assign_shift_op	go to state 41
+    identifier	go to state 111
     integer	go to state 70
     string	go to state 71
     ip  	go to state 72
     null	go to state 73
-    expression	go to state 160
+    if_expr	go to state 160
+    expression	go to state 113
 
 
 
@@ -3523,58 +3529,10 @@ state 159
 
 state 160
 
-    while_loop  ->  WHILE '(' expression . ')' block   (rule 89)
-    while_loop  ->  WHILE '(' expression . ')' command   (rule 90)
-    expression  ->  expression . AND expression   (rule 123)
-    expression  ->  expression . OR expression   (rule 125)
-    expression  ->  expression . '+' expression   (rule 126)
-    expression  ->  expression . '-' expression   (rule 127)
-    expression  ->  expression . '*' expression   (rule 129)
-    expression  ->  expression . POWER expression   (rule 130)
-    expression  ->  expression . '/' expression   (rule 131)
-    expression  ->  expression . '%' expression   (rule 132)
-    expression  ->  expression . '&' expression   (rule 133)
-    expression  ->  expression . '^' expression   (rule 134)
-    expression  ->  expression . '|' expression   (rule 135)
-    expression  ->  expression . SR expression   (rule 136)
-    expression  ->  expression . SL expression   (rule 137)
-    expression  ->  expression . SRR expression   (rule 138)
-    expression  ->  expression . SUBSTR_EQ expression   (rule 139)
-    expression  ->  expression . SUBSTR_NEQ expression   (rule 140)
-    expression  ->  expression . REGEX_NEQ expression   (rule 141)
-    expression  ->  expression . REGEX_EQ expression   (rule 142)
-    expression  ->  expression . '<' expression   (rule 143)
-    expression  ->  expression . '>' expression   (rule 144)
-    expression  ->  expression . CMP_GE expression   (rule 145)
-    expression  ->  expression . CMP_LE expression   (rule 146)
-    expression  ->  expression . CMP_EQ expression   (rule 147)
-    expression  ->  expression . CMP_NEQ expression   (rule 148)
+    while_loop  ->  WHILE '(' if_expr . ')' block   (rule 89)
+    while_loop  ->  WHILE '(' if_expr . ')' command   (rule 90)
 
-    OR  	shift, and go to state 132
-    AND 	shift, and go to state 133
-    SUBSTR_EQ	shift, and go to state 134
-    SUBSTR_NEQ	shift, and go to state 135
-    REGEX_EQ	shift, and go to state 136
-    REGEX_NEQ	shift, and go to state 137
-    POWER	shift, and go to state 138
-    CMP_EQ	shift, and go to state 139
-    CMP_GE	shift, and go to state 140
-    CMP_LE	shift, and go to state 141
-    CMP_NEQ	shift, and go to state 142
-    SL  	shift, and go to state 143
-    SR  	shift, and go to state 144
-    SRR 	shift, and go to state 145
     ')' 	shift, and go to state 231
-    '&' 	shift, and go to state 146
-    '+' 	shift, and go to state 148
-    '-' 	shift, and go to state 149
-    '*' 	shift, and go to state 150
-    '/' 	shift, and go to state 151
-    '%' 	shift, and go to state 152
-    '^' 	shift, and go to state 153
-    '|' 	shift, and go to state 154
-    '<' 	shift, and go to state 155
-    '>' 	shift, and go to state 156
 
 
 
@@ -6305,8 +6263,8 @@ state 230
 
 state 231
 
-    while_loop  ->  WHILE '(' expression ')' . block   (rule 89)
-    while_loop  ->  WHILE '(' expression ')' . command   (rule 90)
+    while_loop  ->  WHILE '(' if_expr ')' . block   (rule 89)
+    while_loop  ->  WHILE '(' if_expr ')' . command   (rule 90)
 
     LOCAL	shift, and go to state 3
     GLOBAL	shift, and go to state 4
@@ -7008,7 +6966,7 @@ state 255
 
 state 256
 
-    while_loop  ->  WHILE '(' expression ')' command .   (rule 90)
+    while_loop  ->  WHILE '(' if_expr ')' command .   (rule 90)
 
     $default	reduce using rule 90 (while_loop)
 
@@ -7016,7 +6974,7 @@ state 256
 
 state 257
 
-    while_loop  ->  WHILE '(' expression ')' block .   (rule 89)
+    while_loop  ->  WHILE '(' if_expr ')' block .   (rule 89)
 
     $default	reduce using rule 89 (while_loop)
 
