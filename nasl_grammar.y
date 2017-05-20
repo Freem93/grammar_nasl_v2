@@ -145,6 +145,12 @@ rep: 					call_function REP expression ';'
 						
 call_function:		 	identifier '(' parameters ')'
 						| identifier '(' ')'
+						| identifier body_enum_sq '(' ')'
+						| identifier body_enum_sq '(' parameters ')'
+						| identifier body_enum_sq body_enum_p '(' ')'
+						| identifier body_enum_sq body_enum_p '(' parameters ')'
+						| identifier body_enum_p '(' ')'
+						| identifier body_enum_p '(' parameters ')'
 						;
 /******************************
 			Operations
@@ -252,6 +258,21 @@ body:
 						 '{' argument_list '}'
 		 				| '[' ']'
 						| '[' argument_list ']'
+						;
+						
+body_sq:				 '[' ']'
+						| '[' argument_list ']'
+						;
+						
+body_enum_sq:			body_enum_sq body_sq
+						| body_sq
+						;
+						
+body_p:				 	'.' identifier
+						;
+						
+body_enum_p:			body_enum_p body_p
+						| body_p
 						;
 						
 /****************************
