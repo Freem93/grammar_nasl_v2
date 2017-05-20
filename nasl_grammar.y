@@ -38,6 +38,10 @@ extern int yylineno;
 %token FALSE
 %token NULL
 %token TRUE
+
+%token OR AND ADD_ASS SUB_ASS SUBSTR_EQ SUBSTR_NEQ REGEX_EQ REGEX_NEQ DEC INC DIV_ASS MUL_ASS MOD_ASS POWER
+
+%token CMP_EQ CMP_GE CMP_LE CMP_NEQ SL SR SRR SRR_ASS SR_ASS SL_ASS
 	
 %start nasl_script
 %%
@@ -133,22 +137,22 @@ assign: 			identifier '=' value
 					| assign_shift_op
 					;
 					
-inc_dec_exp:	 	"++" identifier
-					| "--" identifier
-					| identifier "++"
-					| identifier "--"
+inc_dec_exp:	 	INC identifier
+					| DEC identifier
+					| identifier INC
+					| identifier DEC
 					;
 					
-assign_math_op: 	identifier "+=" value
-					| identifier "-=" value
-					| identifier "*=" value
-					| identifier "/=" value
-					| identifier "%=" value
+assign_math_op: 	identifier ADD_ASS value
+					| identifier SUB_ASS value
+					| identifier MUL_ASS value
+					| identifier DIV_ASS value
+					| identifier MOD_ASS value
 					;
 
-assign_shift_op:	identifier ">>=" value
-					| identifier ">>>=" value
-					| identifier "<<=" value
+assign_shift_op:	identifier SR_ASS value
+					| identifier SRR_ASS value
+					| identifier SL_ASS value
 					;
 	
 /******************************
@@ -175,7 +179,7 @@ ip: 				integer '.' integer '.' integer '.' integer
 null: 				NULL
 					;	
 
-ref:				"@" IDENT
+ref:				'@' IDENT
 					;
 /******************************
 		Compound commands
@@ -227,37 +231,36 @@ block:
 						
 /****************************
 *****************************/
-expression: 		"(" expression ")"
+expression: 		'(' expression ')'
 					| assign
 					| inc_dec_exp
-					| expr "&&" expr
-					| "!" expr
-					| expr "||" expr
-					| expr "+" expr
-					| expr "-" expr
-					| "-" expr 
-					| BIT_NOT expr
-					| expr "*" expr
-					| expr "**" expr
-					| expr "/" expr
-					| expr "%" expr
-					| expr "&" expr
-					| expr "^" expr
-					| expr "|" expr
-					| expr "<<" expr
-					| expr ">>" expr
-					| expr ">>>" expr
+					| expr AND expr
+					| '!' expr
+					| expr OR expr
+					| expr '+' expr
+					| expr '-' expr
+					| '-' expr 
+					| expr '*' expr
+					| expr POWER expr
+					| expr '/' expr
+					| expr '%' expr
+					| expr '&' expr
+					| expr '^' expr
+					| expr '|' expr
+					| expr SR expr
+					| expr SL expr
+					| expr SRR expr
 					| inc_dec_exp
-					| expr "><" expr
-					| expr ">!<" expr
-					| expr "!~" expr
-					| expr "=~" expr
-					| expr "<" expr
-					| expr ">" expr
-					| expr "<=" expr
-					| expr ">=" expr
-					| expr "==" expr
-					| expr "!=" expr
+					| expr SUBSTR_EQ expr
+					| expr SUBSTR_NEQ expr
+					| expr REGEX_NEQ expr
+					| expr REGEX_EQ expr
+					| expr '<' expr
+					| expr '>' expr
+					| expr CMP_GE expr
+					| expr CMP_LE expr
+					| expr CMP_EQ expr
+					| expr CMP_NEQ expr
 					| call_function
 					| block
 					| integer

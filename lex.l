@@ -43,65 +43,65 @@ void count();
 (\"|\')([^\\"\'\r\n]|(\\.))*(\'|\") { count(); return(STRING); }
 [ \f\n\t\v] { count(); }
 
-"><" { count(); return("><"); }
-">!<" { count(); return(">!<"); }
+"><" { count(); return(SUBSTR_EQ); }
+">!<" { count(); return(SUBSTR_NEQ); }
 
-"=~" { count(); return("=~"); }
-"!~" { count(); return("!~"); }
+"=~" { count(); return(REGEX_EQ); }
+"!~" { count(); return(REGEX_NEQ); }
 
-"==" { count(); return("=="); }
-"!=" { count(); return("!="); }
-"<=" { count(); return("<="); }
-">=" { count(); return(">="); }
-"<" { count(); return("<"); }
-">" { count(); return(">"); }
+"==" { count(); return(CMP_EQ); }
+"!=" { count(); return(CMP_NEQ); }
+"<=" { count(); return(CMP_LE); }
+">=" { count(); return(CMP_GE); }
+"<" { count(); return('<'); }
+">" { count(); return('>'); }
 
-"=" {count(); return("="); }
-"+=" { count(); return("+="); }
-"-=" { count(); return("-="); }
-"*=" { count(); return("*="); }
-"/=" { count(); return("/="); }
-"%=" { count(); return("%="); }
-">>=" { count(); return(">>="); }
-">>>=" { count(); return(">>>="); }
-"<<=" { count(); return("<<="); }
+"=" {count(); return('='); }
+"+=" { count(); return(ADD_ASS); }
+"-=" { count(); return(SUB_ASS); }
+"*=" { count(); return(MUL_ASS); }
+"/=" { count(); return(DIV_ASS); }
+"%=" { count(); return(MOD_ASS); }
+">>=" { count(); return(SR_ASS); }
+">>>=" { count(); return(SRR_ASS); }
+"<<=" { count(); return(SL_ASS); }
 
-"||" { count(); return("||"); }
-"&&" { count(); return("&&"); }
-"!" { count(); return("!"); }
+"||" { count(); return(OR); }
+"&&" { count(); return(AND); }
+"!" { count(); return('!'); }
 
-"|" { count(); return("|"); }
-"^" { count(); return("^"); }
-">>>" { count(); return(">>>"); }
-">>" { count(); return(">>"); }
-"<<" { count(); return("<<"); }
+"|" { count(); return('|'); }
+"^" { count(); return('^'); }
+">>>" { count(); return(SRR); }
+">>" { count(); return(SR); }
+"<<" { count(); return(SL); }
 
-"++" { count(); return("++"); }
-"--" { count(); return("--"); }
+"++" { count(); return(INC); }
+"--" { count(); return(DEC); }
 
-"**" { count(); return("**"); }
+"**" { count(); return(POWER); }
 
-"+" { count(); return("+"); }
-"-" { count(); return("-"); }
-"*" { count(); return("*"); }
-"/" { count(); return("/"); }
-"%" { count(); return("%"); }
+"+" { count(); return('+'); }
+"-" { count(); return('-'); }
+"*" { count(); return('*'); }
+"/" { count(); return('/'); }
+"%" { count(); return('%'); }
 
-"~" { count(); return("~"); }
+"~" { count(); return('~'); }
 
-"." { count(); return("."); }
-"," { count(); return(","); }
-":" { count(); return(":"); }
-";" { count(); return(";"); }
-"(" { count(); return("("); }
-")" { count(); return(")"); }
-"[" { count(); return("["); }
-"]" { count(); return("]"); }
-"{" { count(); return("{"); }
-"}" { count(); return("}"); }
+"." { count(); return('.'); }
+"," { count(); return(','); }
+":" { count(); return(':'); }
+";" { count(); return(';'); }
+"(" { count(); return('('); }
+")" { count(); return(')'); }
+"[" { count(); return('['); }
+"]" { count(); return(']'); }
+"{" { count(); return('{'); }
+"}" { count(); return('}'); }
 
-"&" { count(); return("&"); }
-"@" { count(); return("@"); }
+"&" { count(); return('&'); }
+"@" { count(); return('@'); }
 
 [ \t\v\n\f] { count(); }
 
