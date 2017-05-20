@@ -98,7 +98,7 @@ command: 				simple
 	   Simple commands
 ******************************/		 
 simple: 				assign 
-						| call_function
+						| call_function ';'
 						| break
 						| continue
 						| return
@@ -129,6 +129,7 @@ include:				INCLUDE '(' string ')' ';'
 						
 return:					RETURN expression ';'
 						| RETURN '@' ';'
+						| RETURN body ';'
 						;
 						
 empty:					';'
@@ -143,13 +144,14 @@ local: 					LOCAL vars ';'
 rep: 					call_function REP expression ';'
 						;
 						
-call_function:		 	identifier '(' parameters ')' ';'
-						| identifier '(' ')' ';'
+call_function:		 	identifier '(' parameters ')'
+						| identifier '(' ')'
 						;
 /******************************
 			Operations
 ******************************/
 assign: 			identifier '=' value
+					| identifier '=' body
 					| identifier '=' ref
 					| assign_math_op
 					| assign_shift_op
@@ -229,18 +231,25 @@ while_loop:				WHILE '(' expression ')' block
 						| WHILE '(' expression ')' command
 						;
 						
-if_cond: 				IF '(' expression ')' block
-						| IF '(' expression ')' command
-						| IF '(' expression ')' block ELSE command
-						| IF '(' expression ')' block ELSE block
-						| IF '(' expression ')' command ELSE block
-						| IF '(' expression ')' command ELSE command
+if_expr:				expression
+						| assign
+						| call_function
+						;
+						
+if_cond: 				IF '(' if_expr ')' block
+						| IF '(' if_expr ')' command
+						| IF '(' if_expr ')' block ELSE command
+						| IF '(' if_expr ')' block ELSE block
+						| IF '(' if_expr ')' command ELSE block
+						| IF '(' if_expr ')' command ELSE command
 						;
 
 block: 					
 						| '{' '}'
 						| '{' lines '}'
-						| '{' argument_list '}'
+
+body:		
+						 '{' argument_list '}'
 		 				| '[' ']'
 						| '[' argument_list ']'
 						;
@@ -301,14 +310,11 @@ expression: 		| '(' expression ')'
 					| expression CMP_LE expression
 					| expression CMP_EQ expression
 					| expression CMP_NEQ expression
+					| identifier
 					| integer
 					| string
 					| ip
 					| null
-<<<<<<< HEAD
-					| call_function
-=======
->>>>>>> bfed4f2c63979aa176426f1ec76d25702b7c7d1f
 					;
 %%
 #include <stdio.h>

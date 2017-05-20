@@ -1,0 +1,55 @@
+#ifndef YYSTYPE
+#define YYSTYPE int
+#endif
+#define	COMMENT	258
+#define	FUNCTION	259
+#define	LOCAL	260
+#define	GLOBAL	261
+#define	ELSE	262
+#define	IF	263
+#define	INCLUDE	264
+#define	EXPORT	265
+#define	IMPORT	266
+#define	RETURN	267
+#define	BREAK	268
+#define	CONTINUE	269
+#define	FOR	270
+#define	FOREACH	271
+#define	IN_ITER	272
+#define	WHILE	273
+#define	REPEAT	274
+#define	REP	275
+#define	UNTIL	276
+#define	IDENT	277
+#define	INT	278
+#define	STRING	279
+#define	FALSE	280
+#define	_NULL_	281
+#define	TRUE	282
+#define	OR	283
+#define	AND	284
+#define	ADD_ASS	285
+#define	SUB_ASS	286
+#define	SUBSTR_EQ	287
+#define	SUBSTR_NEQ	288
+#define	REGEX_EQ	289
+#define	REGEX_NEQ	290
+#define	DEC	291
+#define	INC	292
+#define	DIV_ASS	293
+#define	MUL_ASS	294
+#define	MOD_ASS	295
+#define	POWER	296
+#define	CMP_EQ	297
+#define	CMP_GE	298
+#define	CMP_LE	299
+#define	CMP_NEQ	300
+#define	SL	301
+#define	SR	302
+#define	SRR	303
+#define	SRR_ASS	304
+#define	SR_ASS	305
+#define	SL_ASS	306
+
+
+extern YYSTYPE yylval;
