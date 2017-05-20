@@ -245,9 +245,7 @@ expression: 		"(" expression ")"
 					| expr ">=" expr
 					| expr "==" expr
 					| expr "!=" expr
-					| assign
 					| call_function
-					| value
 					| list_expr
 					| array_expr
 					;
