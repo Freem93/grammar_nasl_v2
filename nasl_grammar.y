@@ -122,8 +122,7 @@ include:				INCLUDE '(' string ')'
 						;
 						
 return:					RETURN expression 
-						| RETURN '@' 
-						| RETURN 
+						| RETURN '@'
 						;
 						
 empty:					';'
@@ -270,7 +269,7 @@ argument:				string ':' expression
 
 /****************************
 *****************************/
-expression: 		'(' expression ')'
+expression: 		| '(' expression ')'
 					| expression AND expression
 					| '!' expression
 					| expression OR expression
