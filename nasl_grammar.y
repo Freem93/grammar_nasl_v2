@@ -152,6 +152,8 @@ call_function:		 	identifier '(' parameters ')'
 ******************************/
 assign: 			identifier '=' value
 					| identifier '=' body
+					| identifier '=' call_function
+					| identifier '=' assign
 					| identifier '=' ref
 					| assign_math_op
 					| assign_shift_op
