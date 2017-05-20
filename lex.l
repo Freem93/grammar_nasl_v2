@@ -39,10 +39,8 @@ void count();
 "x" { count(); return(REP); 
 "until" { count(); return(UNTIL); }
 
-[_a-zA-Z0-9]+ { count(); return(IDENT); }
-[0-9]+ { count(); return(INT_DEC); }
-0[0-7]+ { count(); return(INT_OCT); }
-0x[a-f0-9]+ { count(); return(INT_HEX); }
+[a-zA-Z_][_a-zA-Z0-9] { count(); return(IDENT); }
+([0-9]+|0[xX][a-fA-F0-9]+|[0][0-7]+) { count(); return(INT); }
 (\"|\')([^\\"\'\r\n]|(\\.))*(\'|\") { count(); return(STRING); }
 [ \f\n\t\v] { count(); }
 
