@@ -62,6 +62,7 @@ line: 					COMMENT
 						| export
 						| function
 						| command
+						| block
 						;
 
 /******************************
@@ -244,7 +245,7 @@ if_cond: 				IF '(' if_expr ')' block
 						;
 
 block: 					
-						| '{' '}'
+						 '{' '}'
 						| '{' lines '}'
 
 body:		
