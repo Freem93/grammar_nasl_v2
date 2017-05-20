@@ -32,9 +32,7 @@ extern int yylineno;
 %token UNTIL
 
 %token IDENT
-%token INT_DEC
-%token INT_OCT
-%token INT_HEX
+%token INT
 %token STRING
 
 %token FALSE
@@ -111,7 +109,8 @@ Describe of  simple commands
 /******************************
 			Operations
 ******************************/
-assign: 			identifier "=" value
+assign: 			identifier '=' value
+					| identifier '=' ref
 					| assign_math_op
 					| assign_shift_op
 					;
@@ -138,19 +137,13 @@ assign_shift_op:	identifier ">>=" value
 ******************************/
 value:				identifier
 					| expression
-					| integer
-					| string
-					| ip
-					| null
 					;
 					
 identifier: 		IDENT
 					| IN_ITER
 					;
 
-integer: 			INT_DEC
-					| INT_HEX
-					| INT_OCT
+integer: 			INT
 					| TRUE
 					| FALSE
 					;
@@ -162,7 +155,10 @@ ip: 				integer '.' integer '.' integer '.' integer
 					;
 
 null: 				NULL
-					;					
+					;	
+
+ref:				"@" IDENT
+					;
 /******************************
 		Compound commands
 ******************************/		 
@@ -216,7 +212,6 @@ block:
 expression: 		"(" expression ")"
 					| assign
 					| inc_dec_exp
-					| value
 					| expr "&&" expr
 					| "!" expr
 					| expr "||" expr
@@ -246,8 +241,11 @@ expression: 		"(" expression ")"
 					| expr "==" expr
 					| expr "!=" expr
 					| call_function
-					| list_expr
-					| array_expr
+					| block
+					| integer
+					| string
+					| ip
+					| null
 					;
 %%
 #include <stdio.h>
