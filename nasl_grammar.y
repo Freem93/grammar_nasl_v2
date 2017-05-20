@@ -127,7 +127,19 @@ return:					RETURN expression ';'
 						| RETURN '@' ';'
 						| RETURN ';'
 						;
+						
+empty:					';'
+						;
 
+global: 				GLOBAL var_decls ';'
+						;
+
+local: 					LOCAL var_decls ';'
+						;						
+
+rep: 					call_function REP expression ';'
+						;
+						
 call_function:		 	identifier '(' parameters ')'
 						| identifier '(' ')'
 						;
@@ -192,7 +204,6 @@ compound: 				for_loop
 						| repeat_loop
 						| while_loop
 						| if_cond
-						| block
 						;
 		
 /******************************
@@ -233,8 +244,18 @@ block:
 						;
 						
 /****************************
-		Arguments
+		Arguments and variables
 *****************************/
+
+var: 					identifier '=' expression
+						| identifier '=' ref
+						| identifier
+						;
+
+vars: 					var ',' vars
+						| var
+						;
+						
 argument_list:			argument_list ',' argument
 						| argument
 						;
