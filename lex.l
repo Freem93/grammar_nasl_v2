@@ -37,6 +37,13 @@ void count();
 "repeat" { count(); return(REPEAT); }
 "x" { count(); return(REP); }
 "until" { count(); return(UNTIL); }
+"false" {count(); return(FALSE); }
+"null" { count(); return(_NULL_); }
+"true" { count(); return(TRUE); }
+"FALSE" {count(); return(FALSE); }
+"NULL" { count(); return(_NULL_); }
+"TRUE" { count(); return(TRUE); }
+
 
 [a-zA-Z_]+[_a-zA-Z0-9]* { count(); return(IDENT); }
 ([0-9]+|0[xX][a-fA-F0-9]+|[0][0-7]+) { count(); return(INT); }
@@ -105,9 +112,7 @@ void count();
 
 [ \t\v\n\f] { count(); }
 
-"FALSE" {count(); return(FALSE); }
-"NULL" { count(); return(_NULL_); }
-"TRUE" { count(); return(TRUE); }
+
 
 %%
 
