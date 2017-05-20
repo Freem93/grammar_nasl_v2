@@ -150,7 +150,6 @@ call_function:		 	identifier '(' parameters ')'
 ******************************/
 assign: 			 '=' value
 					| identifier '=' value
-					| identifier '=' call_function
 					| identifier '=' assign
 					| identifier '=' ref
 					| assign_math_op
@@ -213,8 +212,8 @@ compound: 				for_loop
 /******************************
 Describe of compound commands
 ******************************/
-for_loop:				FOR '(' expression ';' expression ';' expression ')' block
-						| FOR '(' expression ';' expression ';' expression ')' command
+for_loop:				FOR '(' if_expr ';' if_expr ';' if_expr ')' block
+						| FOR '(' if_expr ';' if_expr ';' if_expr ')' command
 						;
 
 foreach_loop:			FOREACH identifier '(' expression ')' block
@@ -233,7 +232,7 @@ while_loop:				WHILE '(' if_expr ')' block
 						
 if_expr:				expression
 						| assign
-						| call_function
+						| inc_dec_exp
 						;
 						
 if_cond: 				IF '(' if_expr ')' block
@@ -279,7 +278,6 @@ argument:				string ':' expression
 						| identifier ':' ref
 						| expression
 						| ref
-						| call_function
 						;
 
 /****************************
@@ -317,6 +315,8 @@ expression: 		| '(' expression ')'
 					| ip
 					| null
 					| body
+					| identifier body
+					| call_function
 					;
 %%
 #include <stdio.h>
