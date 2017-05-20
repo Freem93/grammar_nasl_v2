@@ -38,7 +38,7 @@ extern int yylineno;
 %token STRING
 
 %token FALSE
-%token UNDEF
+%token NULL
 %token TRUE
 	
 %start nasl_script
@@ -114,7 +114,6 @@ Describe of  simple commands
 assign: 			identifier "=" value
 					| assign_math_op
 					| assign_shift_op
-					| assign_condition_op
 					;
 					
 inc_dec_exp:	 	"++" identifier
@@ -141,6 +140,8 @@ value:				identifier
 					| expression
 					| integer
 					| string
+					| ip
+					| null
 					;
 					
 identifier: 		IDENT
@@ -209,6 +210,47 @@ block:
 						| '[' ']'
 						| '[' argument_list ']'
 						;
+						
+/****************************
+*****************************/
+expression: 		"(" expression ")"
+					| assign
+					| inc_dec_exp
+					| value
+					| expr "&&" expr
+					| "!" expr
+					| expr "||" expr
+					| expr "+" expr
+					| expr "-" expr
+					| "-" expr 
+					| BIT_NOT expr
+					| expr "*" expr
+					| expr "**" expr
+					| expr "/" expr
+					| expr "%" expr
+					| expr "&" expr
+					| expr "^" expr
+					| expr "|" expr
+					| expr "<<" expr
+					| expr ">>" expr
+					| expr ">>>" expr
+					| inc_dec_exp
+					| expr "><" expr
+					| expr ">!<" expr
+					| expr "!~" expr
+					| expr "=~" expr
+					| expr "<" expr
+					| expr ">" expr
+					| expr "<=" expr
+					| expr ">=" expr
+					| expr "==" expr
+					| expr "!=" expr
+					| assign
+					| call_function
+					| value
+					| list_expr
+					| array_expr
+					;
 %%
 #include <stdio.h>
 extern char yytext[];
