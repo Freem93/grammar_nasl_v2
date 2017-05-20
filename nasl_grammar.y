@@ -111,8 +111,13 @@ Describe of  simple commands
 /******************************
 			Assign
 ******************************/
-assign: 				expression_assign ';'
-						;	 
+assign: 			identifier "=" value ';'
+					| assign_math_op
+					| assign_shift_op
+					| assign_condition_op
+					;
+
+					
 		 
 /******************************
 		Compound commands
