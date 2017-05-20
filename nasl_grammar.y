@@ -41,75 +41,71 @@ extern int yylineno;
 %token UNDEF
 %token TRUE
 	
-%start start
+%start nasl_script
 %%
 /**************************
 		START
 **************************/
-start: 
-	 | lines
-	 ;
-
-lines : line lines
-		 | line
-		 ;
+nasl_script:			 line nasl_script
+						|
+						;
 /**************************
 		Lines
 ***************************/
-line: 	COMMENT
-		 | export
-		 | function
-		 | command
-		 ;
+line: 					COMMENT
+						| export
+						| function
+						| command
+						;
 
 /******************************
 		Describe of lines
 ******************************/
 
-export: EXPORT function
-		 ;
+export: 				EXPORT function
+						;
 
-function: FUNCTION identifier '(' parameters ')' block
-		 | FUNCTION identifier '(' ')' block
-		 ;		 
+function: 				FUNCTION identifier '(' parameters ')' block
+						| FUNCTION identifier '(' ')' block
+						;
 /*****************************
 		Describe of function
 ******************************/
-identifier: IDENT
-	| REP
-	| IN_ITER
-	;
+identifier: 			IDENT
+						| REP
+						| IN_ITER
+						;
 	
-parameters: parameter ',' parameters
-			| parameter
-			;
+parameters: 			parameter ',' parameters
+						| parameter
+						;
 
-parameter: identifier
-		| '&' identifier
-		;
+parameter: 				identifier
+						| '&' identifier
+						;
 
 /********************************
 ********************************/
-command: simple
-		 | compound
-		 ;
+command: 				simple
+						| compound
+						;
 /*****************************
 	   Simple commands
 ******************************/		 
-simple: assign
-		| call_function
-		| break
-		| continue
-		| return
-		| local
-		| global
-		| incr
-		| decr
-		| rep
-		| import
-		| include
-		| empty
-		 ;
+simple: 				assign
+						| call_function
+						| break
+						| continue
+						| return
+						| local
+						| global
+						| incr
+						| decr
+						| rep
+						| import
+						| include
+						| empty
+						;
 		 
 /******************************
 Describe of  simple commands
@@ -117,19 +113,19 @@ Describe of  simple commands
 /******************************
 			Assign
 ******************************/
-assign: expression_assign ';'
-		 ;	 
+assign: 				expression_assign ';'
+						;	 
 		 
 /******************************
 		Compound commands
 ******************************/		 
-compound: for
-		| foreach
-		| repeat
-		| while
-		| if
-		| block
-		;
+compound: 				for
+						| foreach
+						| repeat
+						| while
+						| if
+						| block
+						;
 		
 /******************************
 Describe of compound commands
