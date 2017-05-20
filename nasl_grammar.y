@@ -128,6 +128,9 @@ return:					RETURN expression ';'
 						| RETURN ';'
 						;
 
+call_function:		 	identifier '(' parameters ')'
+						| identifier '(' ')'
+						;
 /******************************
 			Operations
 ******************************/
@@ -225,42 +228,59 @@ block:
 						| '{' '}'
 						| '{' line '}'
 						| '{' argument_list '}'
-						| '[' ']'
+		 				| '[' ']'
 						| '[' argument_list ']'
 						;
 						
+/****************************
+		Arguments
+*****************************/
+argument_list:			argument_list ',' argument
+						| argument
+						;
+						
+argument:				string ':' expression
+						| integer ':' expression
+						| string ':' ref
+						| integer ':' ref
+						| identifier ':' expression
+						| identifier ':' ref
+						| expression
+						| ref
+						;
+
 /****************************
 *****************************/
 expression: 		'(' expression ')'
 					| assign
 					| inc_dec_exp
-					| expr AND expr
-					| '!' expr
-					| expr OR expr
-					| expr '+' expr
-					| expr '-' expr
-					| '-' expr 
-					| expr '*' expr
-					| expr POWER expr
-					| expr '/' expr
-					| expr '%' expr
-					| expr '&' expr
-					| expr '^' expr
-					| expr '|' expr
-					| expr SR expr
-					| expr SL expr
-					| expr SRR expr
+					| expression AND expression
+					| '!' expression
+					| expression OR expression
+					| expression '+' expression
+					| expression '-' expression
+					| '-' expression 
+					| expression '*' expression
+					| expression POWER expression
+					| expression '/' expression
+					| expression '%' expression
+					| expression '&' expression
+					| expression '^' expression
+					| expression '|' expression
+					| expression SR expression
+					| expression SL expression
+					| expression SRR expression
 					| inc_dec_exp
-					| expr SUBSTR_EQ expr
-					| expr SUBSTR_NEQ expr
-					| expr REGEX_NEQ expr
-					| expr REGEX_EQ expr
-					| expr '<' expr
-					| expr '>' expr
-					| expr CMP_GE expr
-					| expr CMP_LE expr
-					| expr CMP_EQ expr
-					| expr CMP_NEQ expr
+					| expression SUBSTR_EQ expression
+					| expression SUBSTR_NEQ expression
+					| expression REGEX_NEQ expression
+					| expression REGEX_EQ expression
+					| expression '<' expression
+					| expression '>' expression
+					| expression CMP_GE expression
+					| expression CMP_LE expression
+					| expression CMP_EQ expression
+					| expression CMP_NEQ expression
 					| call_function
 					| block
 					| integer
