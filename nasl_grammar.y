@@ -82,11 +82,9 @@ parameters: 			parameter ',' parameters
 						| parameter
 						;
 
-parameter: 				identifier
-						| '&' identifier
+parameter: 				 '&' identifier
 						| assign
-						| string
-						| integer
+						| argument
 						;
 
 /********************************
@@ -152,7 +150,6 @@ call_function:		 	identifier '(' parameters ')'
 ******************************/
 assign: 			 '=' value
 					| identifier '=' value
-					| identifier '=' body
 					| identifier '=' call_function
 					| identifier '=' assign
 					| identifier '=' ref
@@ -282,7 +279,7 @@ argument:				string ':' expression
 						| identifier ':' ref
 						| expression
 						| ref
-						| body
+						| call_function
 						;
 
 /****************************
@@ -319,6 +316,7 @@ expression: 		| '(' expression ')'
 					| string
 					| ip
 					| null
+					| body
 					;
 %%
 #include <stdio.h>
