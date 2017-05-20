@@ -5,7 +5,7 @@
 
 for( ; ; )
 {
-	display(i, "\n");
+	display(i,"\n");
 }
 
 j = 1;

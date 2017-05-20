@@ -36,7 +36,7 @@ extern int yylineno;
 %token STRING
 
 %token FALSE
-%token NULL
+%token _NULL_
 %token TRUE
 
 %token OR AND ADD_ASS SUB_ASS SUBSTR_EQ SUBSTR_NEQ REGEX_EQ REGEX_NEQ DEC INC DIV_ASS MUL_ASS MOD_ASS POWER
@@ -81,6 +81,8 @@ parameters: 			parameter ',' parameters
 parameter: 				identifier
 						| '&' identifier
 						| assign
+						| string
+						| integer
 						;
 
 /********************************
@@ -109,36 +111,36 @@ simple: 				assign
 Describe of  simple commands
 ******************************/
 
-break:					BREAK 
+break:					BREAK ';'
 						;
 						
-continue:				CONTINUE 
+continue:				CONTINUE ';'
 						;
 						
-import:					IMPORT '(' string ')' 
+import:					IMPORT '(' string ')' ';'
 						;
 						
-include:				INCLUDE '(' string ')' 
+include:				INCLUDE '(' string ')' ';'
 						;
 						
-return:					RETURN expression 
-						| RETURN '@'
+return:					RETURN expression ';'
+						| RETURN '@' ';'
 						;
 						
 empty:					';'
 						;
 
-global: 				GLOBAL vars 
+global: 				GLOBAL vars ';'
 						;
 
-local: 					LOCAL vars 
+local: 					LOCAL vars ';'
 						;						
 
-rep: 					call_function REP expression
+rep: 					call_function REP expression ';'
 						;
 						
-call_function:		 	identifier '(' parameters ')'
-						| identifier '(' ')'
+call_function:		 	identifier '(' argument_list ')' ';'
+						| identifier '(' ')' ';'
 						;
 /******************************
 			Operations
@@ -188,7 +190,7 @@ string: 			STRING
 ip: 				integer '.' integer '.' integer '.' integer
 					;
 
-null: 				NULL
+null: 				_NULL_
 					;	
 
 ref:				'@' IDENT

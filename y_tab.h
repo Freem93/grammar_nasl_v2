@@ -24,7 +24,7 @@
 #define	INT	278
 #define	STRING	279
 #define	FALSE	280
-#define	NULL	281
+#define	_NULL_	281
 #define	TRUE	282
 #define	OR	283
 #define	AND	284

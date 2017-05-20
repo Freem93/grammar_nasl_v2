@@ -38,7 +38,7 @@ void count();
 "x" { count(); return(REP); }
 "until" { count(); return(UNTIL); }
 
-[a-zA-Z_][_a-zA-Z0-9] { count(); return(IDENT); }
+[a-zA-Z_]+[_a-zA-Z0-9]+ { count(); return(IDENT); }
 ([0-9]+|0[xX][a-fA-F0-9]+|[0][0-7]+) { count(); return(INT); }
 (\"|\')([^\\"\'\r\n]|(\\.))*(\'|\") { count(); return(STRING); }
 [ \f\n\t\v] { count(); }
@@ -106,7 +106,7 @@ void count();
 [ \t\v\n\f] { count(); }
 
 "FALSE" {count(); return(FALSE); }
-"NULL" { count(); return(NULL); }
+"NULL" { count(); return(_NULL_); }
 "TRUE" { count(); return(TRUE); }
 
 %%
