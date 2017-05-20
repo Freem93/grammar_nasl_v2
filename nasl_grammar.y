@@ -193,6 +193,7 @@ value:				expression
 					
 identifier: 		IDENT
 					| IN_ITER
+					| REP
 					;
 
 integer: 			INT

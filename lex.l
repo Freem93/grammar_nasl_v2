@@ -43,6 +43,7 @@ void count();
 "FALSE" {count(); return(FALSE); }
 "NULL" { count(); return(_NULL_); }
 "TRUE" { count(); return(TRUE); }
+"x" { count(); return(REP); }
 
 
 [a-zA-Z_]+[_a-zA-Z0-9]* { count(); return(IDENT); }
@@ -111,7 +112,7 @@ void count();
 "@" { count(); return('@'); }
 
 [ \t\v\n\f] { count(); }
-"x" { count(); return(REP); }
+
 
 
 %%
