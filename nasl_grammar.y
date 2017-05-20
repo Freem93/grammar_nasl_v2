@@ -140,7 +140,8 @@ global: 				GLOBAL vars ';'
 local: 					LOCAL vars ';'
 						;						
 
-rep: 					call_function REP identifier ';'
+rep: 					call_function REP integer ';'
+						| call_function REP identifier ';'
 						;
 						
 call_function:		 	identifier '(' parameters ')'
@@ -193,6 +194,7 @@ value:				expression
 					
 identifier: 		IDENT
 					| IN_ITER
+					| REP
 					;
 
 integer: 			INT

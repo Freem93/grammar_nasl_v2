@@ -4,7 +4,12 @@ del y_tab.c
 del y_tab.h
 flex.exe lex.l
 bison.exe -dy --verbose nasl_grammar.y
-gcc lex.yy.c y_tab.c -o parse.exe
+gcc lex.yy.c y_tab.c -o parse.exe < example.nasl
+
+parse.exe < example.nasl
+pause
+parse.exe < aaa.nasl
+pause
 parse.exe < test.nasl
 pause
 parse.exe < tests\signed.nasl
