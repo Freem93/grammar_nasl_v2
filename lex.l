@@ -35,7 +35,7 @@ void count();
 "in" { count(); return(IN_ITER); }
 "while" { count(); return(WHILE); }
 "repeat" { count(); return(REPEAT); }
-"x" { count(); return(REP); }
+
 "until" { count(); return(UNTIL); }
 "false" {count(); return(FALSE); }
 "null" { count(); return(_NULL_); }
@@ -111,7 +111,7 @@ void count();
 "@" { count(); return('@'); }
 
 [ \t\v\n\f] { count(); }
-
+"x" { count(); return(REP); }
 
 
 %%
