@@ -226,6 +226,7 @@ compound: 				for_loop
 						| repeat_loop
 						| while_loop
 						| if_cond
+						| command ELSE
 						;
 		
 /******************************
