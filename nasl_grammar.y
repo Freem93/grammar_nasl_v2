@@ -12,9 +12,9 @@ extern int yylineno;
 %token LOCAL
 %token GLOBAL
 
-%token ELSE
-%token IF
 
+%token IF
+%token ELSE
 %token INCLUDE
 %token EXPORT
 %token IMPORT
@@ -233,14 +233,14 @@ for_loop:				FOR '(' if_expr ';' if_expr ';' if_expr ')' block
 						| FOR '(' if_expr ';' if_expr ';' if_expr ')' command
 						;
 
-foreach_loop:			FOREACH identifier '(' expression ')' block
-						| FOREACH identifier '(' expression ')' command
-						| FOREACH '(' identifier IN_ITER expression ')' block
-						| FOREACH '(' identifier IN_ITER expression ')' command
+foreach_loop:			FOREACH identifier '(' if_expr ')' block
+						| FOREACH identifier '(' if_expr ')' command
+						| FOREACH '(' identifier IN_ITER if_expr ')' block
+						| FOREACH '(' identifier IN_ITER if_expr ')' command
 						;
 						
-repeat_loop:			REPEAT block UNTIL expression ';'
-						| REPEAT command UNTIL expression ';'
+repeat_loop:			REPEAT block UNTIL if_expr ';'
+						| REPEAT command UNTIL if_expr ';'
 						;
 						
 while_loop:				WHILE '(' if_expr ')' block
@@ -254,10 +254,10 @@ if_expr:				expression
 						
 if_cond: 				IF '(' if_expr ')' block
 						| IF '(' if_expr ')' command
+						| IF '(' if_expr ')' command ELSE command
 						| IF '(' if_expr ')' block ELSE command
 						| IF '(' if_expr ')' block ELSE block
 						| IF '(' if_expr ')' command ELSE block
-						| IF '(' if_expr ')' command ELSE command
 						;
 
 block: 					

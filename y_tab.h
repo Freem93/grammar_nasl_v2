@@ -5,8 +5,8 @@
 #define	FUNCTION	259
 #define	LOCAL	260
 #define	GLOBAL	261
-#define	ELSE	262
-#define	IF	263
+#define	IF	262
+#define	ELSE	263
 #define	INCLUDE	264
 #define	EXPORT	265
 #define	IMPORT	266

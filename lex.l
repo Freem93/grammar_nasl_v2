@@ -19,9 +19,9 @@ void count();
 "local_var" { count(); return(LOCAL); }
 "global_var" { count(); return(GLOBAL); }
 
-"else" { count(); return (ELSE); }
-"if" { count(); return(IF); }
 
+"if" { count(); return(IF); }
+"else" { count(); return (ELSE); }
 "include" { count(); return(INCLUDE); }
 "export" { count(); return(EXPORT); }
 "import" { count(); return(IMPORT); }
@@ -48,7 +48,7 @@ void count();
 
 [a-zA-Z_]+[_a-zA-Z0-9]* { count(); return(IDENT); }
 ([0-9]+|0[xX][a-fA-F0-9]+|[0][0-7]+) { count(); return(INT); }
-(\"|\')([^\\"\'\r\n]|(\\.))*(\'|\") { count(); return(STRING); }
+((\"|\')([^\"\'\r\n]|(\\.))*(\'|\"))|((\")([^\"\r\n]|(\\.))*(\")) { count(); return(STRING); }
 [ \f\n\t\v] { count(); }
 "x" { count(); return(REP); }
 "><" { count(); return(SUBSTR_EQ); }
