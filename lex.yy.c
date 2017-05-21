@@ -293,34 +293,34 @@ static void yy_fatal_error YY_PROTO(( yyconst char msg[] ));
 #define YY_END_OF_BUFFER 81
 static yyconst short int yy_acclist[255] =
     {   0,
-       81,   80,   29,   79,   80,   52,   80,   80,    1,   80,
-       65,   80,   77,   80,   80,   71,   80,   72,   80,   63,
-       80,   61,   80,   68,   80,   62,   80,   67,   80,   64,
-       80,   27,   80,   27,   80,   69,   80,   70,   80,   39,
-       80,   41,   80,   40,   80,   78,   80,   26,   80,   26,
-       80,   26,   80,   26,   80,   73,   80,   74,   80,   54,
-       80,   26,   80,   26,   80,   26,   80,   26,   80,   26,
-       80,   26,   80,   26,   80,   26,   80,   26,   80,   26,
-       80,   26,   80,   26,   80,   25,   26,   30,   80,   75,
-       80,   53,   80,   76,   80,   66,   80,   36,   34,   28,
+       81,   80,   30,   79,   80,   53,   80,   80,    1,   80,
+       66,   80,   78,   80,   80,   72,   80,   73,   80,   64,
+       80,   62,   80,   69,   80,   63,   80,   68,   80,   65,
+       80,   28,   80,   28,   80,   70,   80,   71,   80,   40,
+       80,   42,   80,   41,   80,   26,   80,   27,   80,   27,
+       80,   27,   80,   27,   80,   74,   80,   75,   80,   55,
+       80,   27,   80,   27,   80,   27,   80,   27,   80,   27,
+       80,   27,   80,   27,   80,   27,   80,   27,   80,   27,
+       80,   27,   80,   27,   80,   25,   27,   31,   80,   76,
+       80,   54,   80,   77,   80,   67,   80,   37,   35,   29,
 
-       28,    1,   46,   51,   28,   60,   44,   58,   42,   59,
-       43,   45,   27,   27,   57,   37,   35,   33,   31,   38,
-       56,   26,   26,   26,   26,   26,   26,   26,   26,   26,
-       26,   26,   26,   26,    5,   26,   26,   15,   26,   26,
-       26,   26,   26,   26,   26,   50,   28,   28,   28,   27,
-       49,   32,   47,   55,   26,   26,   26,   26,   26,   26,
-       26,   26,   13,   26,   26,   26,   26,   26,   26,   26,
-       26,   26,   26,   26,   26,   48,   26,   23,   26,   24,
-       26,   26,   26,    6,   26,   26,   26,   26,   26,   26,
-       26,   26,   26,   20,   26,   26,   26,   21,   26,   26,
+       29,    1,   47,   52,   29,   61,   45,   59,   43,   60,
+       44,   46,   28,   28,   58,   38,   36,   34,   32,   39,
+       57,   27,   27,   27,   27,   27,   27,   27,   27,   27,
+       27,   27,   27,   27,    5,   27,   27,   15,   27,   27,
+       27,   27,   27,   27,   27,   51,   29,   29,   29,   28,
+       50,   33,   48,   56,   27,   27,   27,   27,   27,   27,
+       27,   27,   13,   27,   27,   27,   27,   27,   27,   27,
+       27,   27,   27,   27,   27,   49,   27,   23,   27,   24,
+       27,   27,   27,    6,   27,   27,   27,   27,   27,   27,
+       27,   27,   27,   20,   27,   27,   27,   21,   27,   27,
 
-       26,   22,   26,   11,   26,   26,   26,   19,   26,   26,
-       26,   26,   26,   26,   26,   26,   26,   18,   26,   16,
-       26,   26,    8,   26,   26,   26,   26,    9,   26,   26,
-       26,   17,   26,   10,   26,   26,   14,   26,   26,   26,
-        7,   26,   26,   12,   26,    2,   26,   26,   26,   26,
-        3,   26,    4,   26
+       27,   22,   27,   11,   27,   27,   27,   19,   27,   27,
+       27,   27,   27,   27,   27,   27,   27,   18,   27,   16,
+       27,   27,    8,   27,   27,   27,   27,    9,   27,   27,
+       27,   17,   27,   10,   27,   27,   14,   27,   27,   27,
+        7,   27,   27,   12,   27,    2,   27,   27,   27,   27,
+        3,   27,    4,   27
     } ;
 
 static yyconst short int yy_accept[202] =
@@ -1023,268 +1023,268 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
+#line 47 "lex.l"
+{ count(); return('@'); }
+	YY_BREAK
+case 27:
+YY_RULE_SETUP
 #line 49 "lex.l"
 { count(); return(IDENT); }
 	YY_BREAK
-case 27:
+case 28:
 YY_RULE_SETUP
 #line 50 "lex.l"
 { count(); return(INT); }
 	YY_BREAK
-case 28:
+case 29:
 YY_RULE_SETUP
 #line 51 "lex.l"
 { count(); return(STRING); }
 	YY_BREAK
-case 29:
+case 30:
 YY_RULE_SETUP
 #line 52 "lex.l"
 { count(); }
 	YY_BREAK
-case 30:
+case 31:
 YY_RULE_SETUP
 #line 53 "lex.l"
 { count(); return(REP); }
 	YY_BREAK
-case 31:
+case 32:
 YY_RULE_SETUP
 #line 54 "lex.l"
 { count(); return(SUBSTR_EQ); }
 	YY_BREAK
-case 32:
+case 33:
 YY_RULE_SETUP
 #line 55 "lex.l"
 { count(); return(SUBSTR_NEQ); }
 	YY_BREAK
-case 33:
+case 34:
 YY_RULE_SETUP
 #line 57 "lex.l"
 { count(); return(REGEX_EQ); }
 	YY_BREAK
-case 34:
+case 35:
 YY_RULE_SETUP
 #line 58 "lex.l"
 { count(); return(REGEX_NEQ); }
 	YY_BREAK
-case 35:
+case 36:
 YY_RULE_SETUP
 #line 60 "lex.l"
 { count(); return(CMP_EQ); }
 	YY_BREAK
-case 36:
+case 37:
 YY_RULE_SETUP
 #line 61 "lex.l"
 { count(); return(CMP_NEQ); }
 	YY_BREAK
-case 37:
+case 38:
 YY_RULE_SETUP
 #line 62 "lex.l"
 { count(); return(CMP_LE); }
 	YY_BREAK
-case 38:
+case 39:
 YY_RULE_SETUP
 #line 63 "lex.l"
 { count(); return(CMP_GE); }
 	YY_BREAK
-case 39:
+case 40:
 YY_RULE_SETUP
 #line 64 "lex.l"
 { count(); return('<'); }
 	YY_BREAK
-case 40:
+case 41:
 YY_RULE_SETUP
 #line 65 "lex.l"
 { count(); return('>'); }
 	YY_BREAK
-case 41:
+case 42:
 YY_RULE_SETUP
 #line 67 "lex.l"
 {count(); return('='); }
 	YY_BREAK
-case 42:
+case 43:
 YY_RULE_SETUP
 #line 68 "lex.l"
 { count(); return(ADD_ASS); }
 	YY_BREAK
-case 43:
+case 44:
 YY_RULE_SETUP
 #line 69 "lex.l"
 { count(); return(SUB_ASS); }
 	YY_BREAK
-case 44:
+case 45:
 YY_RULE_SETUP
 #line 70 "lex.l"
 { count(); return(MUL_ASS); }
 	YY_BREAK
-case 45:
+case 46:
 YY_RULE_SETUP
 #line 71 "lex.l"
 { count(); return(DIV_ASS); }
 	YY_BREAK
-case 46:
+case 47:
 YY_RULE_SETUP
 #line 72 "lex.l"
 { count(); return(MOD_ASS); }
 	YY_BREAK
-case 47:
+case 48:
 YY_RULE_SETUP
 #line 73 "lex.l"
 { count(); return(SR_ASS); }
 	YY_BREAK
-case 48:
+case 49:
 YY_RULE_SETUP
 #line 74 "lex.l"
 { count(); return(SRR_ASS); }
 	YY_BREAK
-case 49:
+case 50:
 YY_RULE_SETUP
 #line 75 "lex.l"
 { count(); return(SL_ASS); }
 	YY_BREAK
-case 50:
+case 51:
 YY_RULE_SETUP
 #line 77 "lex.l"
 { count(); return(OR); }
 	YY_BREAK
-case 51:
+case 52:
 YY_RULE_SETUP
 #line 78 "lex.l"
 { count(); return(AND); }
 	YY_BREAK
-case 52:
+case 53:
 YY_RULE_SETUP
 #line 79 "lex.l"
 { count(); return('!'); }
 	YY_BREAK
-case 53:
+case 54:
 YY_RULE_SETUP
 #line 81 "lex.l"
 { count(); return('|'); }
 	YY_BREAK
-case 54:
+case 55:
 YY_RULE_SETUP
 #line 82 "lex.l"
 { count(); return('^'); }
 	YY_BREAK
-case 55:
+case 56:
 YY_RULE_SETUP
 #line 83 "lex.l"
 { count(); return(SRR); }
 	YY_BREAK
-case 56:
+case 57:
 YY_RULE_SETUP
 #line 84 "lex.l"
 { count(); return(SR); }
 	YY_BREAK
-case 57:
+case 58:
 YY_RULE_SETUP
 #line 85 "lex.l"
 { count(); return(SL); }
 	YY_BREAK
-case 58:
+case 59:
 YY_RULE_SETUP
 #line 87 "lex.l"
 { count(); return(INC); }
 	YY_BREAK
-case 59:
+case 60:
 YY_RULE_SETUP
 #line 88 "lex.l"
 { count(); return(DEC); }
 	YY_BREAK
-case 60:
+case 61:
 YY_RULE_SETUP
 #line 90 "lex.l"
 { count(); return(POWER); }
 	YY_BREAK
-case 61:
+case 62:
 YY_RULE_SETUP
 #line 92 "lex.l"
 { count(); return('+'); }
 	YY_BREAK
-case 62:
+case 63:
 YY_RULE_SETUP
 #line 93 "lex.l"
 { count(); return('-'); }
 	YY_BREAK
-case 63:
+case 64:
 YY_RULE_SETUP
 #line 94 "lex.l"
 { count(); return('*'); }
 	YY_BREAK
-case 64:
+case 65:
 YY_RULE_SETUP
 #line 95 "lex.l"
 { count(); return('/'); }
 	YY_BREAK
-case 65:
+case 66:
 YY_RULE_SETUP
 #line 96 "lex.l"
 { count(); return('%'); }
 	YY_BREAK
-case 66:
+case 67:
 YY_RULE_SETUP
 #line 98 "lex.l"
 { count(); return('~'); }
 	YY_BREAK
-case 67:
+case 68:
 YY_RULE_SETUP
 #line 100 "lex.l"
 { count(); return('.'); }
 	YY_BREAK
-case 68:
+case 69:
 YY_RULE_SETUP
 #line 101 "lex.l"
 { count(); return(','); }
 	YY_BREAK
-case 69:
+case 70:
 YY_RULE_SETUP
 #line 102 "lex.l"
 { count(); return(':'); }
 	YY_BREAK
-case 70:
+case 71:
 YY_RULE_SETUP
 #line 103 "lex.l"
 { count(); return(';'); }
 	YY_BREAK
-case 71:
+case 72:
 YY_RULE_SETUP
 #line 104 "lex.l"
 { count(); return('('); }
 	YY_BREAK
-case 72:
+case 73:
 YY_RULE_SETUP
 #line 105 "lex.l"
 { count(); return(')'); }
 	YY_BREAK
-case 73:
+case 74:
 YY_RULE_SETUP
 #line 106 "lex.l"
 { count(); return('['); }
 	YY_BREAK
-case 74:
+case 75:
 YY_RULE_SETUP
 #line 107 "lex.l"
 { count(); return(']'); }
 	YY_BREAK
-case 75:
+case 76:
 YY_RULE_SETUP
 #line 108 "lex.l"
 { count(); return('{'); }
 	YY_BREAK
-case 76:
+case 77:
 YY_RULE_SETUP
 #line 109 "lex.l"
 { count(); return('}'); }
 	YY_BREAK
-case 77:
+case 78:
 YY_RULE_SETUP
 #line 111 "lex.l"
 { count(); return('&'); }
-	YY_BREAK
-case 78:
-YY_RULE_SETUP
-#line 112 "lex.l"
-{ count(); return('@'); }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP

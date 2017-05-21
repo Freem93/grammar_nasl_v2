@@ -161,6 +161,8 @@ assign: 			 '=' value
 					| identifier '=' assign
 					| identifier '=' ref
 					| identifier body_enum_sq '=' value
+					| identifier '=' list_int
+					| identifier body_enum_sq '=' list_int
 					| identifier body_enum_sq '=' assign
 					| identifier body_enum_sq '=' ref
 					| assign_math_op
@@ -258,6 +260,7 @@ if_cond: 				IF '(' if_expr ')' block
 						| IF '(' if_expr ')' block ELSE command
 						| IF '(' if_expr ')' block ELSE block
 						| IF '(' if_expr ')' command ELSE block
+	
 						;
 
 block: 					
@@ -296,6 +299,10 @@ var: 					identifier '=' value
 
 vars: 					var ',' vars
 						| var
+						;
+
+list_int: 				list_int ',' integer 
+						| integer ',' integer
 						;
 						
 argument_list:			argument_list ',' argument

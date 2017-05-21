@@ -44,7 +44,7 @@ void count();
 "NULL" { count(); return(_NULL_); }
 "TRUE" { count(); return(TRUE); }
 "x" { count(); return(REP); }
-
+"@" { count(); return('@'); }
 
 [a-zA-Z_]+[_a-zA-Z0-9]* { count(); return(IDENT); }
 ([0-9]+|0[xX][a-fA-F0-9]+|[0][0-7]+) { count(); return(INT); }
@@ -109,7 +109,7 @@ void count();
 "}" { count(); return('}'); }
 
 "&" { count(); return('&'); }
-"@" { count(); return('@'); }
+
 
 [ \t\v\n\f] { count(); }
 
