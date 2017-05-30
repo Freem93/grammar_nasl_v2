@@ -5,7 +5,6 @@
 extern int yylineno;
 %}
 
-%token COMMENT
 
 %token FUNCTION
 
@@ -58,8 +57,7 @@ lines: 					line
 						| lines line
 						;
 
-line: 					COMMENT
-						| export
+line: 					export
 						| function
 						| command
 						| block

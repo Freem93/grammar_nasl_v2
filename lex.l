@@ -12,8 +12,6 @@ void count();
 
 %%
 
-[#].* { count(); return(COMMENT); }
-
 "function" { count(); return(FUNCTION); }
 
 "local_var" { count(); return(LOCAL); }
@@ -111,8 +109,47 @@ void count();
 "&" { count(); return('&'); }
 
 
-[ \t\v\n\f] { count(); }
+[ \t\v\n\f\r] { count(); }
+\r\n { count(); }
+\r { count(); }
+\n { count(); }
 
+"#" {
+		char c;
+		//printf("%d||    #", yylineno);
+		while(!((c = input()) == 0))
+		{
+			// наверное не нужно
+			/*if(c == 13)
+			{
+				c = input();
+				if(c == 10)
+				{
+					printf("%c" ,c);
+					++yylineno;
+					break;
+				}
+				else
+				{
+					unput(c);
+				}
+			}*/
+			
+			if(c == 10)
+			{
+				printf("%c", c);
+				++yylineno;
+				break;
+			}
+		
+			if(c == EOF)
+			{
+				break;
+			}
+			printf("%c", c);
+		}
+		//printf("\n");
+	}
 
 
 %%
