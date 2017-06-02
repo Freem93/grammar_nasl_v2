@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include "y_tab.h"
 void count();
-
+int flag = 0;
 %}
 
 %option outfile="lex.yy.c"
@@ -11,6 +11,7 @@ void count();
 
 
 %%
+
 
 "function" { count(); return(FUNCTION); }
 
@@ -108,39 +109,40 @@ void count();
 
 "&" { count(); return('&'); }
 
-
 [ \t\v\n\f\r] { count(); }
-\r\n { count(); }
-\r { count(); }
-\n { count(); }
 
 "#" {
-	printf("#");
-	char c;
-	while(!((c = input()) == 0))
-	{
-
-		if(c == '\n')
+		flag = 1;
+		if(yylineno == 1)
+			printf("%d||	", yylineno);
+		printf("#");
+		char c;
+		while(!((c = input()) == 0))
 		{
+			
+			if(c == '\n')
+			{
+				printf("%c", c);
+				
+				break;
+			}
+		
+			if(c == EOF)
+			{
+				break;
+			}
 			printf("%c", c);
-			break;
 		}
-
-		if(c == EOF)
-		{
-			break;
-		}
-		printf("%c", c);
+		//printf("\n");
+		printf("%d||	", yylineno);
 	}
-	//printf("\n");
-	printf("%d|| ", yylineno);
-}
+
 
 
 %%
 
 
-int flag = 0;
+
 int column = 0;
 void count()
 {

@@ -6,6 +6,7 @@ extern int yylineno;
 %}
 
 
+
 %token FUNCTION
 
 %token LOCAL
@@ -57,7 +58,7 @@ lines: 					line
 						| lines line
 						;
 
-line: 					export
+line: 					 export
 						| function
 						| command
 						| block
@@ -255,11 +256,10 @@ if_expr:				expression
 						
 if_cond: 				IF '(' if_expr ')' block
 						| IF '(' if_expr ')' command
-						| IF '(' if_expr ')' command ELSE command
 						| IF '(' if_expr ')' block ELSE command
+						| IF '(' if_expr ')' command ELSE command
 						| IF '(' if_expr ')' block ELSE block
 						| IF '(' if_expr ')' command ELSE block
-	
 						;
 
 block: 					

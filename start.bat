@@ -1,4 +1,4 @@
-del les.yy.cc
+del lex.yy.cc
 del parse.exe
 del y_tab.c
 del y_tab.h
