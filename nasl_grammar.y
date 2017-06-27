@@ -7,11 +7,15 @@ extern int yylineno;
 
 
 
-%token FUNCTION
+%token  FUNCTION QW OBJECT
 
 %token LOCAL
 %token GLOBAL
+%token VAR
+%token PUBLIC
 
+%token SWITCH
+%token CASE DEFAULT SW_AS
 
 %token IF
 %token ELSE
@@ -62,6 +66,7 @@ line: 					 export
 						| function
 						| command
 						| block
+						| object
 						;
 
 /******************************
@@ -73,6 +78,11 @@ export: 				EXPORT function
 
 function: 				FUNCTION identifier '(' parameters ')' block
 						| FUNCTION identifier '(' ')' block
+						| PUBLIC FUNCTION identifier '(' parameters ')' block
+						| PUBLIC FUNCTION identifier '(' ')' block
+						;
+						
+object: 				OBJECT identifier block
 						;
 /*****************************
 		Describe of function
@@ -101,6 +111,7 @@ simple: 				assign
 						| continue
 						| return
 						| local
+						| varib
 						| global
 						| inc_dec_exp
 						| rep
@@ -127,6 +138,7 @@ include:				INCLUDE '(' string ')' ';'
 						
 return:					RETURN expression ';'
 						| RETURN '@' ';'
+						| RETURN '@' identifier ';'
 						| RETURN body ';'
 						;
 						
@@ -137,6 +149,9 @@ global: 				GLOBAL vars ';'
 						;
 
 local: 					LOCAL vars ';'
+						;	
+
+varib: 					VAR vars ';'
 						;						
 
 rep: 					call_function REP integer ';'
@@ -151,6 +166,8 @@ call_function:		 	identifier '(' parameters ')'
 						| identifier body_enum_sq body_enum_p '(' parameters ')'
 						| identifier body_enum_p '(' ')'
 						| identifier body_enum_p '(' parameters ')'
+						| identifier QW identifier '(' parameters ')'
+						| identifier QW identifier QW identifier '(' parameters ')'
 						;
 /******************************
 			Operations
@@ -184,6 +201,11 @@ assign_math_op: 	identifier ADD_ASS value
 					| identifier MUL_ASS value
 					| identifier DIV_ASS value
 					| identifier MOD_ASS value
+					| identifier body_enum_sq ADD_ASS value
+					| identifier body_enum_sq SUB_ASS value
+					| identifier body_enum_sq MUL_ASS value
+					| identifier body_enum_sq DIV_ASS value
+					| identifier body_enum_sq MOD_ASS value
 					;
 
 assign_shift_op:	identifier SR_ASS value
@@ -206,7 +228,7 @@ integer: 			INT
 					| FALSE
 					;
 
-string: 			STRING
+string: 			STRING 
 					;
 
 ip: 				integer '.' integer '.' integer '.' integer
@@ -226,6 +248,7 @@ compound: 				for_loop
 						| while_loop
 						| if_cond
 						| command ELSE
+						| switch
 						;
 		
 /******************************
@@ -241,8 +264,8 @@ foreach_loop:			FOREACH identifier '(' if_expr ')' block
 						| FOREACH '(' identifier IN_ITER if_expr ')' command
 						;
 						
-repeat_loop:			REPEAT block UNTIL if_expr ';'
-						| REPEAT command UNTIL if_expr ';'
+repeat_loop:			REPEAT block UNTIL if_expr
+						| REPEAT command ';' UNTIL if_expr
 						;
 						
 while_loop:				WHILE '(' if_expr ')' block
@@ -251,7 +274,10 @@ while_loop:				WHILE '(' if_expr ')' block
 						
 if_expr:				expression
 						| assign
-						| inc_dec_exp
+						| if_expr AND if_expr
+						| if_expr OR if_expr
+						| if_expr '>' if_expr
+						| if_expr '<' if_expr
 						;
 						
 if_cond: 				IF '(' if_expr ')' block
@@ -260,6 +286,23 @@ if_cond: 				IF '(' if_expr ')' block
 						| IF '(' if_expr ')' command ELSE command
 						| IF '(' if_expr ')' block ELSE block
 						| IF '(' if_expr ')' command ELSE block
+						;
+						
+switch:					SWITCH '(' if_expr ')' block_sw
+						| SWITCH SW_AS '(' if_expr ')' block_sw
+						;
+						
+block_sw:				 '{' cases '}'
+						;
+						
+case: 					CASE STRING ':' lines
+						| CASE IDENT ':' lines
+						| CASE INT ':' lines
+						| DEFAULT ':' lines
+						;
+						
+cases: 					cases case
+						| case
 						;
 
 block: 					
@@ -312,7 +355,7 @@ argument:				string ':' expression
 						| integer ':' expression
 						| string ':' ref
 						| integer ':' ref
-						| identifier ':' expression
+						| identifier ':' expression 
 						| identifier ':' ref
 						| expression
 						| ref
@@ -326,6 +369,7 @@ expression: 		| '(' expression ')'
 					| expression OR expression
 					| expression '+' expression
 					| expression '-' expression
+					| expression '=' expression
 					| '-' expression 
 					| expression '*' expression
 					| expression POWER expression
@@ -359,6 +403,7 @@ expression: 		| '(' expression ')'
 					| identifier body
 					| identifier body_enum_sq
 					| call_function
+					| inc_dec_exp 
 					;
 %%
 #include <stdio.h>

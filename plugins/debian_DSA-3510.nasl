@@ -1,0 +1,290 @@
+#
+# (C) Tenable Network Security, Inc.
+#
+# The descriptive text and package checks in this plugin were  
+# extracted from Debian Security Advisory DSA-3510. The text 
+# itself is copyright (C) Software in the Public Interest, Inc.
+#
+
+if (NASL_LEVEL < 3000) exit(0);
+
+include("compat.inc");
+
+if (description)
+{
+  script_id(89792);
+  script_version("$Revision: 2.14 $");
+  script_cvs_date("$Date: 2016/12/06 20:25:08 $");
+
+  script_cve_id("CVE-2016-1950", "CVE-2016-1952", "CVE-2016-1954", "CVE-2016-1957", "CVE-2016-1958", "CVE-2016-1960", "CVE-2016-1961", "CVE-2016-1962", "CVE-2016-1964", "CVE-2016-1965", "CVE-2016-1966", "CVE-2016-1974", "CVE-2016-1977", "CVE-2016-2790", "CVE-2016-2791", "CVE-2016-2792", "CVE-2016-2793", "CVE-2016-2794", "CVE-2016-2795", "CVE-2016-2796", "CVE-2016-2797", "CVE-2016-2798", "CVE-2016-2799", "CVE-2016-2800", "CVE-2016-2801", "CVE-2016-2802");
+  script_osvdb_id(135550, 135551, 135552, 135553, 135554, 135555, 135556, 135557, 135558, 135576, 135579, 135580, 135582, 135583, 135584, 135591, 135592, 135595, 135602, 135603, 135605, 135606, 135607, 135608, 135609, 135610, 135611, 135612, 135613, 135614, 135615, 135616, 135617, 135618);
+  script_xref(name:"DSA", value:"3510");
+
+  script_name(english:"Debian DSA-3510-1 : iceweasel - security update");
+  script_summary(english:"Checks dpkg output for the updated package");
+
+  script_set_attribute(
+    attribute:"synopsis", 
+    value:"The remote Debian host is missing a security-related update."
+  );
+  script_set_attribute(
+    attribute:"description", 
+    value:
+"Multiple security issues have been found in Iceweasel, Debian's
+version of the Mozilla Firefox web browser: Multiple memory safety
+errors, buffer overflows, use-after-frees and other implementation
+errors may lead to the execution of arbitrary code, denial of service,
+address bar spoofing and overwriting local files."
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"https://packages.debian.org/source/wheezy/iceweasel"
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"https://packages.debian.org/source/jessie/iceweasel"
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://www.debian.org/security/2016/dsa-3510"
+  );
+  script_set_attribute(
+    attribute:"solution", 
+    value:
+"Upgrade the iceweasel packages.
+
+For the oldstable distribution (wheezy), these problems have been
+fixed in version 38.7.0esr-1~deb7u1.
+
+For the stable distribution (jessie), these problems have been fixed
+in version 38.7.0esr-1~deb8u1."
+  );
+  script_set_cvss_base_vector("CVSS2#AV:N/AC:L/Au:N/C:C/I:C/A:C");
+  script_set_cvss_temporal_vector("CVSS2#E:U/RL:OF/RC:C");
+  script_set_cvss3_base_vector("CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H");
+  script_set_cvss3_temporal_vector("CVSS:3.0/E:U/RL:O/RC:C");
+  script_set_attribute(attribute:"exploitability_ease", value:"No known exploits are available");
+  script_set_attribute(attribute:"exploit_available", value:"false");
+
+  script_set_attribute(attribute:"plugin_type", value:"local");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:debian:debian_linux:iceweasel");
+  script_set_attribute(attribute:"cpe", value:"cpe:/o:debian:debian_linux:7.0");
+  script_set_attribute(attribute:"cpe", value:"cpe:/o:debian:debian_linux:8.0");
+
+  script_set_attribute(attribute:"patch_publication_date", value:"2016/03/09");
+  script_set_attribute(attribute:"plugin_publication_date", value:"2016/03/10");
+  script_end_attributes();
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright(english:"This script is Copyright (C) 2016 Tenable Network Security, Inc.");
+  script_family(english:"Debian Local Security Checks");
+
+  script_dependencies("ssh_get_info.nasl");
+  script_require_keys("Host/local_checks_enabled", "Host/Debian/release", "Host/Debian/dpkg-l");
+
+  exit(0);
+}
+
+
+include("audit.inc");
+include("debian_package.inc");
+
+
+if (!get_kb_item("Host/local_checks_enabled")) audit(AUDIT_LOCAL_CHECKS_NOT_ENABLED);
+if (!get_kb_item("Host/Debian/release")) audit(AUDIT_OS_NOT, "Debian");
+if (!get_kb_item("Host/Debian/dpkg-l")) audit(AUDIT_PACKAGE_LIST_MISSING);
+
+
+flag = 0;
+if (deb_check(release:"7.0", prefix:"iceweasel", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-dbg", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-dev", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ach", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-af", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-all", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-an", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ar", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-as", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ast", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-be", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-bg", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-bn-bd", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-bn-in", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-br", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-bs", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ca", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-cs", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-csb", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-cy", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-da", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-de", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-el", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-en-gb", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-en-za", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-eo", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-es-ar", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-es-cl", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-es-es", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-es-mx", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-et", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-eu", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-fa", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ff", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-fi", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-fr", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-fy-nl", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ga-ie", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-gd", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-gl", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-gu-in", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-he", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-hi-in", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-hr", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-hsb", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-hu", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-hy-am", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-id", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-is", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-it", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ja", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-kk", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-km", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-kn", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ko", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ku", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-lij", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-lt", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-lv", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-mai", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-mk", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ml", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-mr", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ms", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-nb-no", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-nl", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-nn-no", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-or", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-pa-in", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-pl", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-pt-br", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-pt-pt", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-rm", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ro", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ru", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-si", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-sk", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-sl", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-son", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-sq", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-sr", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-sv-se", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-ta", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-te", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-th", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-tr", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-uk", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-vi", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-xh", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-zh-cn", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-zh-tw", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"7.0", prefix:"iceweasel-l10n-zu", reference:"38.7.0esr-1~deb7u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-dbg", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-dev", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ach", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-af", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-all", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-an", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ar", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-as", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ast", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-be", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-bg", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-bn-bd", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-bn-in", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-br", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-bs", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ca", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-cs", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-csb", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-cy", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-da", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-de", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-el", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-en-gb", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-en-za", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-eo", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-es-ar", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-es-cl", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-es-es", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-es-mx", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-et", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-eu", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-fa", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ff", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-fi", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-fr", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-fy-nl", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ga-ie", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-gd", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-gl", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-gu-in", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-he", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-hi-in", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-hr", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-hsb", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-hu", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-hy-am", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-id", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-is", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-it", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ja", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-kk", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-km", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-kn", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ko", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ku", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-lij", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-lt", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-lv", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-mai", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-mk", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ml", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-mr", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ms", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-nb-no", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-nl", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-nn-no", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-or", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-pa-in", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-pl", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-pt-br", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-pt-pt", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-rm", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ro", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ru", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-si", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-sk", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-sl", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-son", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-sq", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-sr", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-sv-se", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-ta", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-te", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-th", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-tr", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-uk", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-vi", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-xh", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-zh-cn", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-zh-tw", reference:"38.7.0esr-1~deb8u1")) flag++;
+if (deb_check(release:"8.0", prefix:"iceweasel-l10n-zu", reference:"38.7.0esr-1~deb8u1")) flag++;
+
+if (flag)
+{
+  if (report_verbosity > 0) security_hole(port:0, extra:deb_report_get());
+  else security_hole(0);
+  exit(0);
+}
+else audit(AUDIT_HOST_NOT, "affected");

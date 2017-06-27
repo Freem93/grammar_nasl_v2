@@ -1,0 +1,8 @@
+function fact(x)
+{
+local_var i, f;
+f = 1;
+for (i = 1; i <= n++; i ++) f *= i;
+return f;
+};
+#/*asdasdasddisplay("3 ! = ", fact(3), "\n");*\

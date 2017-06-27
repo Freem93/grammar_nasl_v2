@@ -1,0 +1,120 @@
+#
+# (C) Tenable Network Security, Inc.
+#
+# The descriptive text and package checks in this plugin were
+# extracted from openSUSE Security Update ghostscript-devel-877.
+#
+# The text description of this plugin is (C) SUSE LLC.
+#
+
+include("compat.inc");
+
+if (description)
+{
+  script_id(40220);
+  script_version("$Revision: 1.9 $");
+  script_cvs_date("$Date: 2016/12/21 20:09:51 $");
+
+  script_cve_id("CVE-2007-6725", "CVE-2008-6679", "CVE-2009-0196", "CVE-2009-0792");
+
+  script_name(english:"openSUSE Security Update : ghostscript-devel (ghostscript-devel-877)");
+  script_summary(english:"Check for the ghostscript-devel-877 patch");
+
+  script_set_attribute(
+    attribute:"synopsis", 
+    value:"The remote openSUSE host is missing a security update."
+  );
+  script_set_attribute(
+    attribute:"description", 
+    value:
+"Specially crafted file could cause a heap-overflow in JBIG2 decoder
+(CVE-2009-0196), an integer overflow in ICC library (CVE-2009-0792), a
+buffer overflow in BaseFont writer module (CVE-2008-6679) or crash the
+CCITTFax decoder (CVE-2007-6725)."
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"https://bugzilla.novell.com/show_bug.cgi?id=489622"
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"https://bugzilla.novell.com/show_bug.cgi?id=491897"
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"https://bugzilla.novell.com/show_bug.cgi?id=492765"
+  );
+  script_set_attribute(
+    attribute:"solution", 
+    value:"Update the affected ghostscript-devel packages."
+  );
+  script_set_cvss_base_vector("CVSS2#AV:N/AC:M/Au:N/C:C/I:C/A:C");
+  script_cwe_id(119, 189);
+
+  script_set_attribute(attribute:"plugin_type", value:"local");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:ghostscript-devel");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:ghostscript-fonts-other");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:ghostscript-fonts-rus");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:ghostscript-fonts-std");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:ghostscript-ijs-devel");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:ghostscript-library");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:ghostscript-omni");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:ghostscript-x11");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:libgimpprint");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:novell:opensuse:libgimpprint-devel");
+  script_set_attribute(attribute:"cpe", value:"cpe:/o:novell:opensuse:11.1");
+
+  script_set_attribute(attribute:"patch_publication_date", value:"2009/05/14");
+  script_set_attribute(attribute:"plugin_publication_date", value:"2009/07/21");
+  script_end_attributes();
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright(english:"This script is Copyright (C) 2009-2016 Tenable Network Security, Inc.");
+  script_family(english:"SuSE Local Security Checks");
+
+  script_dependencies("ssh_get_info.nasl");
+  script_require_keys("Host/local_checks_enabled", "Host/SuSE/release", "Host/SuSE/rpm-list", "Host/cpu");
+
+  exit(0);
+}
+
+
+include("audit.inc");
+include("global_settings.inc");
+include("rpm.inc");
+
+if (!get_kb_item("Host/local_checks_enabled")) audit(AUDIT_LOCAL_CHECKS_NOT_ENABLED);
+release = get_kb_item("Host/SuSE/release");
+if (isnull(release) || release =~ "^(SLED|SLES)") audit(AUDIT_OS_NOT, "openSUSE");
+if (release !~ "^(SUSE11\.1)$") audit(AUDIT_OS_RELEASE_NOT, "openSUSE", "11.1", release);
+if (!get_kb_item("Host/SuSE/rpm-list")) audit(AUDIT_PACKAGE_LIST_MISSING);
+
+ourarch = get_kb_item("Host/cpu");
+if (!ourarch) audit(AUDIT_UNKNOWN_ARCH);
+if (ourarch !~ "^(i586|i686|x86_64)$") audit(AUDIT_ARCH_NOT, "i586 / i686 / x86_64", ourarch);
+
+flag = 0;
+
+if ( rpm_check(release:"SUSE11.1", reference:"ghostscript-devel-8.62-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"ghostscript-fonts-other-8.62-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"ghostscript-fonts-rus-8.62-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"ghostscript-fonts-std-8.62-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"ghostscript-ijs-devel-8.62-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"ghostscript-library-8.62-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"ghostscript-omni-8.62-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"ghostscript-x11-8.62-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"libgimpprint-4.2.7-31.43.1") ) flag++;
+if ( rpm_check(release:"SUSE11.1", reference:"libgimpprint-devel-4.2.7-31.43.1") ) flag++;
+
+if (flag)
+{
+  if (report_verbosity > 0) security_hole(port:0, extra:rpm_report_get());
+  else security_hole(0);
+  exit(0);
+}
+else
+{
+  tested = pkg_tests_get();
+  if (tested) audit(AUDIT_PACKAGE_NOT_AFFECTED, tested);
+  else audit(AUDIT_PACKAGE_NOT_INSTALLED, "ghostscript-devel / ghostscript-fonts-other / ghostscript-fonts-rus / etc");
+}

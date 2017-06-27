@@ -1,0 +1,105 @@
+#
+# (C) Tenable Network Security, Inc.
+#
+# The descriptive text is (C) Scientific Linux.
+#
+
+include("compat.inc");
+
+if (description)
+{
+  script_id(65606);
+  script_version("$Revision: 1.3 $");
+  script_cvs_date("$Date: 2013/06/02 02:35:45 $");
+
+  script_cve_id("CVE-2012-1016", "CVE-2013-1415");
+
+  script_name(english:"Scientific Linux Security Update : krb5 on SL6.x i386/x86_64");
+  script_summary(english:"Checks rpm output for the updated packages");
+
+  script_set_attribute(
+    attribute:"synopsis", 
+    value:
+"The remote Scientific Linux host is missing one or more security
+updates."
+  );
+  script_set_attribute(
+    attribute:"description", 
+    value:
+"When a client attempts to use PKINIT to obtain credentials from the
+KDC, the client can specify, using an issuer and serial number, which
+of the KDC's possibly-many certificates the client has in its
+possession, as a hint to the KDC that it should use the corresponding
+key to sign its response. If that specification was malformed, the KDC
+could attempt to dereference a NULL pointer and crash. (CVE-2013-1415)
+
+When a client attempts to use PKINIT to obtain credentials from the
+KDC, the client will typically format its request to conform to the
+specification published in RFC 4556. For interoperability reasons,
+clients and servers also provide support for an older, draft version
+of that specification. If a client formatted its request to conform to
+this older version of the specification, with a non-default key
+agreement option, it could cause the KDC to attempt to dereference a
+NULL pointer and crash. (CVE-2012-1016)
+
+After installing the updated packages, the krb5kdc daemon will be
+restarted automatically."
+  );
+  # http://listserv.fnal.gov/scripts/wa.exe?A2=ind1303&L=scientific-linux-errata&T=0&P=5032
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://www.nessus.org/u?a197fc69"
+  );
+  script_set_attribute(attribute:"solution", value:"Update the affected packages.");
+  script_set_cvss_base_vector("CVSS2#AV:N/AC:M/Au:N/C:N/I:N/A:C");
+
+  script_set_attribute(attribute:"plugin_type", value:"local");
+  script_set_attribute(attribute:"cpe", value:"x-cpe:/o:fermilab:scientific_linux");
+
+  script_set_attribute(attribute:"patch_publication_date", value:"2013/03/18");
+  script_set_attribute(attribute:"plugin_publication_date", value:"2013/03/19");
+  script_end_attributes();
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright(english:"This script is Copyright (C) 2013 Tenable Network Security, Inc.");
+  script_family(english:"Scientific Linux Local Security Checks");
+
+  script_dependencies("ssh_get_info.nasl");
+  script_require_keys("Host/local_checks_enabled", "Host/cpu", "Host/RedHat/release", "Host/RedHat/rpm-list");
+
+  exit(0);
+}
+
+
+include("audit.inc");
+include("global_settings.inc");
+include("rpm.inc");
+
+
+if (!get_kb_item("Host/local_checks_enabled")) audit(AUDIT_LOCAL_CHECKS_NOT_ENABLED);
+release = get_kb_item("Host/RedHat/release");
+if (isnull(release) || "Scientific Linux " >!< release) audit(AUDIT_HOST_NOT, "running Scientific Linux");
+if (!get_kb_item("Host/RedHat/rpm-list")) audit(AUDIT_PACKAGE_LIST_MISSING);
+
+cpu = get_kb_item("Host/cpu");
+if (isnull(cpu)) audit(AUDIT_UNKNOWN_ARCH);
+if (cpu >!< "x86_64" && cpu !~ "^i[3-6]86$") audit(AUDIT_LOCAL_CHECKS_NOT_IMPLEMENTED, "Scientific Linux", cpu);
+
+
+flag = 0;
+if (rpm_check(release:"SL6", reference:"krb5-debuginfo-1.10.3-10.el6_4.1")) flag++;
+if (rpm_check(release:"SL6", reference:"krb5-devel-1.10.3-10.el6_4.1")) flag++;
+if (rpm_check(release:"SL6", reference:"krb5-libs-1.10.3-10.el6_4.1")) flag++;
+if (rpm_check(release:"SL6", reference:"krb5-pkinit-openssl-1.10.3-10.el6_4.1")) flag++;
+if (rpm_check(release:"SL6", reference:"krb5-server-1.10.3-10.el6_4.1")) flag++;
+if (rpm_check(release:"SL6", reference:"krb5-server-ldap-1.10.3-10.el6_4.1")) flag++;
+if (rpm_check(release:"SL6", reference:"krb5-workstation-1.10.3-10.el6_4.1")) flag++;
+
+
+if (flag)
+{
+  if (report_verbosity > 0) security_hole(port:0, extra:rpm_report_get());
+  else security_hole(0);
+  exit(0);
+}
+else audit(AUDIT_HOST_NOT, "affected");

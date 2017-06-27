@@ -1,0 +1,111 @@
+#
+# (C) Tenable Network Security, Inc.
+#
+# The descriptive text and package checks in this plugin were  
+# extracted from Debian Security Advisory DSA-701. The text 
+# itself is copyright (C) Software in the Public Interest, Inc.
+#
+
+include("compat.inc");
+
+if (description)
+{
+  script_id(17664);
+  script_version("$Revision: 1.20 $");
+  script_cvs_date("$Date: 2013/05/18 00:15:58 $");
+
+  script_cve_id("CVE-2004-1154");
+  script_osvdb_id(12422);
+  script_xref(name:"CERT", value:"226184");
+  script_xref(name:"DSA", value:"701");
+
+  script_name(english:"Debian DSA-701-2 : samba - integer overflows");
+  script_summary(english:"Checks dpkg output for the updated package");
+
+  script_set_attribute(
+    attribute:"synopsis", 
+    value:"The remote Debian host is missing a security-related update."
+  );
+  script_set_attribute(
+    attribute:"description", 
+    value:
+"It has been discovered that the last security update for Samba, a
+LanManager like file and printer server for GNU/Linux and Unix-like
+systems caused the daemon to crash upon reload. This has been fixed.
+For reference below is the original advisory text :
+
+  Greg MacManus discovered an integer overflow in the smb daemon from
+  Samba, a LanManager like file and printer server for GNU/Linux and
+  Unix-like systems. Requesting a very large number of access control
+  descriptors from the server could exploit the integer overflow,
+  which may result in a buffer overflow which could lead to the
+  execution of arbitrary code with root privileges. Upstream
+  developers have discovered more possible integer overflows that are
+  fixed with this update as well."
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=302378"
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://www.debian.org/security/2005/dsa-701"
+  );
+  script_set_attribute(
+    attribute:"solution", 
+    value:
+"Upgrade the samba packages.
+
+For the stable distribution (woody) these problems have been fixed in
+version 2.2.3a-15."
+  );
+  script_set_cvss_base_vector("CVSS2#AV:N/AC:L/Au:N/C:C/I:C/A:C");
+
+  script_set_attribute(attribute:"plugin_type", value:"local");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:debian:debian_linux:samba");
+  script_set_attribute(attribute:"cpe", value:"cpe:/o:debian:debian_linux:3.0");
+
+  script_set_attribute(attribute:"patch_publication_date", value:"2005/04/21");
+  script_set_attribute(attribute:"plugin_publication_date", value:"2005/04/01");
+  script_set_attribute(attribute:"vuln_publication_date", value:"2004/12/16");
+  script_end_attributes();
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright(english:"This script is Copyright (C) 2005-2013 Tenable Network Security, Inc.");
+  script_family(english:"Debian Local Security Checks");
+
+  script_dependencies("ssh_get_info.nasl");
+  script_require_keys("Host/local_checks_enabled", "Host/Debian/release", "Host/Debian/dpkg-l");
+
+  exit(0);
+}
+
+
+include("audit.inc");
+include("debian_package.inc");
+
+
+if (!get_kb_item("Host/local_checks_enabled")) audit(AUDIT_LOCAL_CHECKS_NOT_ENABLED);
+if (!get_kb_item("Host/Debian/release")) audit(AUDIT_OS_NOT, "Debian");
+if (!get_kb_item("Host/Debian/dpkg-l")) audit(AUDIT_PACKAGE_LIST_MISSING);
+
+
+flag = 0;
+if (deb_check(release:"3.0", prefix:"libpam-smbpass", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"libsmbclient", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"libsmbclient-dev", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"samba", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"samba-common", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"samba-doc", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"smbclient", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"smbfs", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"swat", reference:"2.2.3a-15")) flag++;
+if (deb_check(release:"3.0", prefix:"winbind", reference:"2.2.3a-15")) flag++;
+
+if (flag)
+{
+  if (report_verbosity > 0) security_hole(port:0, extra:deb_report_get());
+  else security_hole(0);
+  exit(0);
+}
+else audit(AUDIT_HOST_NOT, "affected");

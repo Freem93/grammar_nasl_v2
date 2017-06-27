@@ -1,0 +1,111 @@
+#
+# (C) Tenable Network Security, Inc.
+#
+# The descriptive text and package checks in this plugin were  
+# extracted from Fedora Security Advisory 2008-5469.
+#
+
+include("compat.inc");
+
+if (description)
+{
+  script_id(33368);
+  script_version ("$Revision: 1.11 $");
+  script_cvs_date("$Date: 2015/10/21 22:23:16 $");
+
+  script_xref(name:"FEDORA", value:"2008-5469");
+
+  script_name(english:"Fedora 9 : libetpan-0.54-1.fc9 (2008-5469)");
+  script_summary(english:"Checks rpm output for the updated package.");
+
+  script_set_attribute(
+    attribute:"synopsis", 
+    value:"The remote Fedora host is missing a security update."
+  );
+  script_set_attribute(
+    attribute:"description", 
+    value:
+"Update to new upstream version 0.54 fixing a crash (NULL pointer
+dereference) in the mail message header parser. Note: There is no
+application in Fedora using libetpan library for which such crash
+could be considered a security issue. This can only be a security
+sensitive issue for some 3rd party, not packages applications.
+
+Note that Tenable Network Security has extracted the preceding
+description block directly from the Fedora security advisory. Tenable
+has attempted to automatically clean and format it as much as possible
+without introducing additional issues."
+  );
+  script_set_attribute(
+    attribute:"see_also",
+    value:"https://bugzilla.redhat.com/show_bug.cgi?id=451025"
+  );
+  # https://lists.fedoraproject.org/pipermail/package-announce/2008-July/012973.html
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://www.nessus.org/u?b94ec953"
+  );
+  # https://lists.fedoraproject.org/pipermail/package-announce/2008-June/011752.html
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://www.nessus.org/u?458cb233"
+  );
+  script_set_attribute(
+    attribute:"solution", 
+    value:"Update the affected libetpan package."
+  );
+  script_set_attribute(attribute:"risk_factor", value:"High");
+
+  script_set_attribute(attribute:"plugin_type", value:"local");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:fedoraproject:fedora:libetpan");
+  script_set_attribute(attribute:"cpe", value:"cpe:/o:fedoraproject:fedora:9");
+
+  script_set_attribute(attribute:"patch_publication_date", value:"2008/06/26");
+  script_set_attribute(attribute:"plugin_publication_date", value:"2008/07/02");
+  script_end_attributes();
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright(english:"This script is Copyright (C) 2008-2015 Tenable Network Security, Inc.");
+  script_family(english:"Fedora Local Security Checks");
+
+  script_dependencies("ssh_get_info.nasl");
+  script_require_keys("Host/local_checks_enabled", "Host/RedHat/release", "Host/RedHat/rpm-list");
+
+  exit(0);
+}
+
+
+include("audit.inc");
+include("global_settings.inc");
+include("rpm.inc");
+
+if (!get_kb_item("Host/local_checks_enabled")) audit(AUDIT_LOCAL_CHECKS_NOT_ENABLED);
+release = get_kb_item("Host/RedHat/release");
+if (isnull(release) || "Fedora" >!< release) audit(AUDIT_OS_NOT, "Fedora");
+os_ver = eregmatch(pattern: "Fedora.*release ([0-9]+)", string:release);
+if (isnull(os_ver)) audit(AUDIT_UNKNOWN_APP_VER, "Fedora");
+os_ver = os_ver[1];
+if (! ereg(pattern:"^9([^0-9]|$)", string:os_ver)) audit(AUDIT_OS_NOT, "Fedora 9.x", "Fedora " + os_ver);
+
+if (!get_kb_item("Host/RedHat/rpm-list")) audit(AUDIT_PACKAGE_LIST_MISSING);
+
+cpu = get_kb_item("Host/cpu");
+if (isnull(cpu)) audit(AUDIT_UNKNOWN_ARCH);
+if ("x86_64" >!< cpu && cpu !~ "^i[3-6]86$") audit(AUDIT_LOCAL_CHECKS_NOT_IMPLEMENTED, "Fedora", cpu);
+
+flag = 0;
+if (rpm_check(release:"FC9", reference:"libetpan-0.54-1.fc9")) flag++;
+
+
+if (flag)
+{
+  if (report_verbosity > 0) security_hole(port:0, extra:rpm_report_get());
+  else security_hole(0);
+  exit(0);
+}
+else
+{
+  tested = pkg_tests_get();
+  if (tested) audit(AUDIT_PACKAGE_NOT_AFFECTED, tested);
+  else audit(AUDIT_PACKAGE_NOT_INSTALLED, "libetpan");
+}

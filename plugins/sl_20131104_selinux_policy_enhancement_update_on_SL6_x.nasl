@@ -1,0 +1,109 @@
+#
+# (C) Tenable Network Security, Inc.
+#
+# The descriptive text is (C) Scientific Linux.
+#
+
+include("compat.inc");
+
+if (description)
+{
+  script_id(70757);
+  script_version("$Revision: 1.1 $");
+  script_cvs_date("$Date: 2013/11/05 11:44:05 $");
+
+  script_name(english:"Scientific Linux Security Update : selinux-policy enhancement update on SL6.x i386/x86_64");
+  script_summary(english:"Checks rpm output for the updated packages");
+
+  script_set_attribute(
+    attribute:"synopsis", 
+    value:
+"The remote Scientific Linux host is missing one or more security
+updates."
+  );
+  script_set_attribute(
+    attribute:"description", 
+    value:
+"This update adds the following enhancements :
+
+  - Previously, the pacemaker resource manager did not have
+    its own policy defined and started in the initrc_t
+    domain. With this update, the wrong context has been
+    fixed and proper permissions have been set for
+    pacemaker, thus fixing the bug.
+
+  - Previously, the SELinux policy prevented running virtual
+    machines based on volumes under the VDSM's deamon
+    directory, /var/run/vdsm/storage/. As a consequence,
+    trying to a run virtual machine with these settings
+    resulted in an error. This update fixes the ability of
+    the svirt_t SELinux process domain to read symbolic
+    links in the /var/run/ directory, and now virtual
+    machines based on volumes can be used under the VDSM's
+    daemon directory.
+
+  - Previously, due to SELinux permission errors, trying to
+    run a QEMU process using the libvirt library resulted in
+    and error and the process being terminated. This bug has
+    now been fixed, and QEMU processes start and run
+    successfully in this scenario.
+
+This update has been placed in the security tree to avoid selinux
+related problems."
+  );
+  # http://listserv.fnal.gov/scripts/wa.exe?A2=ind1311&L=scientific-linux-errata&T=0&P=197
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://www.nessus.org/u?7ed3230c"
+  );
+  script_set_attribute(attribute:"solution", value:"Update the affected packages.");
+  script_set_attribute(attribute:"risk_factor", value:"High");
+
+  script_set_attribute(attribute:"plugin_type", value:"local");
+  script_set_attribute(attribute:"cpe", value:"x-cpe:/o:fermilab:scientific_linux");
+
+  script_set_attribute(attribute:"patch_publication_date", value:"2013/11/04");
+  script_set_attribute(attribute:"plugin_publication_date", value:"2013/11/05");
+  script_end_attributes();
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright(english:"This script is Copyright (C) 2013 Tenable Network Security, Inc.");
+  script_family(english:"Scientific Linux Local Security Checks");
+
+  script_dependencies("ssh_get_info.nasl");
+  script_require_keys("Host/local_checks_enabled", "Host/cpu", "Host/RedHat/release", "Host/RedHat/rpm-list");
+
+  exit(0);
+}
+
+
+include("audit.inc");
+include("global_settings.inc");
+include("rpm.inc");
+
+
+if (!get_kb_item("Host/local_checks_enabled")) audit(AUDIT_LOCAL_CHECKS_NOT_ENABLED);
+release = get_kb_item("Host/RedHat/release");
+if (isnull(release) || "Scientific Linux " >!< release) audit(AUDIT_HOST_NOT, "running Scientific Linux");
+if (!get_kb_item("Host/RedHat/rpm-list")) audit(AUDIT_PACKAGE_LIST_MISSING);
+
+cpu = get_kb_item("Host/cpu");
+if (isnull(cpu)) audit(AUDIT_UNKNOWN_ARCH);
+if (cpu >!< "x86_64" && cpu !~ "^i[3-6]86$") audit(AUDIT_LOCAL_CHECKS_NOT_IMPLEMENTED, "Scientific Linux", cpu);
+
+
+flag = 0;
+if (rpm_check(release:"SL6", reference:"selinux-policy-3.7.19-195.el6_4.18")) flag++;
+if (rpm_check(release:"SL6", reference:"selinux-policy-doc-3.7.19-195.el6_4.18")) flag++;
+if (rpm_check(release:"SL6", reference:"selinux-policy-minimum-3.7.19-195.el6_4.18")) flag++;
+if (rpm_check(release:"SL6", reference:"selinux-policy-mls-3.7.19-195.el6_4.18")) flag++;
+if (rpm_check(release:"SL6", reference:"selinux-policy-targeted-3.7.19-195.el6_4.18")) flag++;
+
+
+if (flag)
+{
+  if (report_verbosity > 0) security_hole(port:0, extra:rpm_report_get());
+  else security_hole(0);
+  exit(0);
+}
+else audit(AUDIT_HOST_NOT, "affected");

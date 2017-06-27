@@ -1,0 +1,66 @@
+#
+# (C) Tenable Network Security, Inc.
+#
+
+include("compat.inc");
+
+if (description)
+{
+  script_id(85275);
+  script_version("$Revision: 1.5 $");
+  script_cvs_date("$Date: 2016/11/28 21:52:56 $");
+
+  script_cve_id("CVE-2015-4495");
+  script_osvdb_id(125839);
+
+  script_name(english:"Firefox < 39.0.3 PDF Reader Arbitrary File Access");
+  script_summary(english:"Checks the version of Firefox.");
+
+  script_set_attribute(attribute:"synopsis", value:
+"The remote Windows host contains a web browser that is affected by an
+arbitrary file access vulnerability.");
+  script_set_attribute(attribute:"description", value:
+"The version of Firefox installed on the remote Windows host is prior
+to 39.0.3. It is, therefore, affected by a vulnerability in the same
+origin policy in which an attacker can inject script code into a
+non-privileged part of browser's built-in PDF reader, resulting in
+gaining access to sensitive local files.");
+  script_set_attribute(attribute:"see_also", value:"https://www.mozilla.org/en-US/security/advisories/mfsa2015-78/");
+  script_set_attribute(attribute:"see_also", value:"https://bugzilla.mozilla.org/show_bug.cgi?id=1179262");
+  script_set_attribute(attribute:"solution", value:"Upgrade to Firefox 39.0.3 or later.");
+  script_set_cvss_base_vector("CVSS2#AV:N/AC:M/Au:N/C:P/I:N/A:N");
+  script_set_cvss_temporal_vector("CVSS2#E:F/RL:OF/RC:ND");
+  script_set_attribute(attribute:"exploitability_ease", value:"Exploits are available");
+  script_set_attribute(attribute:"exploit_available", value:"true");
+  script_set_attribute(attribute:"exploited_by_malware", value:"true");
+  script_set_attribute(attribute:"exploit_framework_canvas", value:"true");
+  script_set_attribute(attribute:"canvas_package", value:'CANVAS');
+
+  script_set_attribute(attribute:"vuln_publication_date", value:"2015/08/06");
+  script_set_attribute(attribute:"patch_publication_date", value:"2015/08/06");
+  script_set_attribute(attribute:"plugin_publication_date", value:"2015/08/07");
+
+  script_set_attribute(attribute:"plugin_type", value:"local");
+  script_set_attribute(attribute:"cpe", value:"cpe:/a:mozilla:firefox");
+  script_end_attributes();
+
+  script_category(ACT_GATHER_INFO);
+  script_family(english:"Windows");
+
+  script_copyright(english:"This script is Copyright (C) 2015-2016 Tenable Network Security, Inc.");
+
+  script_dependencies("mozilla_org_installed.nasl");
+  script_require_keys("Mozilla/Firefox/Version");
+
+  exit(0);
+}
+
+include("mozilla_version.inc");
+
+port = get_kb_item("SMB/transport");
+if (!port) port = 445;
+
+installs = get_kb_list("SMB/Mozilla/Firefox/*");
+if (isnull(installs)) audit(AUDIT_NOT_INST, "Firefox");
+
+mozilla_check_version(installs:installs, product:'firefox', esr:FALSE, fix:'39.0.3', severity:SECURITY_WARNING, xss:FALSE);

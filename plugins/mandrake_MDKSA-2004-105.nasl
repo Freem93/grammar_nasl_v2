@@ -1,0 +1,122 @@
+#
+# (C) Tenable Network Security, Inc.
+#
+# The descriptive text and package checks in this plugin were  
+# extracted from Mandrake Linux Security Advisory MDKSA-2004:105. 
+# The text itself is copyright (C) Mandriva S.A.
+#
+
+include("compat.inc");
+
+if (description)
+{
+  script_id(15434);
+  script_version ("$Revision: 1.15 $");
+  script_cvs_date("$Date: 2013/08/09 10:54:12 $");
+
+  script_cve_id("CVE-2004-1379", "CVE-2004-1475", "CVE-2004-1476");
+  script_xref(name:"MDKSA", value:"2004:105");
+
+  script_name(english:"Mandrake Linux Security Advisory : xine-lib (MDKSA-2004:105)");
+  script_summary(english:"Checks rpm output for the updated packages");
+
+  script_set_attribute(
+    attribute:"synopsis", 
+    value:
+"The remote Mandrake Linux host is missing one or more security
+updates."
+  );
+  script_set_attribute(
+    attribute:"description", 
+    value:
+"A number of string overflows were discovered in the xine-lib program,
+some of which can be used for remote buffer overflow exploits that
+lead to the execution of arbitrary code with the permissions of the
+user running a xine-lib-based media application. xine-lib versions
+1-rc2 through, and including, 1-rc5 are vulnerable to these problems.
+
+As well, a heap overflow was found in the DVD subpicture decoder of
+xine-lib; this vulnerability is also remotely exploitable. All
+versions of xine-lib prior to and including 0.5.2 through, and
+including, 1-rc5 are vulnerable to this problem.
+
+Patches from the xine-lib team have been backported and applied to the
+program to solve these problems."
+  );
+  # http://xinehq.de/index.php/security/XSA-2004-4
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://www.nessus.org/u?21259b72"
+  );
+  # http://xinehq.de/index.php/security/XSA-2004-5
+  script_set_attribute(
+    attribute:"see_also",
+    value:"http://www.nessus.org/u?6ce00046"
+  );
+  script_set_attribute(attribute:"solution", value:"Update the affected packages.");
+  script_set_cvss_base_vector("CVSS2#AV:N/AC:L/Au:N/C:P/I:P/A:P");
+
+  script_set_attribute(attribute:"plugin_type", value:"local");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:lib64xine1");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:lib64xine1-devel");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:libxine1");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:libxine1-devel");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:xine-aa");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:xine-arts");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:xine-dxr3");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:xine-esd");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:xine-flac");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:xine-gnomevfs");
+  script_set_attribute(attribute:"cpe", value:"p-cpe:/a:mandriva:linux:xine-plugins");
+  script_set_attribute(attribute:"cpe", value:"cpe:/o:mandrakesoft:mandrake_linux:10.0");
+
+  script_set_attribute(attribute:"patch_publication_date", value:"2004/10/06");
+  script_set_attribute(attribute:"plugin_publication_date", value:"2004/10/08");
+  script_end_attributes();
+
+  script_category(ACT_GATHER_INFO);
+  script_copyright(english:"This script is Copyright (C) 2004-2013 Tenable Network Security, Inc.");
+  script_family(english:"Mandriva Local Security Checks");
+
+  script_dependencies("ssh_get_info.nasl");
+  script_require_keys("Host/local_checks_enabled", "Host/cpu", "Host/Mandrake/release", "Host/Mandrake/rpm-list");
+
+  exit(0);
+}
+
+
+include("audit.inc");
+include("global_settings.inc");
+include("rpm.inc");
+
+
+if (!get_kb_item("Host/local_checks_enabled")) audit(AUDIT_LOCAL_CHECKS_NOT_ENABLED);
+if (!get_kb_item("Host/Mandrake/release")) audit(AUDIT_OS_NOT, "Mandriva / Mandake Linux");
+if (!get_kb_item("Host/Mandrake/rpm-list")) audit(AUDIT_PACKAGE_LIST_MISSING);
+
+cpu = get_kb_item("Host/cpu");
+if (isnull(cpu)) audit(AUDIT_UNKNOWN_ARCH);
+if (cpu !~ "^(amd64|i[3-6]86|x86_64)$") audit(AUDIT_LOCAL_CHECKS_NOT_IMPLEMENTED, "Mandriva / Mandrake Linux", cpu);
+
+
+flag = 0;
+if (rpm_check(release:"MDK10.0", cpu:"amd64", reference:"lib64xine1-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", cpu:"amd64", reference:"lib64xine1-devel-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", cpu:"i386", reference:"libxine1-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", cpu:"i386", reference:"libxine1-devel-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", reference:"xine-aa-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", reference:"xine-arts-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", cpu:"i386", reference:"xine-dxr3-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", reference:"xine-esd-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", reference:"xine-flac-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", reference:"xine-gnomevfs-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+if (rpm_check(release:"MDK10.0", reference:"xine-plugins-1-0.rc3.6.2.100mdk", yank:"mdk")) flag++;
+
+
+if (flag)
+{
+  if (report_verbosity > 0) security_hole(port:0, extra:rpm_report_get());
+  else security_hole(0);
+  exit(0);
+}
+else audit(AUDIT_HOST_NOT, "affected");

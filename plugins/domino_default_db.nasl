@@ -1,0 +1,227 @@
+# @DEPRECATED@
+#
+# Disabled on 2015/11/30. Use domino_db_no_password.nasl (plugin ID 86322)
+# instead
+#
+#
+# This script was written by Javier Fernandez-Sanguino Pena <jfs@computer.org>
+# based on the iis_samples.nasl script written by Renaud Deraison
+# Script was modified by Jasmin Amidzic <jasminsabina@yahoo.com>.
+# See the Nessus Scripts License for details
+#
+
+# Changes by Tenable:
+# - Revised plugin title, added OSVDB ref (9/5/09)
+
+include("compat.inc");
+
+# This really could be high if, for example some 
+# sensitive data, but same databases do not give
+# much information. Make separate tests for each?
+
+if (description)
+{
+ script_id(10629);
+ script_version("$Revision: 1.54 $");
+ script_cvs_date("$Date: 2016/11/15 13:39:09 $");
+
+ script_cve_id("CVE-2002-0664");
+ script_bugtraq_id(5101);
+ script_osvdb_id(523, 11911);
+
+ script_name(english:"IBM Lotus Domino Administration Databases Anonymous Access");
+ script_summary(english:"Checks if Lotus Domino administration databases can be anonymously accessed");
+ 
+ script_set_attribute(attribute:"synopsis", value:
+"The remote service is affected by information disclosure
+vulnerabilities.");
+ script_set_attribute(attribute:"description", value:
+"The remote Lotus Domino server allows an anonymous user to access
+sensitive information such as users, databases, configuration of
+servers (including operating system and hard disk partitioning), 
+and logs of access to users (which could expose sensitive data if 
+GET html forms are used).");
+ # https://web.archive.org/web/20010420044239/http://archives.neohapsis.com/archives/apps/nessus/2001-q1/0416.html
+ script_set_attribute(attribute:"see_also", value:
+"http://www.nessus.org/u?f7d0660f");
+ script_set_attribute(attribute:"see_also", value:
+"http://www-1.ibm.com/support/docview.wss?uid=swg27002555");
+ script_set_attribute(attribute:"see_also", value:
+"http://seclists.org/bugtraq/2002/Sep/51");
+ script_set_attribute(attribute:"solution", value:
+"Verify all of the ACLs for the available databases and remove those 
+that are not needed.");
+ script_set_cvss_base_vector("CVSS2#AV:N/AC:L/Au:N/C:P/I:N/A:N");
+ script_set_cvss_temporal_vector("CVSS2#E:H/RL:U/RC:C");
+ script_set_attribute(attribute:"exploitability_ease", value:"No exploit is required");
+ script_set_attribute(attribute:"exploit_available", value:"true");
+ script_set_attribute(attribute:"plugin_publication_date", value:"2001/03/08");
+ script_set_attribute(attribute:"vuln_publication_date", value: "2001/02/27");
+ script_set_attribute(attribute:"plugin_type", value:"remote");
+ script_set_attribute(attribute:"cpe", value:"cpe:/a:ibm:lotus_domino");
+ script_end_attributes();
+
+ script_category(ACT_GATHER_INFO);
+ script_copyright(english:"This script is Copyright (C) 2001-2016 Javier Fernandez-Sanguino Pena");
+# Maybe instead of CGI abuses this family should be called HTTP server abuses
+ script_family(english:"Web Servers");
+# This should also depend on finding a Lotus Domino server
+ script_dependencie("find_service1.nasl", "http_version.nasl", "www_fingerprinting_hmap.nasl");
+ script_require_ports("Services/www", 80);
+ exit(0);
+}
+
+#
+# The script code starts here
+#
+
+# Deprecated
+exit(0, "This plugin has been deprecated. Use domino_db_no_password.nasl (plugin ID 86322) instead.");
+
+include("http_func.inc");
+include("http_keepalive.inc");
+
+function test_cgi(port, db, output)
+{
+ local_var ok, r, req, report;
+
+ ok = is_cgi_installed_ka(port:port, item:db);
+ if(ok)
+  {
+  	# Check that the remote db is not actually password protected
+  	req = http_get(item:db, port:port);
+	r = http_keepalive_send_recv(port:port, data:req);
+	
+	if("Please identify yourself" >!< r &&
+	   'type="password"' >!< r && 
+	   "<TITLE>Server Login</TITLE>" >!< r)
+		{
+		report = string(report, ". ", db, " this must be considered a security risk since ", output,"\n");
+		set_kb_item(name:'www/domino/' + port + '/db/anonymous', value:db);
+		}
+  	else if ("Please identify yourself" >< r &&
+           'type="password"' >< r &&
+           "<TITLE>Server Login</TITLE>" >< r)
+    		{
+    		set_kb_item(name:'www/domino/'+port+'/db/password', value:db);
+    		}
+  }
+ return(0);
+}
+ 
+ 
+report = "";
+
+port = get_http_port(default:80);
+
+sig = get_http_banner(port:port);
+if ( !sig || "Lotus-Domino" >!< sig ) exit(0, 'The web server on port '+port+' is not Lotus-Domino.');
+
+if(get_port_state(port))
+{
+ soc = open_sock_tcp(port);
+ if(!soc)exit(0);
+ 
+ req = http_head(item:"/", port:port);
+ send(socket:soc, data:req);
+ r = http_recv(socket:soc);
+ close(soc);
+ 
+
+ 
+ 
+  test_cgi(port:port, 
+ 	  db:"/log.nsf",
+	  output:"the server log can be retrieved");
+ 
+  test_cgi(port:port, 
+ 	  db:"/setup.nsf",
+	  output:"the server might be configured remotely or the current setup might be downloaded");
+	  
+  test_cgi(port:port, 
+ 	  db:"/catalog.nsf",
+	  output:"the list of databases in the server can be retrieved");
+ 
+  test_cgi(port:port, 
+ 	  db:"/statrep.nsf",
+	  output:"the reports generated by administrators can be read anonymously");
+
+  test_cgi(port:port, 
+ 	  db:"/names.nsf",
+	  output:"the users and groups in the server can be accessed anonymously, in some cases, access to the hashed passwords will be possible");
+	  
+  test_cgi(port:port, 
+ 	  db:"/domlog.nsf",
+	  output:"the logs of the domain servers  can be read anonymously");
+
+  test_cgi(port:port, 
+ 	  db:"/webadmin.nsf",
+	  output:"the server administration database can be read anonymously");
+
+  test_cgi(port:port, 
+ 	  db:"/cersvr.nsf",
+	  output:"the information on the server certificates can be read anonymously");
+	  
+  test_cgi(port:port, 
+ 	  db:"/events4.nsf",
+	  output:"the list of events that have taken place can be read anonymously, this might lead to information disclosure of users and hidden databases");
+
+  test_cgi(port:port,
+  	   db:"/zmevladm.nsf",
+	   output:"it provides arbitrary users with Manager level access, which allows the users to read or modify the import/export scripts");
+
+ # We should add more info here on the output: on how this database
+ # affects the server
+ 
+ 
+  foreach db (make_list("/mab.nfs", "/ntsync4.nsf", "/collect4.nsf", 
+  		 	"/mailw46.nsf", "/bookmark.nsf", "/agentrunner.nsf",
+			"/mail.box", "/admin4.nsf", "/catalog.nsf", 
+			"/AgentRunner.nsf", "/certlog.nsf", "/cpa.nsf",
+			"/domcfg.nsf", "/domguide.nsf", "/domlog.nsf",
+			"/doc/dspug.nsf", "/doc/helpadmn.nsf",
+			"/doc/javapg.nsf", "/doc/readmec.nsf",
+			"/doc/readmes.nsf", "/doc/svrinst.nsf", 
+			"/doc/wksinst.nsf", "/archive/a_domlog.nsf",
+			"/archive/l_domlog.nsf", "/help/decsdoc.nsf", "/decsadm.nsf",
+			"/help/dols_help.nsf", "/help/help5_admin.nsf",
+			"/help/help5_client.nsf", "/help/help5_designer.nsf",
+			"/help/lccon.nsf", "/help/lsxlc.nsf", 
+			"/help4.nsf", "/homepage.nsf", "/sample/faqw46.nsf",
+			"/sample/framew46.nsf", "/smtpibwq.nsf", 
+			"/smtpobwq.nsf", "/smtptbls.nsf", "/statmail.nsf",
+			"/statrep.nsf", "/stats675.nsf", "/lccon.nsf", 
+			"/loga4.nsf", "/helplt4.nsf", "/qstart.nsf", 
+			"/quickstart/qstart50.nsf", "/quickstart/wwsample.nsf",
+			"/mtabtbls.nsf", "/names.nsf", "/proghelp/KBCCV11.NSF",
+			"/doladmin.nsf", "/busytime.nsf", "/reports.nsf",
+			"/iNotes/Forms5.nsf", "/mail/admin.nsf",
+			"/software.nsf", "/domino.nsf", "/books.nsf",
+			"/default.nsf", "/db.nsf", "/database.nsf",
+			"/users.nsf", "/groups.nsf", "/group.nsf", "/user.nsf",
+			"/ldap.nsf", "/notes.nsf", "/secret.nsf",
+			"/accounts.nsf", "/products.nsf", "/account.nsf", 
+			"/secure.nsf", "/hidden.nsf", "/public.nsf", 
+			"/private.nsf", "/welcome.nsf", "/calendar.nsf",
+			"/nntppost.nsf", "/help/readme.nsf", "/help/help6_client.nsf",
+			"/help/help6_designer.nsf", "/help/help6_admin.nsf",
+			"/certsrv.nsf", "/dbdirman.nsf", "/lndfr.nsf",
+			"/home.nsf" ))
+ 
+  	test_cgi(port:port, 
+ 	  db:db,
+	  output:"this database can be read anonymously");
+
+
+ if(report)
+  {
+   report = string(
+     "\n",
+     "Nessus found the following Domino databases :\n",
+     "\n",
+     report
+   );
+   security_warning(port:port, extra:report);
+  }
+    exit(0);
+}

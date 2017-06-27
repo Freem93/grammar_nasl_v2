@@ -12,12 +12,11 @@ int flag = 0;
 
 %%
 
-
+[ \t\v\n\f\r] { count(); }
 "function" { count(); return(FUNCTION); }
-
 "local_var" { count(); return(LOCAL); }
 "global_var" { count(); return(GLOBAL); }
-
+"[=~]" { count(); return(SW_AS); }
 
 "if" { count(); return(IF); }
 "else" { count(); return (ELSE); }
@@ -29,15 +28,18 @@ int flag = 0;
 "break" { count(); return(BREAK); }
 "continue" { count(); return(CONTINUE); }
 
+"repeat" { count(); return(REPEAT); }
 "for" { count(); return(FOR); }
 "foreach" { count(); return(FOREACH); }
 "in" { count(); return(IN_ITER); }
 "while" { count(); return(WHILE); }
-"repeat" { count(); return(REPEAT); }
+
+"switch" { count(); return(SWITCH); }
+"case" { count(); return(CASE); }
+
 
 "until" { count(); return(UNTIL); }
 "false" {count(); return(FALSE); }
-"null" { count(); return(_NULL_); }
 "true" { count(); return(TRUE); }
 "FALSE" {count(); return(FALSE); }
 "NULL" { count(); return(_NULL_); }
@@ -47,8 +49,16 @@ int flag = 0;
 
 [a-zA-Z_]+[_a-zA-Z0-9]* { count(); return(IDENT); }
 ([0-9]+|0[xX][a-fA-F0-9]+|[0][0-7]+) { count(); return(INT); }
-((\"|\')([^\"\'\r\n]|(\\.))*(\'|\"))|((\")([^\"\r\n]|(\\.))*(\")) { count(); return(STRING); }
-[ \f\n\t\v] { count(); }
+
+[\n]*[\'](\\.|[^\'\\])*[\'] { count(); return(STRING); }
+
+[\n]*[\"]([^\"\r])*[\"] { count(); return(STRING); }
+
+"default" { count(); return(DEFAULT); }
+"object" { count(); return(OBJECT); }
+"var" { count(); return(VAR); }
+"public " { count(); return(PUBLIC); }
+"::" { count(); return(QW); }
 "x" { count(); return(REP); }
 "><" { count(); return(SUBSTR_EQ); }
 ">!<" { count(); return(SUBSTR_NEQ); }
@@ -86,6 +96,7 @@ int flag = 0;
 "++" { count(); return(INC); }
 "--" { count(); return(DEC); }
 
+
 "**" { count(); return(POWER); }
 
 "+" { count(); return('+'); }
@@ -109,12 +120,11 @@ int flag = 0;
 
 "&" { count(); return('&'); }
 
-[ \t\v\n\f\r] { count(); }
 
 "#" {
 		flag = 1;
-		if(yylineno == 1)
-			printf("%d||	", yylineno);
+		//if(yylineno == 1)
+			//printf("%d||	", yylineno);
 		printf("#");
 		char c;
 		while(!((c = input()) == 0))
@@ -134,7 +144,7 @@ int flag = 0;
 			printf("%c", c);
 		}
 		//printf("\n");
-		printf("%d||	", yylineno);
+		//printf("%d||	", yylineno);
 	}
 
 
@@ -150,14 +160,14 @@ void count()
 	int j;
 	if(flag == 0)
 	{
-		printf("%d||    ", yylineno);
+	//	printf("%d||    ", yylineno);
 		flag = 1;
 	}		
 	ECHO;
 	for (i = 0; yytext[i] != '\0'; i++)
 		if (yytext[i] == '\n'){
 			column = 0;
-			printf("%d||	", yylineno);
+		//	printf("%d||	", yylineno);
 			
 		}
 			
